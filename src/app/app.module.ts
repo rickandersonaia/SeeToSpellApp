@@ -11,6 +11,7 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { WordsComponent } from './words/words.component';
 
+import { WordService } from './services/word.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { WordsComponent } from './words/words.component';
     MatListModule,
     MatLineModule
   ],
-  providers: [],
+  providers: [
+    WordService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
