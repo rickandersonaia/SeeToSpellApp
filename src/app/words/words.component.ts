@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Word } from '../shared/word';
+import { WordDef } from '../shared/word';
 import { WORDS } from '../shared/wordlist';
 import { WordService } from '../services/word.service';
 

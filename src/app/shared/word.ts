@@ -1,4 +1,4 @@
-export class Word {
+export class WordDef {
   name: string;
   image: string;
   sentence: string;

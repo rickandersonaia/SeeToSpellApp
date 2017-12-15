@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+import {WordDef} from '../shared/word';
+import {WordService} from '../services/word.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  freewords: WordDef[];
 
-  constructor() { }
+  constructor(private wordservice: WordService) {
+  }
 
   ngOnInit() {
+    this.freewords = this.wordservice.getFreeWords();
   }
 
 }

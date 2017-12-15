@@ -1,6 +1,6 @@
-import { Word } from './word';
+import { WordDef } from './word';
 
-export const WORDS: Word[] = [
+export const WORDS: WordDef[] = [
   {
     name: 'again',
     image: '/assets/images/again.jpg',
@@ -23,6 +23,6 @@ export const WORDS: Word[] = [
     sentence: '/assets/images/about2.jpg',
     audio: '/assets/audio/about.mp3',
     cardset: 2,
-    isfree: false
+    isfree: true
   }
 ];
