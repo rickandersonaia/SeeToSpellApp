@@ -1,6 +1,6 @@
 <div class="container" fxLayout="column" fxLayoutGap="10px">
   <mat-list fxFlex>
-    <mat-list-item *ngFor="let word of words">
+    <mat-list-item *ngFor="let word of words" [routerLink] = "['/words', word.name]">
       <img matListAvatar src="{{word.image}}" alt="{{word.name}}">
       <h2 matLine>{{word.name}}</h2>
       <img src="{{word.sentence}}" alt="{{word.sentence}}">

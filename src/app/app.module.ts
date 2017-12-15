@@ -19,6 +19,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { SetsComponent } from './sets/sets.component';
 import {routes} from './app-routing/routes';
 import { HeaderComponent } from './header/header.component';
+import { WorddetailComponent } from './worddetail/worddetail.component';
 
 
 
@@ -30,7 +31,8 @@ import { HeaderComponent } from './header/header.component';
     HomeComponent,
     AccountsComponent,
     SetsComponent,
-    HeaderComponent
+    HeaderComponent,
+    WorddetailComponent
   ],
   imports: [
     BrowserModule,
