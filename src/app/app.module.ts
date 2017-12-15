@@ -3,10 +3,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FlexLayoutModule} from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material';
 import { MatListModule } from '@angular/material';
 import { MatLineModule } from '@angular/material';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule} from '@angular/material/grid-list';
 
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -20,6 +27,7 @@ import { SetsComponent } from './sets/sets.component';
 import {routes} from './app-routing/routes';
 import { HeaderComponent } from './header/header.component';
 import { WorddetailComponent } from './worddetail/worddetail.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -32,21 +40,33 @@ import { WorddetailComponent } from './worddetail/worddetail.component';
     AccountsComponent,
     SetsComponent,
     HeaderComponent,
-    WorddetailComponent
+    WorddetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCheckboxModule,
     MatToolbarModule,
     MatListModule,
     MatLineModule,
     MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatGridListModule,
     AppRoutingModule
   ],
   providers: [
-    WordService
+    WordService,
+    MatDialogModule
+  ],
+  entryComponents: [
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })
