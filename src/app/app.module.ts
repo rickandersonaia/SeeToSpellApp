@@ -6,6 +6,7 @@ import { FlexLayoutModule} from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material';
 import { MatListModule } from '@angular/material';
 import { MatLineModule } from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
 
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -17,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { SetsComponent } from './sets/sets.component';
 import {routes} from './app-routing/routes';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -27,7 +29,8 @@ import {routes} from './app-routing/routes';
     WordsComponent,
     HomeComponent,
     AccountsComponent,
-    SetsComponent
+    SetsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import {routes} from './app-routing/routes';
     MatToolbarModule,
     MatListModule,
     MatLineModule,
+    MatButtonModule,
     AppRoutingModule
   ],
   providers: [
