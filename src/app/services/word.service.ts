@@ -2,25 +2,29 @@ import {Injectable} from '@angular/core';
 import {WordDef} from '../shared/worddef';
 import {WORDS} from '../shared/wordlist';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/observable/of';
+
 @Injectable()
 export class WordService {
 
   constructor() {
   }
 
-  getWords(): WordDef[] {
-    return WORDS;
+  getWords(): Observable<WordDef[]> {
+    return Observable.of(WORDS).delay(2000);
   }
 
-  getWord(name: string): WordDef {
-    return WORDS.filter((word) => (word.name === name))[0];
+  getWord(name: string): Observable<WordDef> {
+    return Observable.of(WORDS.filter((word) => (word.name === name))[0]).delay(2000);
   }
 
-  getFreeWords(): WordDef[] {
-    return WORDS.filter((word) => (word.isfree));
+  getFreeWords(): Observable<WordDef[]> {
+    return Observable.of(WORDS.filter((word) => (word.isfree))).delay(2000);
   }
 
-  getWordsInSet(cardset: number): WordDef[] {
-    return WORDS.filter((word) => (word.cardset === cardset));
+  getWordsInSet(cardset: number): Observable<WordDef[]> {
+    return Observable.of(WORDS.filter((word) => (word.cardset === cardset))).delay(2000);
   }
 }
