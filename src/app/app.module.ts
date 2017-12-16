@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule} from '@angular/material/grid-list';
 
 import 'hammerjs';
@@ -30,6 +31,7 @@ import { HeaderComponent } from './header/header.component';
 import { WorddetailComponent } from './worddetail/worddetail.component';
 import { LoginComponent } from './login/login.component';
 import { UserFormComponent } from './userform/userform.component';
+import { WordformComponent } from './wordform/wordform.component';
 
 
 
@@ -44,7 +46,8 @@ import { UserFormComponent } from './userform/userform.component';
     HeaderComponent,
     WorddetailComponent,
     LoginComponent,
-    UserFormComponent
+    UserFormComponent,
+    WordformComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import { UserFormComponent } from './userform/userform.component';
     MatIconModule,
     MatDialogModule,
     MatSlideToggleModule,
+    MatSelectModule,
     MatGridListModule,
     AppRoutingModule
   ],

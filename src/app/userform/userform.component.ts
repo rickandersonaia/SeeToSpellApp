@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {User} from '../shared/user';
+import {UserDef} from '../shared/userdef';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +10,7 @@ import {User} from '../shared/user';
 export class UserFormComponent implements OnInit {
 
   userForm: FormGroup;
-  users: User;
+  users: UserDef;
 
   constructor(private fb: FormBuilder) {
     this.createForm();

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { WordDef } from '../shared/word';
+import { WordDef } from '../shared/worddef';
 import { WORDS } from '../shared/wordlist';
 import { WordService } from '../services/word.service';
+import { WordformComponent } from '../wordform/wordform.component';
 
 @Component({
   selector: 'app-words',

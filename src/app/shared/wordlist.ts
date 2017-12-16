@@ -1,4 +1,4 @@
-import { WordDef } from './word';
+import { WordDef } from './worddef';
 
 export const WORDS: WordDef[] = [
   {

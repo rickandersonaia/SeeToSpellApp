@@ -11,6 +11,6 @@ export const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'words', component: WordsComponent},
   {path: 'words/:name', component: WorddetailComponent},
-  {path: 'users', component: UserFormComponent},
+  {path: 'users/new', component: UserFormComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
   ];

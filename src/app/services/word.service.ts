@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {WordDef} from '../shared/word';
+import {WordDef} from '../shared/worddef';
 import {WORDS} from '../shared/wordlist';
 
 @Injectable()
