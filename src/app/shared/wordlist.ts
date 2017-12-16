@@ -1,6 +1,6 @@
-import { WordDef } from './worddef';
+import { WordDataModel } from './worddatamodel';
 
-export const WORDS: WordDef[] = [
+export const WORDS: WordDataModel[] = [
   {
     name: 'again',
     image: '/assets/images/again.jpg',

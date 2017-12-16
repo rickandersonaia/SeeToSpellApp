@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {WordDef, cardSetOptions} from '../shared/worddef';
+import {WordDataModel, cardSetOptions} from '../shared/worddatamodel';
 
 @Component({
   selector: 'app-wordform',
@@ -10,7 +10,7 @@ import {WordDef, cardSetOptions} from '../shared/worddef';
 export class WordformComponent implements OnInit {
 
   wordForm: FormGroup;
-  word: WordDef;
+  word: WordDataModel;
   cardSet = cardSetOptions;
 
   constructor(private fb: FormBuilder) {

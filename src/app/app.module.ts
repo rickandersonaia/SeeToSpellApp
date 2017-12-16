@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FlexLayoutModule} from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +21,7 @@ import { MatGridListModule} from '@angular/material/grid-list';
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { WordService } from './services/word.service';
+import { baseURL} from './shared/baseurl';
 
 import { AppComponent } from './app.component';
 import { WordsComponent } from './words/words.component';
@@ -53,6 +55,7 @@ import { WordformComponent } from './wordform/wordform.component';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    HttpClient,
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
@@ -71,7 +74,8 @@ import { WordformComponent } from './wordform/wordform.component';
   ],
   providers: [
     WordService,
-    MatDialogModule
+    MatDialogModule,
+    { provide: 'BaseURL', useValue: baseURL }
   ],
   entryComponents: [
     LoginComponent

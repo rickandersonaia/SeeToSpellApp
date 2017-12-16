@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('UserDef: ', this.user);
+    console.log('UserDataModel: ', this.user);
     this.dialogRef.close();
   }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {WordDef} from '../shared/worddef';
+import {WordDataModel} from '../shared/worddatamodel';
 import {WordService} from '../services/word.service';
 import {Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
@@ -12,7 +12,7 @@ import {Location} from '@angular/common';
 })
 export class WorddetailComponent implements OnInit {
 
-  word: WordDef;
+  word: WordDataModel;
 
   constructor(private wordService: WordService,
               private location: Location,
@@ -21,7 +21,9 @@ export class WorddetailComponent implements OnInit {
 
   ngOnInit() {
     const name = this.route.snapshot.params['name'];
-    this.word = this.wordService.getWord(name);
+
+    this.wordService.getWord(name)
+      .subscribe(word => this.word = word);
   }
 
   goBack(): void {

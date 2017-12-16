@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {WordDef} from '../shared/worddef';
+import {WordDataModel} from '../shared/worddatamodel';
 import {WordService} from '../services/word.service';
 
 @Component({
@@ -9,7 +9,7 @@ import {WordService} from '../services/word.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  freewords: WordDef[];
+  freewords: WordDataModel[];
 
   constructor(private wordservice: WordService) {
   }
