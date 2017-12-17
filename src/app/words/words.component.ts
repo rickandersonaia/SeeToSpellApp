@@ -16,7 +16,7 @@ export class WordsComponent implements OnInit {
 
   ngOnInit() {
     this.wordService.getWords()
-      .subscribe(words => {this.words = words});
+      .subscribe(words => this.words = words);
   }
 
 }
