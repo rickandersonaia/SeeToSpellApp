@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 
 import {WordDataModel} from '../shared/worddatamodel';
 import {WordService} from '../services/word.service';
@@ -16,13 +16,18 @@ export class WorddetailComponent implements OnInit {
 
   constructor(private wordService: WordService,
               private location: Location,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              @Inject('BaseURL') private BaseURL,
+              @Inject('ImageURL') private ImageURL,
+              @Inject('AudioURL') private AudioURL) {
   }
 
   ngOnInit() {
-    const name = this.route.snapshot.params['name'];
 
-    this.wordService.getWord(name)
+    const id = this.route.snapshot.params['id'];
+    console.log(name);
+
+    this.wordService.getWordById(id)
       .subscribe(word => this.word = word);
   }
 

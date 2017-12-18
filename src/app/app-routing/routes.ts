@@ -10,7 +10,8 @@ import {UserFormComponent} from '../userform/userform.component';
 export const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'words', component: WordsComponent},
-  {path: 'words/:name', component: WorddetailComponent},
+  {path: 'words/:id', component: WorddetailComponent},
+  {path: 'words/edit/:id', component: WorddetailComponent},
   {path: 'users/new', component: UserFormComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
   ];

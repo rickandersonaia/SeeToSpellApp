@@ -20,26 +20,26 @@ export class WordService {
 
   getWords(): Observable<WordDataModel[]> {
     return this.http.get(baseURL + 'words')
-      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getWord(name: string): Observable<WordDataModel> {
     return this.http.get(baseURL + 'words/' + name)
-      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getWordById(id: string): Observable<WordDataModel> {
     return this.http.get(baseURL + 'words/' + id)
-      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getFreeWords(): Observable<WordDataModel[]> {
     return this.http.get(baseURL + 'words?isfree=true')
-      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getWordsInSet(cardset: number): Observable<WordDataModel[]> {
     return this.http.get(baseURL + 'words?cardset=' + cardset)
-      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 }

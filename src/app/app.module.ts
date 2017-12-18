@@ -21,7 +21,7 @@ import { MatGridListModule} from '@angular/material/grid-list';
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { WordService } from './services/word.service';
-import { baseURL} from './shared/baseurl';
+import { baseURL, imageURL, audioURL} from './shared/baseurl';
 import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
 
 import { AppComponent } from './app.component';
@@ -77,6 +77,8 @@ import { WordformComponent } from './wordform/wordform.component';
     WordService,
     MatDialogModule,
     { provide: 'BaseURL', useValue: baseURL },
+    { provide: 'ImageURL', useValue: imageURL },
+    { provide: 'AudioURL', useValue: audioURL },
     ProcessHTTPMsgService
   ],
   entryComponents: [
