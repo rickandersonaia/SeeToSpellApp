@@ -22,7 +22,7 @@ import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { WordService } from './services/word.service';
 import { baseURL} from './shared/baseurl';
-import {ProcessHttpmsgService} from './services/process-httpmsg.service';
+import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
 
 import { AppComponent } from './app.component';
 import { WordsComponent } from './words/words.component';
@@ -77,7 +77,7 @@ import { WordformComponent } from './wordform/wordform.component';
     WordService,
     MatDialogModule,
     { provide: 'BaseURL', useValue: baseURL },
-    ProcessHttpmsgService
+    ProcessHTTPMsgService
   ],
   entryComponents: [
     LoginComponent

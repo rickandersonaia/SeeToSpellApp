@@ -1,30 +1,45 @@
 import {Injectable} from '@angular/core';
 import {WordDataModel} from '../shared/worddatamodel';
-import {WORDS} from '../shared/wordlist';
-
+import {HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
+import {WORDS} from '../shared/wordlist';
+import { baseURL } from '../shared/baseurl';
+import {ProcessHTTPMsgService} from './process-httpmsg.service';
 
 @Injectable()
 export class WordService {
 
-  constructor() {
+  constructor(private http: HttpClient,
+              private processHTTPMsgService: ProcessHTTPMsgService) {
   }
 
   getWords(): Observable<WordDataModel[]> {
-    return Observable.of(WORDS).delay(2000);
+    return this.http.get(baseURL + 'words')
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
   }
 
   getWord(name: string): Observable<WordDataModel> {
-    return Observable.of(WORDS.filter((word) => (word.name === name))[0]).delay(2000);
+    return this.http.get(baseURL + 'words/' + name)
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+  }
+
+  getWordById(id: string): Observable<WordDataModel> {
+    return this.http.get(baseURL + 'words/' + id)
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
   }
 
   getFreeWords(): Observable<WordDataModel[]> {
-    return Observable.of(WORDS.filter((word) => (word.isfree))).delay(2000);
+    return this.http.get(baseURL + 'words?isfree=true')
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
   }
 
   getWordsInSet(cardset: number): Observable<WordDataModel[]> {
-    return Observable.of(WORDS.filter((word) => (word.cardset === cardset))).delay(2000);
+    return this.http.get(baseURL + 'words?cardset=' + cardset)
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
   }
 }

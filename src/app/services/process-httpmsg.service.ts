@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import { HttpClient} from '@angular/common/http';
-import { HttpResponse} from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+
+import 'rxjs/add/observable/throw';
 
 @Injectable()
-export class ProcessHttpmsgService {
+export class ProcessHTTPMsgService {
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  public extractData(res: HttpResponse<any>) {
-    let body = res.json();
+  public handleError(error: HttpErrorResponse | any) {
+    let errMsg: string;
 
-    return body || { };
+    if (error.error instanceof Error) {
+      errMsg = error.error.message;
+    } else {
+      errMsg = `${error.status} - ${error.statusText || ''} ${error.error}`;
+    }
+
+    return Observable.throw(errMsg);
   }
 
 }

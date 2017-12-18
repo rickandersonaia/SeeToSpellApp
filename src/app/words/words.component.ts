@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { WordDataModel } from '../shared/worddatamodel';
-import { WORDS } from '../shared/wordlist';
 import { WordService } from '../services/word.service';
 import { WordformComponent } from '../wordform/wordform.component';
 
@@ -11,7 +10,9 @@ import { WordformComponent } from '../wordform/wordform.component';
   styleUrls: ['./words.component.scss']
 })
 export class WordsComponent implements OnInit {
-  words = WORDS;
+
+  words: WordDataModel[];
+
   constructor(private wordService: WordService) { }
 
   ngOnInit() {
