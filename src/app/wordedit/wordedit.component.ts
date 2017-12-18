@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import {WordDataModel} from '../shared/worddatamodel';
 import {WordService} from '../services/word.service';
@@ -6,11 +6,11 @@ import {Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 
 @Component({
-  selector: 'app-worddetail',
-  templateUrl: './worddetail.component.html',
-  styleUrls: ['./worddetail.component.scss']
+  selector: 'app-wordedit',
+  templateUrl: './wordedit.component.html',
+  styleUrls: ['./wordedit.component.scss']
 })
-export class WorddetailComponent implements OnInit {
+export class WordeditComponent implements OnInit {
 
   word: WordDataModel;
 

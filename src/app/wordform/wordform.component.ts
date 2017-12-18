@@ -22,6 +22,7 @@ export class WordformComponent implements OnInit {
 
   createForm() {
     this.wordForm = this.fb.group({
+      index: [{value: null, disabled: true}],
       name: '',
       image: '',
       sentence: '',
@@ -31,9 +32,15 @@ export class WordformComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    this.word = this.wordForm.value;
-    console.log(this.word);
+  onSubmit(wordForm) {
+    const index = wordForm.getRawValue().index;
+
+    if (index != null) {
+      this.word[index] = wordForm.value;
+    } else {
+      this.word = this.wordForm.value;
+    }
+
     this.wordForm.reset();
   }
 

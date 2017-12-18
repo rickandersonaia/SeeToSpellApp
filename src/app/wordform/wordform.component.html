@@ -2,7 +2,7 @@
 
 <h1>Add new Word</h1>
 <div class="form-width">
-  <form novalidate [formGroup]="wordForm" (ngSubmit)="onSubmit()">
+  <form novalidate [formGroup]="wordForm" (ngSubmit)="onSubmit(wordForm)">
     <p>
       <mat-form-field>
         <input matInput formControlName="name" placeholder="Word" type="text">

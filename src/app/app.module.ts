@@ -35,6 +35,7 @@ import { WorddetailComponent } from './worddetail/worddetail.component';
 import { LoginComponent } from './login/login.component';
 import { UserFormComponent } from './userform/userform.component';
 import { WordformComponent } from './wordform/wordform.component';
+import { WordeditComponent } from './wordedit/wordedit.component';
 
 
 
@@ -50,7 +51,8 @@ import { WordformComponent } from './wordform/wordform.component';
     WorddetailComponent,
     LoginComponent,
     UserFormComponent,
-    WordformComponent
+    WordformComponent,
+    WordeditComponent
   ],
   imports: [
     BrowserModule,
