@@ -52,7 +52,7 @@ import { WordeditComponent } from './wordedit/wordedit.component';
     LoginComponent,
     UserFormComponent,
     WordformComponent,
-    WordeditComponent
+    WordeditComponent,
   ],
   imports: [
     BrowserModule,
