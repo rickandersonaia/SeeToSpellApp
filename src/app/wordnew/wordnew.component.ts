@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-wordnew',
+  selector: 'app-newword',
   templateUrl: './wordnew.component.html',
   styleUrls: ['./wordnew.component.scss']
 })

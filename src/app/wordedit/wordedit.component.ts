@@ -16,6 +16,12 @@ export class WordeditComponent implements OnInit {
   wordForm: FormGroup;
   word: WordDataModel;
   cardSet = cardSetOptions;
+  public exname: string;
+  public eximage: string;
+  public exsentence: string;
+  public exaudio: string;
+  public exisfree: boolean;
+  public excardset: number;
 
   constructor(private fb: FormBuilder,
               private wordService: WordService,
@@ -30,11 +36,21 @@ export class WordeditComponent implements OnInit {
   ngOnInit() {
 
     const id = this.route.snapshot.params['id'];
+    this.getFormData(id);
+  }
 
+  getFormData(id) {
     this.wordService.getWordById(id)
-      .subscribe(word => this.word = word);
-
-    this.createForm();
+      .subscribe(word => {
+        this.exname = word.name ? word.name : null;
+        this.eximage = word.image ? word.image : null;
+        this.exsentence = word.sentence ? word.sentence : null;
+        this.exaudio = word.audio ? word.audio : null;
+        this.exisfree = word.isfree ? word.isfree : null;
+        this.excardset = word.cardset ? word.cardset : null;
+        this.word = word;
+        this.createForm();
+      });
   }
 
   goBack(): void {
@@ -43,21 +59,21 @@ export class WordeditComponent implements OnInit {
 
   createForm() {
     this.wordForm = this.fb.group({
-      name: '',
-      image: '',
-      sentence: '',
-      audio: '',
-      cardset: '',
-      isfree: ''
+      name: this.exname,
+      image: this.eximage,
+      sentence: this.exsentence,
+      audio: this.exaudio,
+      cardset: this.excardset,
+      isfree: this.exisfree
     });
   }
 
   onSubmit() {
-    console.log(this.wordForm.value);
     this.wordService.editWord(this.word._id, this.wordForm.value)
-      .subscribe(word => this.word = word);
-    console.log(this.word);
-    this.wordForm.reset();
+      .subscribe(word => {
+        console.log(word);
+        this.getFormData(this.word._id);
+      });
   }
 
 }

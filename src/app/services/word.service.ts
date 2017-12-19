@@ -42,8 +42,14 @@ export class WordService {
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
-  editWord(id: string, comment: any): Observable<WordDataModel[]>  {
-    return this.http.put(baseURL + 'words/edit/' + id , comment)
+  addWord(id: string, formContent: any): Observable<WordDataModel>  {
+    return this.http.post(baseURL + 'words/new' , formContent)
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+
+  }
+
+  editWord(id: string, formContent: any): Observable<WordDataModel>  {
+    return this.http.put(baseURL + 'words/edit/' + id , formContent)
       .catch(error => { return this.processHTTPMsgService.handleError(error); });
 
   }
