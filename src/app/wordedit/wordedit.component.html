@@ -1,3 +1,54 @@
-<p>
-  wordedit works!
-</p>
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+  <mat-list fxFlex>
+    <mat-list-item>
+      <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
+      <h2 matLine>{{word.name}}</h2>
+      <img src="{{ImageURL + word.sentence}}" alt="{{word.sentence}}">
+      <p matLine>{{word.cardset}}</p>
+      <p matLine>{{word.isfree}}</p>
+    </mat-list-item>
+  </mat-list>
+
+  <div class="form-width">
+    <form novalidate [formGroup]="wordForm" (ngSubmit)="onSubmit(wordForm)">
+      <p>
+        <mat-form-field>
+          <input matInput formControlName="name" placeholder="Word" type="text">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="image" placeholder="Image Url" type="text">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="sentence" placeholder="Sentence Url" type="text">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="audio" placeholder="Audio Url" type="text">
+        </mat-form-field>
+      </p>
+
+      <mat-grid-list cols="2" rowHeight="50px">
+        <mat-grid-tile>
+
+          <mat-slide-toggle formControlName="isfree">
+            This card is free
+          </mat-slide-toggle>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-select placeholder="Choose a card set" formControlName="cardset">
+              <mat-option *ngFor="let option of cardSet" [value]="option.value">
+                {{ option.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <button mat-raised-button color="primary">Submit</button>
+    </form>
+  </div>
+
+</div>
+

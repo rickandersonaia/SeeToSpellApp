@@ -7,7 +7,6 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import {WORDS} from '../shared/wordlist';
 import { baseURL } from '../shared/baseurl';
 import {ProcessHTTPMsgService} from './process-httpmsg.service';
 
@@ -41,5 +40,11 @@ export class WordService {
   getWordsInSet(cardset: number): Observable<WordDataModel[]> {
     return this.http.get(baseURL + 'words?cardset=' + cardset)
       .catch(error => this.processHTTPMsgService.handleError(error));
+  }
+
+  editWord(id: string, comment: any): Observable<WordDataModel[]>  {
+    return this.http.put(baseURL + 'words/edit/' + id , comment)
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+
   }
 }

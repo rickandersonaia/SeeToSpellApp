@@ -1,4 +1,5 @@
 export class WordDataModel {
+  _id: string;
   name: string;
   image: string;
   sentence: string;
