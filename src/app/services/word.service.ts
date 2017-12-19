@@ -42,7 +42,7 @@ export class WordService {
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
-  addWord(id: string, formContent: any): Observable<WordDataModel>  {
+  addWord(formContent: any): Observable<WordDataModel>  {
     return this.http.post(baseURL + 'words/new' , formContent)
       .catch(error => { return this.processHTTPMsgService.handleError(error); });
 
