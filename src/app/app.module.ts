@@ -4,19 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FlexLayoutModule} from '@angular/flex-layout';
+import {LayoutModule} from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatToolbarModule } from '@angular/material';
-import { MatListModule } from '@angular/material';
-import { MatLineModule } from '@angular/material';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatSelectModule } from '@angular/material/select';
-import { MatGridListModule} from '@angular/material/grid-list';
+import { MaterialModule } from './material.module';
 
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -65,20 +57,11 @@ import { MaincontentComponent } from './mainlayout/maincontent/maincontent.compo
     RouterModule.forRoot(routes),
     HttpClientModule,
     FlexLayoutModule,
+    LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatToolbarModule,
-    MatListModule,
-    MatLineModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    MatGridListModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [
     WordService,
