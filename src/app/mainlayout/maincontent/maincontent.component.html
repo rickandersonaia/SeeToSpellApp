@@ -7,13 +7,13 @@
       <h1 class="app-name">See To Spell</h1>
     </div>
     <div class="toolbar-menu" fxFlex="50%" fxFlexAlign="center">
-      <a mat-raised-button routerLink="/home" color="accent">Home</a>
-      <a mat-raised-button routerLink="/words" color="accent">Words</a>
-      <a mat-raised-button routerLink="/sets" color="accent">Sets</a>
+      <button mat-button routerLink="/home">Home</button>
+      <button mat-button routerLink="/words">Words</button>
+      <button mat-button routerLink="/sets">Sets</button>
     </div>
     <div class="account-menu" fxFlex="20%">
-      <button mat-raised-button (click)="openLoginForm()">
-        <mat-icon color="primary">home</mat-icon>
+      <button mat-raised-button color="accent" (click)="openLoginForm()">
+        <mat-icon>home</mat-icon>
       </button>
     </div>
   </mat-toolbar>
