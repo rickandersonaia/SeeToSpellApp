@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import {UserDataModel} from '../shared/userdatamodel';
+import {UserDataModel} from '../../shared/userdatamodel';
 
 @Component({
   selector: 'app-users',

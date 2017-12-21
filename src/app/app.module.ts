@@ -25,18 +25,20 @@ import { baseURL, imageURL, audioURL} from './shared/baseurl';
 import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
 
 import { AppComponent } from './app.component';
-import { WordsComponent } from './words/words.component';
-import { HomeComponent } from './home/home.component';
-import { AccountsComponent } from './accounts/accounts.component';
-import { SetsComponent } from './sets/sets.component';
+import { WordsComponent } from './admin/words/words.component';
+import { HomeComponent } from './enduser/home/home.component';
+import { AccountsComponent } from './admin/accounts/accounts.component';
+import { SetsComponent } from './enduser/sets/sets.component';
 import {routes} from './app-routing/routes';
-import { HeaderComponent } from './header/header.component';
-import { WorddetailComponent } from './worddetail/worddetail.component';
-import { LoginComponent } from './login/login.component';
-import { UserFormComponent } from './userform/userform.component';
-import { WordformComponent } from './wordform/wordform.component';
-import { WordeditComponent } from './wordedit/wordedit.component';
-import { WordnewComponent } from './wordnew/wordnew.component';
+import { HeaderComponent } from './mainlayout/toolbar/toolbar.component';
+import { WorddetailComponent } from './admin/worddetail/worddetail.component';
+import { LoginComponent } from './mainlayout/login/login.component';
+import { UserFormComponent } from './admin/userform/userform.component';
+import { WordformComponent } from './admin/wordform/wordform.component';
+import { WordeditComponent } from './admin/wordedit/wordedit.component';
+import { WordnewComponent } from './admin/wordnew/wordnew.component';
+import { VerticalnavComponent } from './mainlayout/verticalnav/verticalnav.component';
+import { MaincontentComponent } from './mainlayout/maincontent/maincontent.component';
 
 
 
@@ -54,6 +56,8 @@ import { WordnewComponent } from './wordnew/wordnew.component';
     WordformComponent,
     WordeditComponent,
     WordnewComponent,
+    VerticalnavComponent,
+    MaincontentComponent,
   ],
   imports: [
     BrowserModule,

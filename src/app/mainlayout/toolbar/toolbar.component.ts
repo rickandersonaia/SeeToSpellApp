@@ -5,8 +5,8 @@ import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
 })
 export class HeaderComponent implements OnInit {
   title = 'See To Spell';

@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 
-import { WordsComponent } from '../words/words.component';
-import { HomeComponent } from '../home/home.component';
-import { AccountsComponent } from '../accounts/accounts.component';
-import { SetsComponent } from '../sets/sets.component';
-import { WorddetailComponent } from '../worddetail/worddetail.component';
-import {UserFormComponent} from '../userform/userform.component';
-import {WordnewComponent} from '../wordnew/wordnew.component';
-import {WordeditComponent} from '../wordedit/wordedit.component';
+import { WordsComponent } from '../admin/words/words.component';
+import { HomeComponent } from '../enduser/home/home.component';
+import { AccountsComponent } from '../admin/accounts/accounts.component';
+import { SetsComponent } from '../enduser/sets/sets.component';
+import { WorddetailComponent } from '../admin/worddetail/worddetail.component';
+import {UserFormComponent} from '../admin/userform/userform.component';
+import {WordnewComponent} from '../admin/wordnew/wordnew.component';
+import {WordeditComponent} from '../admin/wordedit/wordedit.component';
 
 export const routes: Routes = [
   {path: 'home', component: HomeComponent},

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {WordDataModel, cardSetOptions} from '../shared/worddatamodel';
+import {WordDataModel, cardSetOptions} from '../../shared/worddatamodel';
 
 @Component({
   selector: 'app-wordform',

@@ -1,8 +1,8 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {WordDataModel, cardSetOptions} from '../shared/worddatamodel';
+import {WordDataModel, cardSetOptions} from '../../shared/worddatamodel';
 
-import {WordService} from '../services/word.service';
+import {WordService} from '../../services/word.service';
 import {Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 
