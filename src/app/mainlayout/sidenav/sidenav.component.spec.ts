@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VerticalnavComponent } from './verticalnav.component';
+import { VerticalnavComponent } from './sidenav.component';
 
 describe('VerticalnavComponent', () => {
   let component: VerticalnavComponent;

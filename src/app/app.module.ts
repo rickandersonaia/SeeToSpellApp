@@ -29,7 +29,7 @@ import { UserFormComponent } from './admin/userform/userform.component';
 import { WordformComponent } from './admin/wordform/wordform.component';
 import { WordeditComponent } from './admin/wordedit/wordedit.component';
 import { WordnewComponent } from './admin/wordnew/wordnew.component';
-import { VerticalnavComponent } from './mainlayout/verticalnav/verticalnav.component';
+import { SidenavComponent } from './mainlayout/sidenav/sidenav.component';
 import { MaincontentComponent } from './mainlayout/maincontent/maincontent.component';
 
 
@@ -48,7 +48,7 @@ import { MaincontentComponent } from './mainlayout/maincontent/maincontent.compo
     WordformComponent,
     WordeditComponent,
     WordnewComponent,
-    VerticalnavComponent,
+    SidenavComponent,
     MaincontentComponent,
   ],
   imports: [

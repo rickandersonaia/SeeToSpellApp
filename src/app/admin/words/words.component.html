@@ -1,12 +1,15 @@
-<div class="container" fxLayout="column" fxLayoutGap="10px">
-  <mat-list fxFlex>
-    <mat-list-item *ngFor="let word of words" [routerLink] = "['/words', word._id]">
+<div class="page-width" fxLayout="column" fxLayoutGap="10px">
+  <mat-list fxLayoutWrap fxLayout="row">
+    <mat-list-item *ngFor="let word of words" [routerLink]="['/words', word._id]"
+                   fxFlex.lg="25" fxFlex.md="33"
+                   fxFlex.sm="50" fxFlex.xs="100">
       <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
-      <h2 matLine>{{word.name}}</h2>
-      <img src="{{ImageURL + word.sentence}}" alt="{{word.sentence}}">
-      <p matLine>{{word.cardset}}</p>
-      <p matLine>{{word.isfree}}</p>
+      <p matLine><b>{{word.name}}</b> - cardset {{word.cardset}}</p>
+      <p matLine>is free? {{word.isfree}}</p>
     </mat-list-item>
   </mat-list>
-  <button mat-raised-button [routerLink] = "['/words/new']">Add New Card</button>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button class="newcard" mat-raised-button
+            [routerLink]="['/words/new']">Add New Card</button>
+  </div>
 </div>
