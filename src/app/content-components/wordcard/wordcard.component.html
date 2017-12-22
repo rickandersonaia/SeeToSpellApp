@@ -1,0 +1,20 @@
+<div class="single-card-container">
+  <mat-card class="word-card" *ngIf="word">
+    <mat-card-header>
+      <mat-card-title>{{word.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{ImageURL + word.image}}" alt="{{word.name}}">
+    <mat-card-content>
+      <img src="{{ImageURL + word.sentence}}" alt="{{word.sentence}}">
+      <p matLine>{{word.cardset}}</p>
+      <p matLine>{{word.isfree}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button [routerLink] = "['/words/edit/' + word._id]">Edit</button>
+    </mat-card-actions>
+  </mat-card>
+  <div [hidden]="word">
+    <mat-spinner></mat-spinner>
+    <h4>Loading - Please wait...</h4>
+  </div>
+</div>

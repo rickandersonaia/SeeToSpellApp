@@ -1,5 +1,5 @@
 <div class="page-width" fxLayout="column" fxLayoutGap="10px">
-  <mat-list fxLayoutWrap fxLayout="row">
+  <mat-list fxLayoutWrap fxLayout="row"  *ngIf="words">
     <mat-list-item *ngFor="let word of words" [routerLink]="['/words', word._id]"
                    fxFlex.lg="25" fxFlex.md="33"
                    fxFlex.sm="50" fxFlex.xs="100">
@@ -12,4 +12,9 @@
     <button class="newcard" mat-raised-button
             [routerLink]="['/words/new']">Add New Card</button>
   </div>
+  <div [hidden]="words">
+    <mat-progress-spinner></mat-progress-spinner>
+    <h4>Loading - Please wait...</h4>
+  </div>
+
 </div>

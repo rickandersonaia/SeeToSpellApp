@@ -1,13 +1,1 @@
-<div class="container" fxLayout="column" fxLayoutGap="10px">
-  <mat-list fxFlex>
-    <mat-list-item>
-      <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
-      <h2 matLine>{{word.name}}</h2>
-      <img src="{{ImageURL + word.sentence}}" alt="{{word.sentence}}">
-      <p matLine>{{word.cardset}}</p>
-      <p matLine>{{word.isfree}}</p>
-    </mat-list-item>
-  </mat-list>
-  <button mat-raised-button [routerLink] = "['/words/edit/' + word._id]">Edit</button>
-
-</div>
+<app-wordcard [word]="this.word"></app-wordcard>

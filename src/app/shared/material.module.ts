@@ -9,6 +9,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSlideToggleModule,
     MatSelectModule,
     MatGridListModule,
-    MatSidenavModule,],
+    MatSidenavModule,
+    MatCardModule,
+    MatProgressSpinnerModule],
 
   exports: [
     MatButtonModule,
@@ -37,7 +41,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSlideToggleModule,
     MatSelectModule,
     MatGridListModule,
-    MatSidenavModule,],
+    MatSidenavModule,
+    MatCardModule,
+    MatProgressSpinnerModule],
 })
 export class MaterialModule {
 }

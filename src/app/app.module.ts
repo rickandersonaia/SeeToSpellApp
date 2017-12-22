@@ -8,7 +8,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './shared/material.module';
 
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -31,6 +31,7 @@ import { WordeditComponent } from './admin/wordedit/wordedit.component';
 import { WordnewComponent } from './admin/wordnew/wordnew.component';
 import { SidenavComponent } from './mainlayout/sidenav/sidenav.component';
 import { MaincontentComponent } from './mainlayout/maincontent/maincontent.component';
+import { WordcardComponent } from './content-components/wordcard/wordcard.component';
 
 
 
@@ -50,6 +51,7 @@ import { MaincontentComponent } from './mainlayout/maincontent/maincontent.compo
     WordnewComponent,
     SidenavComponent,
     MaincontentComponent,
+    WordcardComponent,
   ],
   imports: [
     BrowserModule,
