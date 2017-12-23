@@ -1,0 +1,18 @@
+<div class="page-width" fxLayout="column" fxLayoutGap="10px">
+  <mat-list fxLayoutWrap fxLayout="row"  *ngIf="users">
+    <mat-list-item *ngFor="let user of users" [routerLink]="['/users/edit', user._id]"
+                   fxFlex.lg="25" fxFlex.md="33"
+                   fxFlex.sm="50" fxFlex.xs="100">
+      <p matLine><b>{{user.username}}</b> - display name {{user.displayname}}</p>
+    </mat-list-item>
+  </mat-list>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button class="newcard" mat-raised-button
+            [routerLink]="['/users/new']">Add New Card</button>
+  </div>
+  <div [hidden]="users">
+    <mat-progress-spinner></mat-progress-spinner>
+    <h4>Loading - Please wait...</h4>
+  </div>
+
+</div>

@@ -1,21 +1,24 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import {UserDataModel} from '../../shared/userdatamodel';
+import {UserDataModel, setsPurchasedOptions} from '../../shared/userdatamodel';
+import { UserService} from '../../services/user.service';
+import {Location} from '@angular/common';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './userform.component.html',
-  styleUrls: ['./userform.component.scss']
+  selector: 'app-newuserform',
+  templateUrl: './newuserform.component.html',
+  styleUrls: ['./newuserform.component.scss']
 })
-export class UserFormComponent implements OnInit {
+export class NewUserFormComponent implements OnInit {
 
-  userForm: FormGroup;
-  users: UserDataModel;
+  newUserForm: FormGroup;
+  user: UserDataModel;
+  options = setsPurchasedOptions;
   formErrors = {
     username: '',
     email: '',
     password: '',
-    displayname: ''
+    displayName: ''
   };
 
   validationMessages = {
@@ -33,40 +36,47 @@ export class UserFormComponent implements OnInit {
       'minlength': 'Password must be at least 8 characters long',
       'maxlength': 'Password must be less than 26 characters long'
     },
-    'displayname': {
+    'displayName': {
       'required': 'Display Name is required',
       'minlength': 'Display name must be at least 2 characters long',
       'maxlength': 'Display name must be less than 26 characters long'
     }
   };
 
-  constructor(private fb: FormBuilder) {
-    this.createForm();
+  constructor(private fb: FormBuilder,
+              private userService: UserService,
+              private location: Location,
+              @Inject('BaseURL') private BaseURL,
+              @Inject('ImageURL') private ImageURL,
+              @Inject('AudioURL') private AudioURL) {
+
   }
 
   ngOnInit() {
+    this.createForm();
   }
 
   createForm() {
-    this.userForm = this.fb.group({
+    this.newUserForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(25)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
-      displayname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      displayName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       avatar: '',
-      istutor: false,
-      parentid: [{value: '', disabled: true}],
-      setspurchased: '',
+      isTutor: false,
+      isAdmin: false,
+      parentId: [{value: '', disabled: true}],
+      setsPurchased: [],
     });
 
-    this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.newUserForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
     this.onValueChanged(); // reset form validation messages
   }
 
   onValueChanged(data?: any) {
-    if (!this.userForm) { return; }
-    const form = this.userForm;
+    if (!this.newUserForm) { return; }
+    const form = this.newUserForm;
 
     for (const field in this.formErrors) {
       // clear previous error message (if any)
@@ -83,9 +93,16 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.users = this.userForm.value;
-    console.log(this.users);
-    this.userForm.reset();
+    this.userService.addUser(this.newUserForm.value)
+      .subscribe(user => {
+        console.log(user);
+        this.user = user;
+      });
+    this.newUserForm.reset();
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

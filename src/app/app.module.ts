@@ -13,6 +13,7 @@ import { MaterialModule } from './shared/material.module';
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { WordService } from './services/word.service';
+import { UserService} from './services/user.service';
 import { baseURL, imageURL, audioURL} from './shared/baseurl';
 import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
 
@@ -25,13 +26,16 @@ import {routes} from './app-routing/routes';
 import { HeaderComponent } from './mainlayout/toolbar/toolbar.component';
 import { WorddetailComponent } from './admin/worddetail/worddetail.component';
 import { LoginComponent } from './mainlayout/login/login.component';
-import { UserFormComponent } from './admin/userform/userform.component';
+import { NewUserFormComponent } from './admin/usernewform/newuserform.component';
 import { WordformComponent } from './admin/wordform/wordform.component';
 import { WordeditComponent } from './admin/wordedit/wordedit.component';
 import { WordnewComponent } from './admin/wordnew/wordnew.component';
 import { SidenavComponent } from './mainlayout/sidenav/sidenav.component';
 import { MaincontentComponent } from './mainlayout/maincontent/maincontent.component';
 import { WordcardComponent } from './content-components/wordcard/wordcard.component';
+import { UsereditComponent } from './admin/useredit/useredit.component';
+import { UsersComponent } from './admin/users/users.component';
+import { UsercardComponent } from './content-components/usercard/usercard.component';
 
 
 
@@ -45,13 +49,16 @@ import { WordcardComponent } from './content-components/wordcard/wordcard.compon
     HeaderComponent,
     WorddetailComponent,
     LoginComponent,
-    UserFormComponent,
+    NewUserFormComponent,
     WordformComponent,
     WordeditComponent,
     WordnewComponent,
     SidenavComponent,
     MaincontentComponent,
     WordcardComponent,
+    UsereditComponent,
+    UsersComponent,
+    UsercardComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +74,7 @@ import { WordcardComponent } from './content-components/wordcard/wordcard.compon
   ],
   providers: [
     WordService,
+    UserService,
     MatDialogModule,
     { provide: 'BaseURL', useValue: baseURL },
     { provide: 'ImageURL', useValue: imageURL },

@@ -1,0 +1,52 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxFlex="50" fxFlex.xs="100">
+      <div class="form-width">
+        <h1>Edit User</h1>
+        <form novalidate [formGroup]="editUserForm" (ngSubmit)="onSubmit(editUserForm.value)">
+          <p fxLayout="column">
+            <mat-form-field>
+              <input matInput formControlName="username" placeholder="Username" type="text">
+              <mat-error [hidden]="!(formErrors.username)">{{formErrors.username}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput formControlName="email" placeholder="Email" type="email" email>
+              <mat-error [hidden]="!(formErrors.email)">{{formErrors.email}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput formControlName="password" placeholder="Password" type="password">
+              <mat-error [hidden]="!(formErrors.password)">{{formErrors.password}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput formControlName="displayName" placeholder="Display Name" type="text">
+              <mat-error [hidden]="!(formErrors.displayname)">{{formErrors.displayname}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput formControlName="avatar" placeholder="Avatar" type="text">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Sets purchased" formControlName="setsPurchased">
+                <mat-option *ngFor="let option of options" [value]="option.value">
+                  {{ option.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-slide-toggle formControlName="isTutor">
+              This user is a tutor
+            </mat-slide-toggle>
+            <mat-slide-toggle formControlName="isAdmin">
+              This user is an admin
+            </mat-slide-toggle>
+            <mat-form-field>
+              <input matInput formControlName="parentId" placeholder="Parent Id" type="text">
+            </mat-form-field>
+          </p>
+          <button mat-raised-button color="primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100">
+      <app-wordcard [word]="this.word"></app-wordcard>
+    </div>
+  </div>
+</div>
