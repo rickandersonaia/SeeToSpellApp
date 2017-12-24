@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 
 import { WordDataModel } from '../../shared/worddatamodel';
 import { WordService } from '../../services/word.service';
-import { WordformComponent } from '../wordform/wordform.component';
 
 @Component({
   selector: 'app-words',

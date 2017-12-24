@@ -4,7 +4,7 @@
       <div class="form-width">
         <h1>Edit User</h1>
         <div *ngIf="user" ngClass.xs="fxClass-xs">
-          <form novalidate [formGroup]="editUserForm" (ngSubmit)="onSubmit(editUserForm.value)">
+          <form novalidate [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
             <p fxLayout="column">
               <mat-form-field>
                 <input matInput formControlName="username" placeholder="Username" type="text">

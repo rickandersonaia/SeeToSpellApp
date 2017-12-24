@@ -27,7 +27,6 @@ import { HeaderComponent } from './mainlayout/toolbar/toolbar.component';
 import { WorddetailComponent } from './admin/worddetail/worddetail.component';
 import { LoginComponent } from './mainlayout/login/login.component';
 import { NewUserFormComponent } from './admin/usernewform/newuserform.component';
-import { WordformComponent } from './admin/wordform/wordform.component';
 import { WordeditComponent } from './admin/wordedit/wordedit.component';
 import { WordnewComponent } from './admin/wordnew/wordnew.component';
 import { SidenavComponent } from './mainlayout/sidenav/sidenav.component';
@@ -50,7 +49,6 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
     WorddetailComponent,
     LoginComponent,
     NewUserFormComponent,
-    WordformComponent,
     WordeditComponent,
     WordnewComponent,
     SidenavComponent,

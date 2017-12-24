@@ -11,6 +11,7 @@ import { NgClass } from '@angular/common';
 })
 export class MaincontentComponent {
 
+  mode: string;
   mobileQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;

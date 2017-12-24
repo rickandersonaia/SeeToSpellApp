@@ -3,7 +3,7 @@
 
   <div class="form-width">
     <h1>Add New Word</h1>
-    <form novalidate [formGroup]="newWordForm" (ngSubmit)="onSubmit(newWordForm)">
+    <form novalidate [formGroup]="newWordForm" (ngSubmit)="onSubmit()">
       <p fxLayout="column">
         <mat-form-field>
           <input matInput formControlName="name" placeholder="Word" type="text">
