@@ -1,3 +1,16 @@
-<p>
-  usercard works!
-</p>
+<div class="single-user-container">
+  <mat-card class="user-card" *ngIf="user">
+    <img src="{{AvatarURL + user.avatar}}" alt="{{user.displayName}}">
+    <mat-card-content class="user-card-content">
+      <p matLine>{{user.username}}</p>
+      <h2 matLine>{{user.displayName}}</h2>
+    </mat-card-content>
+    <mat-card-actions *ngIf="edit">
+      <button mat-raised-button [routerLink] = "['/words/edit/' + word._id]">Edit</button>
+    </mat-card-actions>
+  </mat-card>
+  <div [hidden]="user">
+    <mat-spinner></mat-spinner>
+    <h4>Loading - Please wait...</h4>
+  </div>
+</div>

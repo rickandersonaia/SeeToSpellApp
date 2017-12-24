@@ -19,8 +19,35 @@ button.newcard{width:250px;};
   box-sizing:border-box;
   margin:0 auto;
 }
-.single-card-container{
+.single-card-container,
+.single-user-container{
   width:400px;
   max-width:100%;
   margin:0 auto;
 }
+.single-card-container .mat-card-image{margin:0}
+.mat-list .mat-list-item .mat-list-avatar{border:solid 1px #bbb}
+
+.single-user-container{
+  text-align:center;
+}
+.single-user-container .mat-card{
+  padding:0;
+}
+
+.single-user-container .user-card-content{
+  padding:65px 24px 24px 24px;
+  background-color: #0097A7;
+  color:#fff;
+}
+
+.single-user-container img{
+  position: absolute;
+  top: -150px;
+  left: 25%;
+  border-radius: 90%;
+  border: 1px solid #0097A7;
+  box-shadow: 4px 4px 4px rgba(0,0,0, .45);
+}
+
+.phone .user-form-wrapper{padding-bottom:200px;}

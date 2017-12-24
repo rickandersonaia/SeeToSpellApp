@@ -20,9 +20,14 @@
           <input matInput formControlName="displayName" placeholder="Display Name" type="text">
           <mat-error [hidden]="!(formErrors.displayname)">{{formErrors.displayname}}</mat-error>
         </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="avatar" placeholder="Avatar" type="text">
-        </mat-form-field>
+
+        <label>Choose an Avatar: </label>
+        <mat-radio-group class="radio-group" formControlName="avatar">
+          <mat-radio-button *ngFor="let avatar of avatars" value="{{avatar.value}}">
+            <img src="{{ AvatarURL + avatar.image}}" height="64px" width="64px">
+          </mat-radio-button>
+        </mat-radio-group>
+
         <mat-form-field>
           <mat-select placeholder="Sets purchased" formControlName="setsPurchased">
             <mat-option *ngFor="let option of options" [value]="option.value">

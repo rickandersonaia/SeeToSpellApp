@@ -10,7 +10,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
     MatGridListModule,
     MatSidenavModule,
     MatCardModule,
-    MatProgressSpinnerModule],
+    MatProgressSpinnerModule,
+    MatRadioModule],
 
   exports: [
     MatButtonModule,
@@ -43,7 +45,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
     MatGridListModule,
     MatSidenavModule,
     MatCardModule,
-    MatProgressSpinnerModule],
+    MatProgressSpinnerModule,
+    MatRadioModule],
 })
 export class MaterialModule {
 }

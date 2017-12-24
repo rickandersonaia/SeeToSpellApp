@@ -2,6 +2,7 @@ import {Component, ChangeDetectorRef} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {LoginComponent} from '../login/login.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-maincontent',

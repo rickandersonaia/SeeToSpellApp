@@ -2,7 +2,7 @@ import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {UserDataModel, setsPurchasedOptions} from '../../shared/userdatamodel';
+import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../shared/userdatamodel';
 import {UserService} from '../../services/user.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class UsereditComponent implements OnInit {
   editUserForm: FormGroup;
   user: UserDataModel;
   options = setsPurchasedOptions;
+  avatars = allAvatars;
   public exusername: string;
   public exemail: string;
   public expassword: string;
@@ -31,7 +32,8 @@ export class UsereditComponent implements OnInit {
               private route: ActivatedRoute,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
-              @Inject('AudioURL') private AudioURL) {
+              @Inject('AudioURL') private AudioURL,
+              @Inject('AvatarURL') private AvatarURL) {
     this.createForm();
   }
 

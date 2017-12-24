@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
+import {UserDataModel} from '../../shared/userdatamodel';
 
 @Component({
   selector: 'app-usercard',
   templateUrl: './usercard.component.html',
   styleUrls: ['./usercard.component.scss']
 })
-export class UsercardComponent implements OnInit {
+export class UsercardComponent {
 
-  constructor() { }
+  @Input() user: UserDataModel;
+  @Input() edit: boolean;
 
-  ngOnInit() {
+  constructor(@Inject('BaseURL') private BaseURL,
+              @Inject('AvatarURL') private AvatarURL) {
   }
 
 }

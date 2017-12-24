@@ -14,7 +14,7 @@ import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { WordService } from './services/word.service';
 import { UserService} from './services/user.service';
-import { baseURL, imageURL, audioURL} from './shared/baseurl';
+import { baseURL, imageURL, audioURL, avatarURL} from './shared/baseurl';
 import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
 
 import { AppComponent } from './app.component';
@@ -79,6 +79,7 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
     { provide: 'BaseURL', useValue: baseURL },
     { provide: 'ImageURL', useValue: imageURL },
     { provide: 'AudioURL', useValue: audioURL },
+    { provide: 'AvatarURL', useValue: avatarURL },
     ProcessHTTPMsgService
   ],
   entryComponents: [

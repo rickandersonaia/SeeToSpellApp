@@ -14,11 +14,14 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
-              @Inject('AudioURL') private AudioURL) { }
+              @Inject('AudioURL') private AudioURL,
+              @Inject('AvatarURL') private AvatarURL) { }
 
   ngOnInit() {
     this.userService.getUsers()
-      .subscribe(users => this.users = users);
+      .subscribe(users => {
+        this.users = users;
+      });
   }
 
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import {UserDataModel, setsPurchasedOptions} from '../../shared/userdatamodel';
+import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../shared/userdatamodel';
 import { UserService} from '../../services/user.service';
 import {Location} from '@angular/common';
 
@@ -14,6 +14,7 @@ export class NewUserFormComponent implements OnInit {
   newUserForm: FormGroup;
   user: UserDataModel;
   options = setsPurchasedOptions;
+  avatars = allAvatars;
   formErrors = {
     username: '',
     email: '',
@@ -48,7 +49,8 @@ export class NewUserFormComponent implements OnInit {
               private location: Location,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
-              @Inject('AudioURL') private AudioURL) {
+              @Inject('AudioURL') private AudioURL,
+              @Inject('AvatarURL') private AvatarURL) {
 
   }
 
