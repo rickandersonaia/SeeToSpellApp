@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FlexLayoutModule} from '@angular/flex-layout';
 import {LayoutModule} from '@angular/cdk/layout';
@@ -16,6 +17,8 @@ import { WordService } from './services/word.service';
 import { UserService} from './services/user.service';
 import { baseURL, imageURL, audioURL, avatarURL} from './shared/baseurl';
 import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
+import {AuthService} from './services/auth.service';
+import {AuthInterceptor, UnauthorizedInterceptor} from './services/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { WordsComponent } from './admin/words/words.component';
@@ -74,11 +77,22 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
     WordService,
     UserService,
     MatDialogModule,
+    AuthService,
     { provide: 'BaseURL', useValue: baseURL },
     { provide: 'ImageURL', useValue: imageURL },
     { provide: 'AudioURL', useValue: audioURL },
     { provide: 'AvatarURL', useValue: avatarURL },
-    ProcessHTTPMsgService
+    ProcessHTTPMsgService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true
+    }
   ],
   entryComponents: [
     LoginComponent
