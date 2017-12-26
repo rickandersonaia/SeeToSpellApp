@@ -69,12 +69,12 @@ export class UsereditComponent implements OnInit {
       username: this.exusername,
       email: this.exemail,
       password: this.expassword,
-      displayname: this.exdisplayname,
+      displayName: this.exdisplayname,
       avatar: this.exavatar,
-      istutor: this.existutor,
-      isadmin: this.exisadmin,
-      parentid: this.exparentid,
-      setspurchased: this.exsetspurchased
+      isTutor: this.existutor,
+      isAdmin: this.exisadmin,
+      parentId: this.exparentid,
+      setsPurchased: this.exsetspurchased
     });
   }
 

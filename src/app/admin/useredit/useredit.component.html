@@ -16,7 +16,7 @@
                 <input matInput formControlName="password" placeholder="Password" type="password">
               </mat-form-field>
               <mat-form-field>
-                <input matInput formControlName="displayname" placeholder="Display Name" type="text">
+                <input matInput formControlName="displayName" placeholder="Display Name" type="text">
               </mat-form-field>
 
               <label>Choose an Avatar: </label>
@@ -27,20 +27,20 @@
               </mat-radio-group>
 
               <mat-form-field>
-                <mat-select placeholder="Sets purchased" formControlName="setspurchased">
+                <mat-select placeholder="Sets purchased" formControlName="setsPurchased">
                   <mat-option *ngFor="let option of options" [value]="option.value">
                     {{ option.label }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-slide-toggle formControlName="istutor">
+              <mat-slide-toggle formControlName="isTutor">
                 This user is a tutor
               </mat-slide-toggle>
-              <mat-slide-toggle formControlName="isadmin">
+              <mat-slide-toggle formControlName="isAdmin">
                 This user is an admin
               </mat-slide-toggle>
               <mat-form-field>
-                <input matInput formControlName="parentid" placeholder="Parent Id" type="text">
+                <input matInput formControlName="parentId" placeholder="Parent Id" type="text">
               </mat-form-field>
             </p>
             <button mat-raised-button color="primary">Submit</button>
