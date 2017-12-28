@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialModule } from './shared/material.module';
-import {MatIconRegistry} from '@angular/material';
 
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -40,7 +39,7 @@ import { WordcardComponent } from './content-components/wordcard/wordcard.compon
 import { UsereditComponent } from './admin/useredit/useredit.component';
 import { UsersComponent } from './admin/users/users.component';
 import { UsercardComponent } from './content-components/usercard/usercard.component';
-import { IconsetComponent} from './shared/iconset/iconset.component';
+
 
 
 @NgModule({
@@ -62,7 +61,6 @@ import { IconsetComponent} from './shared/iconset/iconset.component';
     UsereditComponent,
     UsersComponent,
     UsercardComponent,
-    IconsetComponent
   ],
   imports: [
     BrowserModule,
@@ -75,8 +73,6 @@ import { IconsetComponent} from './shared/iconset/iconset.component';
     ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule,
-    MatIconRegistry,
-    IconsetComponent
   ],
   providers: [
     WordService,
@@ -104,4 +100,4 @@ import { IconsetComponent} from './shared/iconset/iconset.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

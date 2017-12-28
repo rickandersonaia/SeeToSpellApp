@@ -12,7 +12,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
-import { IconsetComponent } from './iconset/iconset.component';
 
 @NgModule({
   imports: [
@@ -48,8 +47,6 @@ import { IconsetComponent } from './iconset/iconset.component';
     MatCardModule,
     MatProgressSpinnerModule,
     MatRadioModule],
-
-  declarations: [IconsetComponent],
 })
 export class MaterialModule {
 }
