@@ -39,7 +39,8 @@ import { WordcardComponent } from './content-components/wordcard/wordcard.compon
 import { UsereditComponent } from './admin/useredit/useredit.component';
 import { UsersComponent } from './admin/users/users.component';
 import { UsercardComponent } from './content-components/usercard/usercard.component';
-
+import { EntranceComponent } from './enduser/entrance/entrance.component';
+import { RegisterComponent} from './enduser/register/register.component';
 
 
 @NgModule({
@@ -61,6 +62,8 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
     UsereditComponent,
     UsersComponent,
     UsercardComponent,
+    EntranceComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,8 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
     }
   ],
   entryComponents: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -1,14 +1,12 @@
 <mat-toolbar mat-dialog-title color="primary">
-  <mat-grid-list cols="2" rowHeight="50px">
-    <mat-grid-tile>
-      Login
-      <span class="flex-spacer"></span>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <span class="flex-spacer"></span>
+  <div class="container" fxLayout="row" fxLayoutAlign="center center" fxFlexFill>
+    <div fxFlex="50%">
+      <h2 mat-dialog-title="">Login</h2>
+    </div>
+    <div fxFlex="50%" fxLayoutAlign="end">
       <button mat-mini-fab [mat-dialog-close]="true">&times;</button>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div>
+  </div>
 </mat-toolbar>
 
 <form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
@@ -28,6 +26,6 @@
     </p>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button-raised type="submit" color="primary"[disabled]="loginForm.form.invalid">Login</button>
+    <button mat-raised-button color="primary" [disabled]="loginForm.form.invalid">Login</button>
   </mat-dialog-actions>
 </form>

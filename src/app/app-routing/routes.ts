@@ -10,9 +10,10 @@ import {WordnewComponent} from '../admin/wordnew/wordnew.component';
 import {WordeditComponent} from '../admin/wordedit/wordedit.component';
 import {UsersComponent} from '../admin/users/users.component';
 import {UsereditComponent} from '../admin/useredit/useredit.component';
+import {EntranceComponent} from '../enduser/entrance/entrance.component';
 
 export const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: EntranceComponent},
   {path: 'words', component: WordsComponent},
   {path: 'words/new', component: WordnewComponent},
   {path: 'words/:id', component: WorddetailComponent},

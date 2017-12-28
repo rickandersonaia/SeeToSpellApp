@@ -1,12 +1,11 @@
 import {Component, ChangeDetectorRef, OnInit, OnDestroy} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {LoginComponent} from '../login/login.component';
 
-import { Subscription } from 'rxjs/Subscription';
+import {Subscription} from 'rxjs/Subscription';
 import {NgClass} from '@angular/common';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
 
 @Component({
   selector: 'app-maincontent',
@@ -19,12 +18,12 @@ export class MaincontentComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   username: string = undefined;
   subscription: Subscription;
+  isLoggedIn: boolean;
 
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef,
               media: MediaMatcher,
-              public dialog: MatDialog,
               private authService: AuthService,
               private router: Router) {
 
@@ -34,17 +33,24 @@ export class MaincontentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.testUserCredentials();
+  }
+
+  testUserCredentials() {
     this.authService.loadUserCredentials();
     this.subscription = this.authService.getUsername()
-      .subscribe(name => { console.log(name); this.username = name; });
+      .subscribe(name => {
+        if (name) {
+          this.username = name;
+          this.isLoggedIn = true;
+        } else {
+          this.isLoggedIn = false;
+        }
+      });
   }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  openLoginForm() {
-    this.dialog.open(LoginComponent, {width: '400px', height: '420px'});
   }
 
   logOut() {

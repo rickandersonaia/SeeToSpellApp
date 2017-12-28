@@ -1,0 +1,21 @@
+<div class="main-container mat-typography"
+     [class.is-mobile]="mobileQuery.matches"
+     fxFlex fxFill
+     fxLayout="column"
+     fxLayoutGap="50px">
+  <div class="big-logo" fxLayoutAlign="center center" fxLayout="row">
+    <img src="{{ImageURL + 'header-logo.png'}}" alt="">
+  </div>
+  <div class="login-register-buttons" fxLayout="row" fxLayoutGap="20px">
+    <div class="login-button" fxFlex.xs="100" fxFlex="50" fxLayoutAlign="end">
+      <button mat-raised-button color="accent" (click)="openLoginForm()">
+        Login
+      </button>
+  </div>
+    <div class="register-button" fxFlex.xs="100" fxFlex="50" fxLayoutAlign="start">
+      <button mat-raised-button color="accent" (click)="openRegisterForm()">
+        Register
+      </button>
+    </div>
+  </div>
+</div>
