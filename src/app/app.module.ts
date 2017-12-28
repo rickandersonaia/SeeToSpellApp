@@ -40,7 +40,7 @@ import { WordcardComponent } from './content-components/wordcard/wordcard.compon
 import { UsereditComponent } from './admin/useredit/useredit.component';
 import { UsersComponent } from './admin/users/users.component';
 import { UsercardComponent } from './content-components/usercard/usercard.component';
-
+import { IconsetComponent} from './shared/iconset/iconset.component';
 
 
 @NgModule({
@@ -62,7 +62,7 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
     UsereditComponent,
     UsersComponent,
     UsercardComponent,
-    MatIconRegistry
+    IconsetComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +75,8 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
     ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule,
-    MatIconRegistry
+    MatIconRegistry,
+    IconsetComponent
   ],
   providers: [
     WordService,
@@ -103,9 +104,4 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(matIconRegistry: MatIconRegistry,
-              domSanitizer: DomSanitizer) {
-    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('../assets/mdi.svg'));
-  }
-}
+export class AppModule { }
