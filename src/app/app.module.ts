@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DomSanitizer} from '@angular/platform-browser';
 import { FlexLayoutModule} from '@angular/flex-layout';
 import {LayoutModule} from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialModule } from './shared/material.module';
+import {MatIconRegistry} from '@angular/material';
 
 import 'hammerjs';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -60,6 +62,7 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
     UsereditComponent,
     UsersComponent,
     UsercardComponent,
+    MatIconRegistry
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    MatIconRegistry
   ],
   providers: [
     WordService,
@@ -99,4 +103,9 @@ import { UsercardComponent } from './content-components/usercard/usercard.compon
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(matIconRegistry: MatIconRegistry,
+              domSanitizer: DomSanitizer) {
+    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('../assets/mdi.svg'));
+  }
+}
