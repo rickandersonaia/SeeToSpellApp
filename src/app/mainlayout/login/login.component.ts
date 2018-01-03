@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
           if (res.success) {
             this.dialogRef.close(res.success);
+            this.router.navigateByUrl('/home');
           } else {
             console.log(res);
           }

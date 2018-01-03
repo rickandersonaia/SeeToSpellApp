@@ -6,9 +6,10 @@ import {WordDataModel} from '../../shared/worddatamodel';
   templateUrl: './wordcard.component.html',
   styleUrls: ['./wordcard.component.scss']
 })
-export class WordcardComponent{
+export class WordcardComponent {
 
   @Input() word: WordDataModel;
+  @Input() edit: boolean;
 
   constructor(
     @Inject('BaseURL') private BaseURL,

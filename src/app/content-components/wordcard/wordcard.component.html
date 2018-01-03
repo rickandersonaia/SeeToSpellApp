@@ -9,7 +9,7 @@
       <p matLine>{{word.cardset}}</p>
       <p matLine>{{word.isfree}}</p>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="edit">
       <button mat-raised-button [routerLink] = "['/words/edit/' + word._id]">Edit</button>
     </mat-card-actions>
   </mat-card>

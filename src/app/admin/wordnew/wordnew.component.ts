@@ -1,7 +1,7 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {WordDataModel, cardSetOptions} from '../../shared/worddatamodel';
-
+import {Router} from '@angular/router';
 import {WordService} from '../../services/word.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
@@ -20,6 +20,7 @@ export class WordnewComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private wordService: WordService,
               private location: Location,
+              private router: Router,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL) {
@@ -39,6 +40,8 @@ export class WordnewComponent implements OnInit {
       cardset: [null, Validators.required],
       isfree: [false, Validators.required],
     });
+
+    this.newWordForm.markAsPristine();
   }
 
   onSubmit() {
@@ -46,6 +49,7 @@ export class WordnewComponent implements OnInit {
       .subscribe(word => {
         console.log(word);
         this.word = word;
+        this.router.navigateByUrl('/words');
       });
     this.newWordForm.reset();
   }

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../shared/userdatamodel';
 import { UserService} from '../../services/user.service';
 import {Location} from '@angular/common';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-newuserform',
@@ -47,6 +48,7 @@ export class NewUserFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private location: Location,
+              private router: Router,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
@@ -99,6 +101,7 @@ export class NewUserFormComponent implements OnInit {
       .subscribe(user => {
         console.log(user);
         this.user = user;
+        this.router.navigateByUrl('/users');
       });
     this.newUserForm.reset();
   }

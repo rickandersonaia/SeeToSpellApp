@@ -13,7 +13,7 @@ import {UsereditComponent} from '../admin/useredit/useredit.component';
 import {EntranceComponent} from '../enduser/entrance/entrance.component';
 
 export const routes: Routes = [
-  {path: 'home', component: EntranceComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'words', component: WordsComponent},
   {path: 'words/new', component: WordnewComponent},
   {path: 'words/:id', component: WorddetailComponent},
