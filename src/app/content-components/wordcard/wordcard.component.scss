@@ -1,0 +1,26 @@
+.mat-card.word-card {
+
+  mat-card-header {
+    display: block;
+    text-align: center;
+    border-bottom:solid #c8c8c8 1px;
+    margin: 0 -24px 0 -24px;
+
+    .mat-display-1 {
+      font-size: 48px;
+      line-height: 56PX;
+      margin-bottom: 24px;
+    }
+  }
+}
+.loading{
+  margin-top:48px;
+
+  mat-spinner{
+    margin-bottom: 48px;
+  }
+
+  h4{
+    font-size:18px;
+  }
+}
