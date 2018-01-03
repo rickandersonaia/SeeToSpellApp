@@ -35,7 +35,7 @@
     </div>
     <div fxFlex="50" fxFlex.xs="100">
       <app-wordcard [word]="this.word" [edit]="false"></app-wordcard>
-      <button mat-raised-button color="warning">Delete</button>
+      <button mat-raised-button color="warning" (click)="onDelete()">Delete</button>
     </div>
   </div>
 </div>

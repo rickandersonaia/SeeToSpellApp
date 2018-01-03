@@ -44,13 +44,19 @@ export class WordService {
 
   addWord(formContent: any): Observable<WordDataModel>  {
     return this.http.post(baseURL + 'words/new' , formContent)
-      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .catch(error => this.processHTTPMsgService.handleError(error));
 
   }
 
   editWord(id: string, formContent: any): Observable<WordDataModel>  {
     return this.http.put(baseURL + 'words/edit/' + id , formContent)
-      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .catch(error => this.processHTTPMsgService.handleError(error));
+
+  }
+
+  deleteWord(id: string ): Observable<WordDataModel>  {
+    return this.http.delete(baseURL + 'words/edit/' + id )
+      .catch(error => this.processHTTPMsgService.handleError(error));
 
   }
 }

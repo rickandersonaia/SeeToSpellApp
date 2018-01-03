@@ -1,7 +1,7 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {WordDataModel, cardSetOptions} from '../../shared/worddatamodel';
-
+import {Router} from '@angular/router';
 import {WordService} from '../../services/word.service';
 import {Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
@@ -27,6 +27,7 @@ export class WordeditComponent implements OnInit {
               private wordService: WordService,
               private location: Location,
               private route: ActivatedRoute,
+              private deleteroute: Router,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL) {
@@ -73,6 +74,14 @@ export class WordeditComponent implements OnInit {
       .subscribe(word => {
         console.log(word);
         this.getFormData(this.word._id);
+      });
+  }
+
+  onDelete() {
+    console.log('Deleting Word ' + this.word._id);
+    this.wordService.deleteWord(this.word._id)
+      .subscribe(word => {
+        this.deleteroute.navigateByUrl('/words');
       });
   }
 
