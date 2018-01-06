@@ -13,6 +13,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialModule } from './core/shared/material.module';
 
 import 'hammerjs';
+import { AdminModule} from './admin/admin.module';
+import { TutorModule} from './tutor/tutor.module';
+import { StudentModule} from './student/student.module';
 import { AppRoutingModule } from './core/app-routing/app-routing.module';
 import { WordService } from './core/services/word.service';
 import { UserService} from './core/services/user.service';
@@ -22,58 +25,48 @@ import {AuthService} from './core/services/auth.service';
 import {AuthInterceptor, UnauthorizedInterceptor} from './core/services/auth.interceptor';
 
 import { AppComponent } from './app.component';
-import { WordsComponent } from './admin/words/words.component';
 import { HomeComponent } from './tutor/home/home.component';
-import { AccountsComponent } from './admin/accounts/accounts.component';
-import { SetsComponent } from './tutor/sets/sets.component';
-import {routes} from './core/app-routing/routes';
-import { WorddetailComponent } from './admin/worddetail/worddetail.component';
 import { LoginComponent } from './shared-views/mainlayout/login/login.component';
-import { NewUserFormComponent } from './admin/usernewform/newuserform.component';
 import { WordeditComponent } from './admin/wordedit/wordedit.component';
 import { WordnewComponent } from './admin/wordnew/wordnew.component';
 import { SidenavComponent } from './shared-views/mainlayout/sidenav/sidenav.component';
 import { MaincontentComponent } from './shared-views/mainlayout/maincontent/maincontent.component';
 import { WordcardComponent } from './shared-views/content-components/wordcard/wordcard.component';
-import { UsereditComponent } from './admin/useredit/useredit.component';
-import { UsersComponent } from './admin/users/users.component';
-import { UsercardComponent } from './shared-views/content-components/usercard/usercard.component';
 import { EntranceComponent } from './shared-views/entrance/entrance.component';
 import { RegisterComponent} from './tutor/register/register.component';
+import {WordsComponent} from './admin/words/words.component';
+import {WorddetailComponent} from './admin/worddetail/worddetail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WordsComponent,
     HomeComponent,
-    AccountsComponent,
-    SetsComponent,
-    WorddetailComponent,
     LoginComponent,
-    NewUserFormComponent,
+    WordsComponent,
+    WorddetailComponent,
     WordeditComponent,
     WordnewComponent,
     SidenavComponent,
     MaincontentComponent,
     WordcardComponent,
-    UsereditComponent,
-    UsersComponent,
-    UsercardComponent,
     EntranceComponent,
     RegisterComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
+    RouterModule,
     HttpClientModule,
     FlexLayoutModule,
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
     MaterialModule,
+    AdminModule,
+    TutorModule,
+    StudentModule,
+    AppRoutingModule,
   ],
   providers: [
     WordService,
