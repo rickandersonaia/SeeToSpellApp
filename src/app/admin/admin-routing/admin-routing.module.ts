@@ -10,13 +10,13 @@ import {WordeditComponent} from '../wordedit/wordedit.component';
 import {WordsComponent} from '../words/words.component';
 
 const adminRoutes: Routes = [
-  {path: 'users', component: UsersComponent},
-  {path: 'users/new', component: NewUserFormComponent},
+  {path: 'admin/users', component: UsersComponent},
+  {path: 'admin/users/new', component: NewUserFormComponent},
   {path: 'users/edit/:id', component: UsereditComponent},
-  {path: 'words', component: WordsComponent},
-  {path: 'words/new', component: WordnewComponent},
-  {path: 'words/:id', component: WorddetailComponent},
-  {path: 'words/edit/:id', component: WordeditComponent},
+  {path: 'admin/words', component: WordsComponent},
+  {path: 'admin/words/new', component: WordnewComponent},
+  {path: 'admin/words/:id', component: WorddetailComponent},
+  {path: 'admin/words/edit/:id', component: WordeditComponent},
 ];
 
 @NgModule({

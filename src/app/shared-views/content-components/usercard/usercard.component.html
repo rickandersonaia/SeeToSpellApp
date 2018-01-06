@@ -6,7 +6,7 @@
       <h2 matLine>{{user.displayName}}</h2>
     </mat-card-content>
     <mat-card-actions *ngIf="edit">
-      <button mat-raised-button [routerLink] = "['/words/edit/' + word._id]">Edit</button>
+      <button mat-raised-button [routerLink] = "['/admin/words/edit/' + word._id]">Edit</button>
     </mat-card-actions>
   </mat-card>
   <div [hidden]="user">

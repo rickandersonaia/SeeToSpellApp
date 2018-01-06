@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   checkJWTtoken() {
-    this.http.get<JWTResponse>(baseURL + 'users/checkJWTtoken')
+    this.http.get<JWTResponse>(baseURL + 'checkJWTtoken')
       .subscribe(res => {
           console.log('JWT Token Valid: ', res);
           this.sendUsername(res.user.username);

@@ -18,23 +18,23 @@ export class UserService {
   }
 
   getUsers(): Observable<UserDataModel[]> {
-    return this.http.get(baseURL + 'users')
+    return this.http.get(baseURL + 'admin/users')
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getUserById(id: string): Observable<UserDataModel> {
-    return this.http.get(baseURL + 'users/' + id)
+    return this.http.get(baseURL + 'admin/users/' + id)
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   addUser(formContent: any): Observable<UserDataModel>  {
-    return this.http.post(baseURL + 'users/new' , formContent)
+    return this.http.post(baseURL + 'admin/users/new' , formContent)
       .catch(error => { return this.processHTTPMsgService.handleError(error); });
 
   }
 
   editUser(id: string, formContent: any): Observable<UserDataModel>  {
-    return this.http.put(baseURL + 'users/edit/' + id , formContent)
+    return this.http.put(baseURL + 'admin/users/edit/' + id , formContent)
       .catch(error => { return this.processHTTPMsgService.handleError(error); });
 
   }

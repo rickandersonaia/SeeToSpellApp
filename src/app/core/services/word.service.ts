@@ -18,44 +18,44 @@ export class WordService {
   }
 
   getWords(): Observable<WordDataModel[]> {
-    return this.http.get(baseURL + 'words')
+    return this.http.get(baseURL + 'admin/words')
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getWord(name: string): Observable<WordDataModel> {
-    return this.http.get(baseURL + 'words/' + name)
+    return this.http.get(baseURL + 'admin/words/' + name)
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getWordById(id: string): Observable<WordDataModel> {
-    return this.http.get(baseURL + 'words/' + id)
+    return this.http.get(baseURL + 'admin/words/' + id)
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getFreeWords(): Observable<WordDataModel[]> {
-    return this.http.get(baseURL + 'words?isfree=true')
+    return this.http.get(baseURL + 'admin/words?isfree=true')
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getWordsInSet(cardset: number): Observable<WordDataModel[]> {
-    return this.http.get(baseURL + 'words?cardset=' + cardset)
+    return this.http.get(baseURL + 'admin/words?cardset=' + cardset)
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   addWord(formContent: any): Observable<WordDataModel>  {
-    return this.http.post(baseURL + 'words/new' , formContent)
+    return this.http.post(baseURL + 'admin/words/new' , formContent)
       .catch(error => this.processHTTPMsgService.handleError(error));
 
   }
 
   editWord(id: string, formContent: any): Observable<WordDataModel>  {
-    return this.http.put(baseURL + 'words/edit/' + id , formContent)
+    return this.http.put(baseURL + 'admin/words/edit/' + id , formContent)
       .catch(error => this.processHTTPMsgService.handleError(error));
 
   }
 
   deleteWord(id: string ): Observable<WordDataModel>  {
-    return this.http.delete(baseURL + 'words/edit/' + id )
+    return this.http.delete(baseURL + 'admin/words/edit/' + id )
       .catch(error => this.processHTTPMsgService.handleError(error));
 
   }

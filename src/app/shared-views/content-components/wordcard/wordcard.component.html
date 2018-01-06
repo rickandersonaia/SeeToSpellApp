@@ -10,7 +10,7 @@
       <p matLine *ngIf="word.isfree">Free</p>
     </mat-card-content>
     <mat-card-actions *ngIf="edit">
-      <button mat-raised-button [routerLink] = "['/words/edit/' + word._id]">Edit</button>
+      <button mat-raised-button [routerLink] = "['/admin/words/edit/' + word._id]">Edit</button>
     </mat-card-actions>
   </mat-card>
   <div *ngIf="!word" fxLayout="column" fxLayoutAlign="center center" class="loading">
