@@ -1,10 +1,10 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import {UserDataModel, allAvatars} from '../../shared/userdatamodel';
-import { UserService} from '../../services/user.service';
+import {UserDataModel, allAvatars} from '../../core/shared/userdatamodel';
+import { UserService} from '../../core/services/user.service';
 import {Location} from '@angular/common';
 import {MatDialog, MatDialogRef} from '@angular/material';
-import {AuthService} from '../../services/auth.service';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',

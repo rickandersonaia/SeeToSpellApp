@@ -10,37 +10,36 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MaterialModule } from './shared/material.module';
+import { MaterialModule } from './core/shared/material.module';
 
 import 'hammerjs';
-import { AppRoutingModule } from './app-routing/app-routing.module';
-import { WordService } from './services/word.service';
-import { UserService} from './services/user.service';
-import { baseURL, imageURL, audioURL, avatarURL} from './shared/baseurl';
-import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
-import {AuthService} from './services/auth.service';
-import {AuthInterceptor, UnauthorizedInterceptor} from './services/auth.interceptor';
+import { AppRoutingModule } from './core/app-routing/app-routing.module';
+import { WordService } from './core/services/word.service';
+import { UserService} from './core/services/user.service';
+import { baseURL, imageURL, audioURL, avatarURL} from './core/shared/baseurl';
+import {ProcessHTTPMsgService} from './core/services/process-httpmsg.service';
+import {AuthService} from './core/services/auth.service';
+import {AuthInterceptor, UnauthorizedInterceptor} from './core/services/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { WordsComponent } from './admin/words/words.component';
-import { HomeComponent } from './enduser/home/home.component';
+import { HomeComponent } from './tutor/home/home.component';
 import { AccountsComponent } from './admin/accounts/accounts.component';
-import { SetsComponent } from './enduser/sets/sets.component';
-import {routes} from './app-routing/routes';
-import { HeaderComponent } from './mainlayout/toolbar/toolbar.component';
+import { SetsComponent } from './tutor/sets/sets.component';
+import {routes} from './core/app-routing/routes';
 import { WorddetailComponent } from './admin/worddetail/worddetail.component';
-import { LoginComponent } from './mainlayout/login/login.component';
+import { LoginComponent } from './shared-views/mainlayout/login/login.component';
 import { NewUserFormComponent } from './admin/usernewform/newuserform.component';
 import { WordeditComponent } from './admin/wordedit/wordedit.component';
 import { WordnewComponent } from './admin/wordnew/wordnew.component';
-import { SidenavComponent } from './mainlayout/sidenav/sidenav.component';
-import { MaincontentComponent } from './mainlayout/maincontent/maincontent.component';
-import { WordcardComponent } from './content-components/wordcard/wordcard.component';
+import { SidenavComponent } from './shared-views/mainlayout/sidenav/sidenav.component';
+import { MaincontentComponent } from './shared-views/mainlayout/maincontent/maincontent.component';
+import { WordcardComponent } from './shared-views/content-components/wordcard/wordcard.component';
 import { UsereditComponent } from './admin/useredit/useredit.component';
 import { UsersComponent } from './admin/users/users.component';
-import { UsercardComponent } from './content-components/usercard/usercard.component';
-import { EntranceComponent } from './enduser/entrance/entrance.component';
-import { RegisterComponent} from './enduser/register/register.component';
+import { UsercardComponent } from './shared-views/content-components/usercard/usercard.component';
+import { EntranceComponent } from './shared-views/entrance/entrance.component';
+import { RegisterComponent} from './tutor/register/register.component';
 
 
 @NgModule({
@@ -50,7 +49,6 @@ import { RegisterComponent} from './enduser/register/register.component';
     HomeComponent,
     AccountsComponent,
     SetsComponent,
-    HeaderComponent,
     WorddetailComponent,
     LoginComponent,
     NewUserFormComponent,

@@ -1,7 +1,7 @@
 import {Component, OnInit, Inject} from '@angular/core';
 
-import {WordDataModel} from '../../shared/worddatamodel';
-import {WordService} from '../../services/word.service';
+import {WordDataModel} from '../../core/shared/worddatamodel';
+import {WordService} from '../../core/services/word.service';
 
 @Component({
   selector: 'app-home',

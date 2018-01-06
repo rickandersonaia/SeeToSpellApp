@@ -1,7 +1,7 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../shared/userdatamodel';
-import { UserService} from '../../services/user.service';
+import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared/userdatamodel';
+import { UserService} from '../../core/services/user.service';
 import {Location} from '@angular/common';
 import { Router} from '@angular/router';
 

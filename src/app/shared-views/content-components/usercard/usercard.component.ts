@@ -1,5 +1,5 @@
 import {Component, Inject, Input} from '@angular/core';
-import {UserDataModel} from '../../shared/userdatamodel';
+import {UserDataModel} from '../../../core/shared/userdatamodel';
 
 @Component({
   selector: 'app-usercard',

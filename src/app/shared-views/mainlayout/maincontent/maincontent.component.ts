@@ -4,7 +4,7 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {LoginComponent} from '../../mainlayout/login/login.component';
 
 import {Subscription} from 'rxjs/Subscription';
-import {AuthService} from '../../services/auth.service';
+import {AuthService} from '../../../core/services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({

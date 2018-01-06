@@ -1,11 +1,11 @@
 import {Component, ChangeDetectorRef, OnInit, OnDestroy, Inject} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {LoginComponent} from '../../mainlayout/login/login.component';
+import {LoginComponent} from '../mainlayout/login/login.component';
 import {Subscription} from 'rxjs/Subscription';
-import {AuthService} from '../../services/auth.service';
+import {AuthService} from '../../core/services/auth.service';
 import {Router} from '@angular/router';
-import {RegisterComponent} from '../register/register.component';
+import {RegisterComponent} from '../../tutor/register/register.component';
 
 @Component({
   selector: 'app-entrance',

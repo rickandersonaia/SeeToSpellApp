@@ -1,5 +1,5 @@
 import {Component, Inject, Input} from '@angular/core';
-import {WordDataModel} from '../../shared/worddatamodel';
+import {WordDataModel} from '../../../core/shared/worddatamodel';
 
 @Component({
   selector: 'app-wordcard',
