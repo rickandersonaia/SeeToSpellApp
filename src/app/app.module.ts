@@ -27,15 +27,10 @@ import {AuthInterceptor, UnauthorizedInterceptor} from './core/services/auth.int
 import { AppComponent } from './app.component';
 import { HomeComponent } from './tutor/home/home.component';
 import { LoginComponent } from './shared-views/mainlayout/login/login.component';
-import { WordeditComponent } from './admin/wordedit/wordedit.component';
-import { WordnewComponent } from './admin/wordnew/wordnew.component';
 import { SidenavComponent } from './shared-views/mainlayout/sidenav/sidenav.component';
 import { MaincontentComponent } from './shared-views/mainlayout/maincontent/maincontent.component';
-import { WordcardComponent } from './shared-views/content-components/wordcard/wordcard.component';
 import { EntranceComponent } from './shared-views/entrance/entrance.component';
 import { RegisterComponent} from './tutor/register/register.component';
-import {WordsComponent} from './admin/words/words.component';
-import {WorddetailComponent} from './admin/worddetail/worddetail.component';
 
 
 @NgModule({
@@ -43,13 +38,8 @@ import {WorddetailComponent} from './admin/worddetail/worddetail.component';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    WordsComponent,
-    WorddetailComponent,
-    WordeditComponent,
-    WordnewComponent,
     SidenavComponent,
     MaincontentComponent,
-    WordcardComponent,
     EntranceComponent,
     RegisterComponent
   ],

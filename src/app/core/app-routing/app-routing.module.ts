@@ -9,10 +9,6 @@ import {WordsComponent} from '../../admin/words/words.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'words', component: WordsComponent},
-  {path: 'words/new', component: WordnewComponent},
-  {path: 'words/:id', component: WorddetailComponent},
-  {path: 'words/edit/:id', component: WordeditComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 

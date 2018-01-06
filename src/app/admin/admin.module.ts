@@ -12,6 +12,11 @@ import {UsercardComponent} from '../shared-views/content-components/usercard/use
 import {MaterialModule} from '../core/shared/material.module';
 import { FlexLayoutModule} from '@angular/flex-layout';
 import {LayoutModule} from '@angular/cdk/layout';
+import {WorddetailComponent} from './worddetail/worddetail.component';
+import {WordsComponent} from './words/words.component';
+import {WordeditComponent} from './wordedit/wordedit.component';
+import {WordnewComponent} from './wordnew/wordnew.component';
+import {WordcardComponent} from '../shared-views/content-components/wordcard/wordcard.component';
 
 @NgModule({
   imports: [
@@ -28,6 +33,11 @@ import {LayoutModule} from '@angular/cdk/layout';
     UsereditComponent,
     UsersComponent,
     UsercardComponent,
+    WorddetailComponent,
+    WordsComponent,
+    WordeditComponent,
+    WordnewComponent,
+    WordcardComponent,
   ],
   providers: [
     WordService,
