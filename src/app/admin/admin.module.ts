@@ -17,6 +17,7 @@ import {WordsComponent} from './words/words.component';
 import {WordeditComponent} from './wordedit/wordedit.component';
 import {WordnewComponent} from './wordnew/wordnew.component';
 import {WordcardComponent} from '../shared-views/content-components/wordcard/wordcard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import {WordcardComponent} from '../shared-views/content-components/wordcard/wor
     WordeditComponent,
     WordnewComponent,
     WordcardComponent,
+    AdminDashboardComponent,
   ],
   providers: [
     WordService,

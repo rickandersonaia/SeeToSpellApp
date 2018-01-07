@@ -1,3 +1,4 @@
+<div *ngIf="username">
 <div class="main-container mat-typography"
      [class.is-mobile]="mobileQuery.matches"
      fxFlex fxFill
@@ -65,11 +66,15 @@
              ngClass.sm="big-phone"
              ngClass.xs="phone">
           <router-outlet></router-outlet>
+
         </div>
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>
 
 </div>
-<p>some text  {{isLoggedIn}}</p>
+</div>
+<div [hidden]="username">
+  <app-entrance></app-entrance>
+</div>
 

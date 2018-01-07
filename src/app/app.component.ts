@@ -11,13 +11,18 @@ import {AuthService} from './core/services/auth.service';
 export class AppComponent implements OnInit {
 
   public isLoggedIn: Boolean;
+  username: string = undefined;
+  subscription: Subscription;
 
   constructor(private authService: AuthService) {
-    console.log('random text');
   }
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.isLoggedIn();
+    this.authService.loadUserCredentials();
+    this.subscription = this.authService.getUsername()
+      .subscribe(name => {
+        this.username = name;
+        console.log(this.username);
+      });
   }
-
 }
