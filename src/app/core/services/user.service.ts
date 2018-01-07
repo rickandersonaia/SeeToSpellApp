@@ -35,7 +35,13 @@ export class UserService {
 
   editUser(id: string, formContent: any): Observable<UserDataModel>  {
     return this.http.put(baseURL + 'admin/users/edit/' + id , formContent)
-      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .catch(error => this.processHTTPMsgService.handleError(error));
+
+  }
+
+  registerUser(formContent: any): Observable<UserDataModel>  {
+    return this.http.post(baseURL + 'signup' , formContent)
+      .catch(error => this.processHTTPMsgService.handleError(error));
 
   }
 }

@@ -1,10 +1,11 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import {UserDataModel, allAvatars} from '../../core/shared/userdatamodel';
-import { UserService} from '../../core/services/user.service';
+import {UserDataModel, allAvatars} from '../../../core/shared/userdatamodel';
+import {UserService} from '../../../core/services/user.service';
 import {Location} from '@angular/common';
 import {MatDialog, MatDialogRef} from '@angular/material';
-import {AuthService} from '../../core/services/auth.service';
+import {AuthService} from '../../../core/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -50,6 +51,7 @@ export class RegisterComponent implements OnInit {
               private location: Location,
               private dialogRef: MatDialogRef<RegisterComponent>,
               private authService: AuthService,
+              private router: Router,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
@@ -67,7 +69,7 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
       displayName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
-      avatar: '',
+      avatar: 'generic.jpeg',
       isTutor: true
     });
 
@@ -77,7 +79,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onValueChanged(data?: any) {
-    if (!this.registerForm) { return; }
+    if (!this.registerForm) {
+      return;
+    }
     const form = this.registerForm;
 
     for (const field in this.formErrors) {
@@ -95,12 +99,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.addUser(this.registerForm.value)
+    this.userService.registerUser(this.registerForm.value)
       .subscribe(user => {
         console.log(user);
         this.user = user;
+        this.closeDialog();
+        this.router.navigateByUrl('/home');
       });
-    this.registerForm.reset();
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
   goBack(): void {

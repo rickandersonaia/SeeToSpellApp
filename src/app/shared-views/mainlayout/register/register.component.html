@@ -27,6 +27,8 @@
     <mat-form-field>
       <input matInput formControlName="displayName" placeholder="Display Name" type="text">
       <mat-error [hidden]="!(formErrors.displayName)">{{formErrors.displayName}}</mat-error>
+      <input matInput formControlName="avatar" hidden="hidden" type="text">
+      <input matInput formControlName="isTutor" hidden="hidden" type="text">
     </mat-form-field>
 
   </mat-dialog-content>

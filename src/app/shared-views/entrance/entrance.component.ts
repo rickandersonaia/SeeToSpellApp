@@ -5,7 +5,7 @@ import {LoginComponent} from '../mainlayout/login/login.component';
 import {Subscription} from 'rxjs/Subscription';
 import {AuthService} from '../../core/services/auth.service';
 import {Router} from '@angular/router';
-import {RegisterComponent} from '../../tutor/register/register.component';
+import {RegisterComponent} from '../mainlayout/register/register.component';
 
 @Component({
   selector: 'app-entrance',
