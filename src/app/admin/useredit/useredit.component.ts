@@ -2,8 +2,8 @@ import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../shared/userdatamodel';
-import {UserService} from '../../services/user.service';
+import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared/userdatamodel';
+import {UserService} from '../../core/services/user.service';
 
 @Component({
   selector: 'app-useredit',

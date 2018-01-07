@@ -1,20 +1,20 @@
 import {Component, OnInit, Inject} from '@angular/core';
-import {FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
-import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared/userdatamodel';
+import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import {UserDataModel, allAvatars} from '../../core/shared/userdatamodel';
 import { UserService} from '../../core/services/user.service';
 import {Location} from '@angular/common';
-import { Router} from '@angular/router';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
-  selector: 'app-newuserform',
-  templateUrl: './newuserform.component.html',
-  styleUrls: ['./newuserform.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class NewUserFormComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
-  newUserForm: FormGroup;
+  registerForm: FormGroup;
   user: UserDataModel;
-  options = setsPurchasedOptions;
   avatars = allAvatars;
   formErrors = {
     username: '',
@@ -48,7 +48,8 @@ export class NewUserFormComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private location: Location,
-              private router: Router,
+              private dialogRef: MatDialogRef<RegisterComponent>,
+              private authService: AuthService,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
@@ -61,26 +62,23 @@ export class NewUserFormComponent implements OnInit {
   }
 
   createForm() {
-    this.newUserForm = this.fb.group({
+    this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(25)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
       displayName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       avatar: '',
-      isTutor: false,
-      isAdmin: false,
-      parentId: [{value: '', disabled: true}],
-      setsPurchased: [],
+      isTutor: true
     });
 
-    this.newUserForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.registerForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
     this.onValueChanged(); // reset form validation messages
   }
 
   onValueChanged(data?: any) {
-    if (!this.newUserForm) { return; }
-    const form = this.newUserForm;
+    if (!this.registerForm) { return; }
+    const form = this.registerForm;
 
     for (const field in this.formErrors) {
       // clear previous error message (if any)
@@ -97,13 +95,12 @@ export class NewUserFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.addUser(this.newUserForm.value)
+    this.userService.addUser(this.registerForm.value)
       .subscribe(user => {
         console.log(user);
         this.user = user;
-        this.router.navigateByUrl('/users');
       });
-    this.newUserForm.reset();
+    this.registerForm.reset();
   }
 
   goBack(): void {

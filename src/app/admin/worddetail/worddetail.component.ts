@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 
-import {WordDataModel} from '../../shared/worddatamodel';
-import {WordService} from '../../services/word.service';
+import {WordDataModel} from '../../core/shared/worddatamodel';
+import {WordService} from '../../core/services/word.service';
 import {Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 

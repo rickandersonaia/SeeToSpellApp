@@ -1,0 +1,80 @@
+<div *ngIf="username">
+<div class="main-container mat-typography"
+     [class.is-mobile]="mobileQuery.matches"
+     fxFlex fxFill
+     fxLayout="column">
+
+  <mat-toolbar color="primary"
+               class="toolbar"
+               fxLayout="row">
+    <div class="branding"
+         fxFlex="30"
+         fxFlex.xs="60"
+         fxLayout="row">
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="app-name">See To Spell</h1>
+    </div>
+    <div class="toolbar-menu"
+         fxFlex="40%"
+         fxFlexAlign="center"
+         fxShow fxHide.xs="true">
+      <button mat-button routerLink="/home">Home</button>
+      <button mat-button routerLink="/words">Words</button>
+      <button mat-button routerLink="/users">Users</button>
+    </div>
+    <div class="flex-spacer" fxShow.xs="true" fxHide></div>
+    <div class="account-menu"
+         fxFlex="30%"
+         fxFlex.xs="40">
+      <button *ngIf="!username" mat-raised-button color="accent" (click)="openLoginForm()">
+        Login
+      </button>
+      <span *ngIf="username">Welcome {{username}}</span>
+      <button *ngIf="username" mat-raised-button color="accent" (click)="logOut()">
+        Logout:
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+
+  <div
+    fxFlex
+    fxLayout="row"
+    fxFill>
+    <mat-sidenav-container class="sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 64 : 0">
+      <mat-sidenav class="sidenav" #snav
+                   mode="over"
+                   [fixedInViewport]="mobileQuery.matches"
+                   fixedTopGap="64"
+                   fixedBottomGap="10"
+                   fxLayout="column">
+
+        <app-sidenav></app-sidenav>
+
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+        <div class="content-wrapper"
+             fxLayout="column"
+             ngClass.xl="big-desktop"
+             ngClass.lg="desktop"
+             ngClass.md="tablet"
+             ngClass.sm="big-phone"
+             ngClass.xs="phone">
+          <router-outlet></router-outlet>
+
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+
+</div>
+</div>
+<div [hidden]="username">
+  <app-entrance></app-entrance>
+</div>
+
