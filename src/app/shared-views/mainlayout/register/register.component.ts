@@ -5,7 +5,9 @@ import {UserService} from '../../../core/services/user.service';
 import {Location} from '@angular/common';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {AuthService} from '../../../core/services/auth.service';
+import {MessageService} from '../../../core/services/message.service';
 import {Router} from '@angular/router';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +19,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   user: UserDataModel;
   avatars = allAvatars;
+  error = String;
   formErrors = {
     username: '',
     email: '',
@@ -46,12 +49,18 @@ export class RegisterComponent implements OnInit {
     }
   };
 
+  messages = [
+    {'short': 'UserExistsError', 'long': 'Username already exists - please try again'},
+    {'short': 'E11000 duplicate key error', 'long': 'That email address is already in use - please choose another'}
+  ];
+
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private location: Location,
               private dialogRef: MatDialogRef<RegisterComponent>,
               private authService: AuthService,
               private router: Router,
+              private messageService: MessageService,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
@@ -101,11 +110,19 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.userService.registerUser(this.registerForm.value)
       .subscribe(user => {
-        console.log(user);
-        this.user = user;
-        this.closeDialog();
-        this.router.navigateByUrl('/home');
-      });
+          console.log(user);
+          this.user = user;
+          this.closeDialog();
+          this.messageService.sendMessage('You have successfully registered, please login');
+          this.router.navigateByUrl('/home');
+        },
+        error => {
+          let msg = 'error';
+          this.error = error;
+          console.log(error);
+          msg = this.checkForKnownError(error);
+          this.messageService.sendMessage(msg);
+        });
   }
 
   closeDialog() {
@@ -114,6 +131,18 @@ export class RegisterComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  checkForKnownError(error) {
+    let msg = 'Something went wrong with your registration';
+
+    this.messages.forEach((message, key) => {
+        if (error.search(message.short) > 0) {
+          msg  = message.long;
+        }
+      }
+    );
+    return msg;
   }
 
 }
