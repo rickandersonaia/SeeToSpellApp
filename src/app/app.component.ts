@@ -1,20 +1,35 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 
 import {Subscription} from 'rxjs/Subscription';
 import {AuthService} from './core/services/auth.service';
+import {MessageService} from './core/services/message.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   public isLoggedIn: Boolean;
   username: string = undefined;
   subscription: Subscription;
+  msgSubscription: Subscription;
+  message: any;
+  action: any;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private messageService: MessageService,
+              public snackBar: MatSnackBar) {
+
+    this.msgSubscription = this.messageService.getMessage()
+      .subscribe(message => {
+        this.message = message;
+        this.snackBar.open(message.text, this.action, {
+          duration: 3000,
+        });
+      });
   }
 
   ngOnInit() {
@@ -24,5 +39,10 @@ export class AppComponent implements OnInit {
         this.username = name;
         console.log(this.username);
       });
+  }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.msgSubscription.unsubscribe();
   }
 }

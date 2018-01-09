@@ -12,6 +12,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatSidenavModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatRadioModule],
+    MatRadioModule,
+    MatSnackBarModule],
 
   exports: [
     MatButtonModule,
@@ -46,7 +48,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatSidenavModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatRadioModule],
+    MatRadioModule,
+    MatSnackBarModule],
 })
 export class MaterialModule {
 }

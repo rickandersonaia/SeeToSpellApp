@@ -23,6 +23,7 @@ import { baseURL, imageURL, audioURL, avatarURL} from './core/shared/baseurl';
 import {ProcessHTTPMsgService} from './core/services/process-httpmsg.service';
 import {AuthService} from './core/services/auth.service';
 import {AuthInterceptor, UnauthorizedInterceptor} from './core/services/auth.interceptor';
+import {MessageService} from './core/services/message.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './tutor/home/home.component';
@@ -63,6 +64,7 @@ import { RegisterComponent} from './shared-views/mainlayout/register/register.co
     UserService,
     MatDialogModule,
     AuthService,
+    MessageService,
     { provide: 'BaseURL', useValue: baseURL },
     { provide: 'ImageURL', useValue: imageURL },
     { provide: 'AudioURL', useValue: audioURL },
