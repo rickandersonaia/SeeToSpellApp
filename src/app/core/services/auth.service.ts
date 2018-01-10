@@ -13,6 +13,7 @@ interface AuthResponse {
   status: string;
   success: string;
   token: string;
+  isadmin: boolean;
 }
 
 interface JWTResponse {
@@ -92,7 +93,7 @@ export class AuthService {
       {'username': user.username, 'password': user.password})
       .map(res => {
         this.storeUserCredentials({username: user.username, token: res.token});
-        return {'success': true, 'username': user.username};
+        return {'success': true, 'username': user.username, 'isAdmin': res.isadmin };
       })
       .catch(error => {
         return this.processHTTPMsgService.handleError(error);

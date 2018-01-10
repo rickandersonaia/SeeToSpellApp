@@ -12,7 +12,6 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   user = {username: '', password: '', remember: false};
-  errMess: string;
 
   constructor(private dialogRef: MatDialogRef<LoginComponent>,
               private authService: AuthService,
@@ -27,23 +26,22 @@ export class LoginComponent implements OnInit {
     console.log('User: ', this.user);
     this.authService.logIn(this.user)
       .subscribe(res => {
+        // res returns success, username, isAdmin
           if (res.success) {
             this.messageService.sendMessage('You are logged in!');
             this.dialogRef.close(res.success);
-            this.router.navigateByUrl('/home');
+            if (res.isAdmin === true) {
+              this.router.navigateByUrl('/admin');
+            }
+
           } else {
-            console.log(res);
             this.messageService.sendMessage('There is a problem with your username or password');
           }
         },
         error => {
           this.messageService.sendMessage('There is a problem with your username or password');
         });
-  }
 
-  // sendMessage(): void {
-  //   // send message to subscribers via observable subject
-  //   this.messageService.sendMessage('You are logged in!');
-  // }
+  }
 
 }

@@ -18,7 +18,6 @@ export class ProcessHTTPMsgService {
       errMsg = error.error.message;
     } else { // server side error
       errMsg = `${error.status} - ${error.statusText || ''} ${error.error}`;
-      console.log(error.message);
     }
 
     return Observable.throw(errMsg);

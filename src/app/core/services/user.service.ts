@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {UserDataModel} from '../shared/userdatamodel';
-import {HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { baseURL } from '../shared/baseurl';
+import {baseURL} from '../shared/baseurl';
 import {ProcessHTTPMsgService} from './process-httpmsg.service';
 
 @Injectable()
@@ -27,20 +27,27 @@ export class UserService {
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
-  addUser(formContent: any): Observable<UserDataModel>  {
-    return this.http.post(baseURL + 'admin/users/new' , formContent)
-      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+  getUserByUsername(username: string): Observable<UserDataModel> {
+    return this.http.get(baseURL + 'admin/users/?username=' + username)
+      .catch(error => this.processHTTPMsgService.handleError(error));
+  }
+
+  addUser(formContent: any): Observable<UserDataModel> {
+    return this.http.post(baseURL + 'admin/users/new', formContent)
+      .catch(error => {
+        return this.processHTTPMsgService.handleError(error);
+      });
 
   }
 
-  editUser(id: string, formContent: any): Observable<UserDataModel>  {
-    return this.http.put(baseURL + 'admin/users/edit/' + id , formContent)
+  editUser(id: string, formContent: any): Observable<UserDataModel> {
+    return this.http.put(baseURL + 'admin/users/edit/' + id, formContent)
       .catch(error => this.processHTTPMsgService.handleError(error));
 
   }
 
-  registerUser(formContent: any): Observable<UserDataModel>  {
-    return this.http.post(baseURL + 'signup' , formContent)
+  registerUser(formContent: any): Observable<UserDataModel> {
+    return this.http.post(baseURL + 'signup', formContent)
       .catch(error => this.processHTTPMsgService.handleError(error));
 
   }
