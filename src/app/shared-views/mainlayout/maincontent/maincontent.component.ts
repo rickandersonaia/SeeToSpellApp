@@ -7,6 +7,8 @@ import {Subscription} from 'rxjs/Subscription';
 import {AuthService} from '../../../core/services/auth.service';
 import {Router} from '@angular/router';
 
+import {UserService} from '../../../core/services/user.service';
+
 @Component({
   selector: 'app-maincontent',
   templateUrl: './maincontent.component.html',
@@ -18,7 +20,7 @@ export class MaincontentComponent implements OnInit, OnDestroy {
   mobileQuery: MediaQueryList;
   username: string = undefined;
   subscription: Subscription;
-  isLoggedIn: boolean;
+  currentUser: object;
 
   private _mobileQueryListener: () => void;
 
@@ -26,7 +28,8 @@ export class MaincontentComponent implements OnInit, OnDestroy {
               media: MediaMatcher,
               public dialog: MatDialog,
               private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private userService: UserService) {
 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -36,7 +39,13 @@ export class MaincontentComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.authService.loadUserCredentials();
     this.subscription = this.authService.getUsername()
-      .subscribe(name => { this.username = name; });
+      .subscribe(name => {
+        this.username = name;
+        this.userService.getUserByUsername(this.username)
+          .subscribe(user => {
+            this.currentUser = user[0];
+          });
+      });
   }
 
   ngOnDestroy(): void {

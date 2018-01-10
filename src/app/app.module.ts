@@ -32,6 +32,7 @@ import { SidenavComponent } from './shared-views/mainlayout/sidenav/sidenav.comp
 import { MaincontentComponent } from './shared-views/mainlayout/maincontent/maincontent.component';
 import { EntranceComponent } from './shared-views/entrance/entrance.component';
 import { RegisterComponent} from './shared-views/mainlayout/register/register.component';
+import {AdminSidenavComponent} from './admin/admin-sidenav/admin-sidenav.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { RegisterComponent} from './shared-views/mainlayout/register/register.co
     SidenavComponent,
     MaincontentComponent,
     EntranceComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminSidenavComponent
   ],
   imports: [
     BrowserModule,

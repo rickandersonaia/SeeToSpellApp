@@ -26,13 +26,13 @@ export class LoginComponent implements OnInit {
     console.log('User: ', this.user);
     this.authService.logIn(this.user)
       .subscribe(res => {
-        // res returns success, username, isAdmin
+          // res returns success, username, isAdmin
           if (res.success) {
             this.messageService.sendMessage('You are logged in!');
             this.dialogRef.close(res.success);
-            if (res.isAdmin === true) {
+            if (res.isAdmin === true) { // reroute on admin
               this.router.navigateByUrl('/admin');
-            }
+            } // otherwise stay at home
 
           } else {
             this.messageService.sendMessage('There is a problem with your username or password');
@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
         error => {
           this.messageService.sendMessage('There is a problem with your username or password');
         });
-
   }
 
 }

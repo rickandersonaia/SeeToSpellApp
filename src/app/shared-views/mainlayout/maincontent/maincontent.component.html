@@ -52,8 +52,10 @@
                    fixedTopGap="64"
                    fixedBottomGap="10"
                    fxLayout="column">
-
-        <app-sidenav></app-sidenav>
+        <div *ngIf="currentUser">
+          <app-sidenav [hidden]="currentUser.isAdmin"></app-sidenav>
+          <app-admin-sidenav [hidden]="!currentUser.isAdmin"></app-admin-sidenav>
+        </div>
 
       </mat-sidenav>
 
