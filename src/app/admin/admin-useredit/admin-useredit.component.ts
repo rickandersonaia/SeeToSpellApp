@@ -6,11 +6,11 @@ import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared
 import {UserService} from '../../core/services/user.service';
 
 @Component({
-  selector: 'app-useredit',
-  templateUrl: './useredit.component.html',
-  styleUrls: ['./useredit.component.scss']
+  selector: 'app-admin-useredit',
+  templateUrl: './admin-useredit.component.html',
+  styleUrls: ['./admin-useredit.component.scss']
 })
-export class UsereditComponent implements OnInit {
+export class AdminUserEditComponent implements OnInit {
 
   editUserForm: FormGroup;
   user: UserDataModel;

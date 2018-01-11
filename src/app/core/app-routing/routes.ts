@@ -9,7 +9,7 @@ import {NewUserFormComponent} from '../../admin/usernewform/newuserform.componen
 import {WordnewComponent} from '../../admin/wordnew/wordnew.component';
 import {WordeditComponent} from '../../admin/wordedit/wordedit.component';
 import {UsersComponent} from '../../admin/users/users.component';
-import {UsereditComponent} from '../../admin/useredit/useredit.component';
+import {AdminUserEditComponent} from '../../admin/admin-useredit/admin-useredit.component';
 import {EntranceComponent} from '../../shared-views/entrance/entrance.component';
 
 export const routes: Routes = [
@@ -20,6 +20,6 @@ export const routes: Routes = [
   {path: 'words/edit/:id', component: WordeditComponent},
   {path: 'users', component: UsersComponent},
   {path: 'users/new', component: NewUserFormComponent},
-  {path: 'users/edit/:id', component: UsereditComponent},
+  {path: 'users/edit/:id', component: AdminUserEditComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
   ];

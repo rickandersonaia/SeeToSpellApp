@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {UsersComponent} from '../users/users.component';
-import {UsereditComponent} from '../useredit/useredit.component';
+import {AdminUserEditComponent} from '../admin-useredit/admin-useredit.component';
 import {NewUserFormComponent} from '../usernewform/newuserform.component';
 import {WorddetailComponent} from '../worddetail/worddetail.component';
 import {WordnewComponent} from '../wordnew/wordnew.component';
@@ -42,7 +42,7 @@ const adminRoutes: Routes = [
       },
       {
         path: 'users/edit/:id',
-        component: UsereditComponent
+        component: AdminUserEditComponent
       }]
   }
 ]

@@ -19,14 +19,17 @@ button.newcard{width:250px;};
   box-sizing:border-box;
   margin:0 auto;
 }
-.single-card-container,
+
+.mat-list .mat-list-item .mat-list-avatar{border:solid 1px #bbb}
+
+.phone .user-form-wrapper{padding-bottom:200px;}
+
+
 .single-user-container{
   width:400px;
   max-width:100%;
   margin:0 auto;
 }
-.single-card-container .mat-card-image{margin:0}
-.mat-list .mat-list-item .mat-list-avatar{border:solid 1px #bbb}
 
 .single-user-container{
   text-align:center;
@@ -50,4 +53,11 @@ button.newcard{width:250px;};
   box-shadow: 4px 4px 4px rgba(0,0,0, .45);
 }
 
-.phone .user-form-wrapper{padding-bottom:200px;}
+.sidenav-wrapper .single-user-container{
+  margin-top:170px;
+}
+
+.sidenav-wrapper .single-user-container img{
+  left:15%;
+}
+

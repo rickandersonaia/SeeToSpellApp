@@ -8,7 +8,7 @@
                class="toolbar"
                fxLayout="row">
     <div class="branding"
-         fxFlex="30"
+         fxFlex="30%"
          fxFlex.xs="60"
          fxLayout="row">
       <button mat-icon-button (click)="snav.toggle()">
@@ -17,16 +17,13 @@
       <h1 class="app-name">See To Spell</h1>
     </div>
     <div class="toolbar-menu"
-         fxFlex="40%"
+         fxFlex="30%"
          fxFlexAlign="center"
          fxShow fxHide.xs="true">
-      <button mat-button routerLink="/home">Home</button>
-      <button mat-button routerLink="/admin/words">Words</button>
-      <button mat-button routerLink="/admin/users">Users</button>
     </div>
     <div class="flex-spacer" fxShow.xs="true" fxHide></div>
     <div class="account-menu"
-         fxFlex="30%"
+         fxFlex="40%"
          fxFlex.xs="40">
       <button *ngIf="!username" mat-raised-button color="accent" (click)="openLoginForm()">
         Login
@@ -53,8 +50,8 @@
                    fixedBottomGap="10"
                    fxLayout="column">
         <div *ngIf="currentUser">
-          <app-sidenav [hidden]="currentUser.isAdmin"></app-sidenav>
-          <app-admin-sidenav [hidden]="!currentUser.isAdmin"></app-admin-sidenav>
+          <app-sidenav [hidden]="currentUser.isAdmin"[currentUser]="currentUser"></app-sidenav>
+          <app-admin-sidenav [hidden]="!currentUser.isAdmin"[currentUser]="currentUser"></app-admin-sidenav>
         </div>
 
       </mat-sidenav>

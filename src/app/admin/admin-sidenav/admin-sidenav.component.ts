@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-sidenav',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminSidenavComponent implements OnInit {
 
+  adminLinks: object;
+  @Input() currentUser: any;
+
   constructor() { }
 
   ngOnInit() {
+    this.adminLinks = [
+      {label: 'Account', link: '/admin/users/edit/' + this.currentUser._id},
+      {label: 'View & edit Cards', link: '/admin/words'},
+      {label: 'View & edit Users', link: '/admin/users'}
+    ]
   }
 
 }

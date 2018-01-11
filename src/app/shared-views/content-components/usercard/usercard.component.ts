@@ -1,5 +1,6 @@
 import {Component, Inject, Input} from '@angular/core';
 import {UserDataModel} from '../../../core/shared/userdatamodel';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-usercard',
@@ -12,7 +13,7 @@ export class UsercardComponent {
   @Input() edit: boolean;
 
   constructor(@Inject('BaseURL') private BaseURL,
-              @Inject('AvatarURL') private AvatarURL) {
+              @Inject('AvatarURL') private AvatarURL,) {
   }
 
 }
