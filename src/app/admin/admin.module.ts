@@ -26,11 +26,13 @@ import {MessageService} from '../core/services/message.service';
 import {audioURL, avatarURL, baseURL, imageURL} from '../core/shared/baseurl';
 import {AuthInterceptor, UnauthorizedInterceptor} from '../core/services/auth.interceptor';
 import {AuthService} from '../core/services/auth.service';
+import {TutorRoutingModule} from '../tutor/tutor-routing/tutor-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    TutorRoutingModule,
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,

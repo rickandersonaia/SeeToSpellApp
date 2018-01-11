@@ -21,10 +21,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {LayoutModule} from '@angular/cdk/layout';
 import {AdminRoutingModule} from '../../admin/admin-routing/admin-routing.module';
+import {TutorRoutingModule} from '../../tutor/tutor-routing/tutor-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    TutorRoutingModule,
     AdminRoutingModule,
     AppRoutingModule,
     ReactiveFormsModule,

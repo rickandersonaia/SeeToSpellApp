@@ -32,7 +32,8 @@ import {LoginComponent} from './shared-views/mainlayout/login/login.component';
 import {RegisterComponent} from './shared-views/mainlayout/register/register.component';
 import {AdminRoutingModule} from './admin/admin-routing/admin-routing.module';
 import { TutorUsereditComponent } from './tutor/tutor-useredit/tutor-useredit.component';
-
+import {TutorRoutingModule} from './tutor/tutor-routing/tutor-routing.module';
+import { NotFoundComponent } from './shared-views/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { TutorUsereditComponent } from './tutor/tutor-useredit/tutor-useredit.co
     LoginComponent,
     RegisterComponent,
     TutorUsereditComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,7 @@ import { TutorUsereditComponent } from './tutor/tutor-useredit/tutor-useredit.co
     TutorModule,
     StudentModule,
     SharedModule,
+    TutorRoutingModule,
     AdminRoutingModule,
     AppRoutingModule,
   ],
