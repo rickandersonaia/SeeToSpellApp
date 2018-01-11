@@ -9,12 +9,16 @@ import 'rxjs/add/operator/map';
 
 import {baseURL} from '../shared/baseurl';
 import {ProcessHTTPMsgService} from './process-httpmsg.service';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class UserService {
 
+  public name: string;
+
   constructor(private http: HttpClient,
-              private processHTTPMsgService: ProcessHTTPMsgService) {
+              private processHTTPMsgService: ProcessHTTPMsgService,
+              private authService: AuthService) {
   }
 
   getUsers(): Observable<UserDataModel[]> {
@@ -51,4 +55,15 @@ export class UserService {
       .catch(error => this.processHTTPMsgService.handleError(error));
 
   }
+
+  currentUser(): Observable<UserDataModel> {
+    this.authService.getUsername()
+      .subscribe(name => {
+        this.name = name;
+      });
+
+    return this.http.get(baseURL + 'admin/users/?' + this.name)
+      .catch(error => this.processHTTPMsgService.handleError(error));
+  }
+
 }

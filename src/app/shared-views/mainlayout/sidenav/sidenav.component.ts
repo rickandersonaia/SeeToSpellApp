@@ -7,10 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
+  adminLinks: object;
   @Input() currentUser: any;
+
   constructor() { }
 
   ngOnInit() {
+    this.adminLinks = [
+      {label: 'Account', link: '/admin/users/edit/' + this.currentUser._id},
+      {label: 'Dashboard', link: '/home'},
+      {label: 'Add Student', link: ''}
+    ];
   }
 
 

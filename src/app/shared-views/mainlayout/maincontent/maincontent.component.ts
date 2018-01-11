@@ -8,6 +8,7 @@ import {AuthService} from '../../../core/services/auth.service';
 import {Router} from '@angular/router';
 
 import {UserService} from '../../../core/services/user.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-maincontent',
@@ -16,7 +17,6 @@ import {UserService} from '../../../core/services/user.service';
 })
 export class MaincontentComponent implements OnInit, OnDestroy {
 
-  mode: string;
   mobileQuery: MediaQueryList;
   username: string = undefined;
   subscription: Subscription;
@@ -58,6 +58,7 @@ export class MaincontentComponent implements OnInit, OnDestroy {
 
   logOut() {
     this.username = undefined;
+    this.currentUser = undefined;
     this.authService.logOut();
     this.router.navigateByUrl('/');
   }

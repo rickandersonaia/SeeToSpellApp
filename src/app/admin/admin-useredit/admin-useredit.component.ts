@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, OnInit, Inject, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
@@ -10,6 +10,7 @@ import {UserService} from '../../core/services/user.service';
   templateUrl: './admin-useredit.component.html',
   styleUrls: ['./admin-useredit.component.scss']
 })
+
 export class AdminUserEditComponent implements OnInit {
 
   editUserForm: FormGroup;
