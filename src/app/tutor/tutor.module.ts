@@ -13,6 +13,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {LayoutModule} from '@angular/cdk/layout';
 import {SetsComponent} from './sets/sets.component';
 import { TutorDashboardComponent } from './tutor-dashboard/tutor-dashboard.component';
+import { TutorAccountComponent } from './tutor-account/tutor-account.component';
+import { PurchaseSummaryComponent } from './purchase-summary/purchase-summary.component';
+import {TutorUsereditComponent} from './tutor-useredit/tutor-useredit.component';
 
 @NgModule({
   imports: [
@@ -32,7 +35,10 @@ import { TutorDashboardComponent } from './tutor-dashboard/tutor-dashboard.compo
     SetsComponent,
     SetsEditComponent,
     SetsAddComponent,
-    TutorDashboardComponent]
+    TutorDashboardComponent,
+    TutorAccountComponent,
+    TutorUsereditComponent,
+    PurchaseSummaryComponent]
 })
 export class TutorModule {
 }

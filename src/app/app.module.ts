@@ -31,7 +31,6 @@ import {HomeComponent} from './tutor/home/home.component';
 import {LoginComponent} from './shared-views/mainlayout/login/login.component';
 import {RegisterComponent} from './shared-views/mainlayout/register/register.component';
 import {AdminRoutingModule} from './admin/admin-routing/admin-routing.module';
-import { TutorUsereditComponent } from './tutor/tutor-useredit/tutor-useredit.component';
 import {TutorRoutingModule} from './tutor/tutor-routing/tutor-routing.module';
 import { NotFoundComponent } from './shared-views/not-found/not-found.component';
 
@@ -41,7 +40,6 @@ import { NotFoundComponent } from './shared-views/not-found/not-found.component'
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    TutorUsereditComponent,
     NotFoundComponent,
   ],
   imports: [

@@ -8,8 +8,8 @@ import {StudentEditComponent} from '../student-edit/student-edit.component';
 import {SetsComponent} from '../sets/sets.component';
 import {SetsAddComponent} from '../sets-add/sets-add.component';
 import {SetsEditComponent} from '../sets-edit/sets-edit.component';
-import {TutorUsereditComponent} from '../tutor-useredit/tutor-useredit.component';
 import {TutorDashboardComponent} from '../tutor-dashboard/tutor-dashboard.component';
+import {TutorAccountComponent} from '../tutor-account/tutor-account.component';
 
 const tutorRoutes: Routes = [
   {
@@ -18,7 +18,7 @@ const tutorRoutes: Routes = [
     children: [
       {
         path: 'edit/:id',
-        component: TutorUsereditComponent,
+        component: TutorAccountComponent,
       },
       {
         path: 'students',

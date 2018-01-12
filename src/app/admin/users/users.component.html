@@ -4,7 +4,7 @@
                    fxFlex.lg="25" fxFlex.md="33"
                    fxFlex.sm="50" fxFlex.xs="100">
       <img matListAvatar *ngIf="user.avatar" src="{{AvatarURL + user.avatar}}" alt="{{user.displayName}}">
-      <img matListAvatar *ngIf="!user.avatar" src="{{AvatarURL + generic.jpg}}" alt="{{user.displayName}}">
+      <img matListAvatar *ngIf="!user.avatar" src="{{AvatarURL + 'generic.jpg'}}" alt="{{user.displayName}}">
       <p matLine><b>{{user.username}}</b></p>
       <p matLine>display name: {{user.displayName}}</p>
     </mat-list-item>
