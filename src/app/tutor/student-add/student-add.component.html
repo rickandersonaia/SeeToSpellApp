@@ -1,3 +1,26 @@
-<p>
-  student-add works!
-</p>
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+  <div class="form-width">
+
+    <h1>Add new Student</h1>
+    <form novalidate [formGroup]="newUserForm" (ngSubmit)="onSubmit()">
+      <p fxLayout="column">
+        <mat-form-field>
+          <input matInput formControlName="displayName" placeholder="Display Name" type="text">
+          <mat-error [hidden]="!(formErrors.displayName)">{{formErrors.displayName}}</mat-error>
+        </mat-form-field>
+
+        <label>Choose an Avatar: </label>
+        <mat-radio-group class="radio-group" formControlName="avatar">
+          <mat-radio-button *ngFor="let avatar of avatars" value="{{avatar.value}}">
+            <img src="{{ AvatarURL + avatar.image}}" height="64px" width="64px">
+          </mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field>
+          <input matInput formControlName="parentId" placeholder="Parent Id" type="text">
+        </mat-form-field>
+      </p>
+      <button mat-raised-button color="primary">Create New Student</button>
+    </form>
+  </div>
+</div>
+
