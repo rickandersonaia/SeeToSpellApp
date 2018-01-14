@@ -48,7 +48,8 @@
                    [fixedInViewport]="mobileQuery.matches"
                    fixedTopGap="64"
                    fixedBottomGap="10"
-                   fxLayout="column">
+                   fxLayout="column"
+                    (click)="snav.close()">
         <div *ngIf="currentUser">
           <app-sidenav [hidden]="currentUser.isAdmin"[currentUser]="currentUser"></app-sidenav>
           <app-admin-sidenav [hidden]="!currentUser.isAdmin"[currentUser]="currentUser"></app-admin-sidenav>

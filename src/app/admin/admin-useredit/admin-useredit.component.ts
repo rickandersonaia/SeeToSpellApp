@@ -1,6 +1,6 @@
 import {Component, OnInit, Inject, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Params, ActivatedRoute} from '@angular/router';
+import {Router, Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared/userdatamodel';
 import {UserService} from '../../core/services/user.service';
@@ -31,6 +31,7 @@ export class AdminUserEditComponent implements OnInit {
               private userService: UserService,
               private location: Location,
               private route: ActivatedRoute,
+              private deleteroute: Router,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
@@ -84,6 +85,15 @@ export class AdminUserEditComponent implements OnInit {
       .subscribe(user => {
         console.log(user);
         this.getFormData(this.user._id);
+      });
+  }
+
+
+  onDelete() {
+    console.log('Deleting Word ' + this.user._id);
+    this.userService.deleteUser(this.user._id)
+      .subscribe(word => {
+        this.deleteroute.navigateByUrl('/admin/users');
       });
   }
 }

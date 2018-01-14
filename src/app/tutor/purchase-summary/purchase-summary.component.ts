@@ -21,12 +21,12 @@ export class PurchaseSummaryComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
     this.getUser(id);
-    console.log(this.sets);
   }
 
   getUser(id) {
-    this.userService.getUserById(id)
+    this.userService.getTutorById(id)
       .subscribe(user => {
+        console.log(id);
         this.user = user;
         this.sets = user.setsPurchased;
         this.setsToPurchase = this.getSetsToPurchase(this.sets);

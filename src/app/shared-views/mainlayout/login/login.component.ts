@@ -30,8 +30,11 @@ export class LoginComponent implements OnInit {
           if (res.success) {
             this.messageService.sendMessage('You are logged in!');
             this.dialogRef.close(res.success);
+            // console.log(res.isAdmin);
             if (res.isAdmin === true) { // reroute on admin
               this.router.navigateByUrl('/admin');
+            } else {
+              this.router.navigateByUrl('/tutor');
             } // otherwise stay at home
 
           } else {

@@ -81,7 +81,7 @@ export class WordeditComponent implements OnInit {
     console.log('Deleting Word ' + this.word._id);
     this.wordService.deleteWord(this.word._id)
       .subscribe(word => {
-        this.deleteroute.navigateByUrl('/words');
+        this.deleteroute.navigateByUrl('/admin/words');
       });
   }
 

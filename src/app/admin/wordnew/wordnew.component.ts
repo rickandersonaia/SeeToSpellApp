@@ -49,7 +49,7 @@ export class WordnewComponent implements OnInit {
       .subscribe(word => {
         console.log(word);
         this.word = word;
-        this.router.navigateByUrl('/words');
+        this.router.navigateByUrl('/admin/words');
       });
     this.newWordForm.reset();
   }

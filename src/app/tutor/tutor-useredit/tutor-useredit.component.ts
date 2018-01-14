@@ -41,7 +41,7 @@ export class TutorUsereditComponent implements OnInit {
   }
 
   getFormData(id) {
-    this.userService.getUserById(id)
+    this.userService.getTutorById(id)
       .subscribe(user => {
         this.exusername = user.username ? user.username : null;
         this.exemail = user.email ? user.email : null;
@@ -69,7 +69,7 @@ export class TutorUsereditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.editUser(this.user._id, this.editUserForm.value)
+    this.userService.editTutorUser(this.user._id, this.editUserForm.value)
       .subscribe(user => {
         console.log(user);
         this.getFormData(this.user._id);

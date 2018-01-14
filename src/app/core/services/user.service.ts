@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 import {baseURL} from '../shared/baseurl';
 import {ProcessHTTPMsgService} from './process-httpmsg.service';
 import {AuthService} from './auth.service';
+import {WordDataModel} from '../shared/worddatamodel';
 
 @Injectable()
 export class UserService {
@@ -31,8 +32,18 @@ export class UserService {
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
+  getTutorById(id: string): Observable<UserDataModel> {
+    return this.http.get(baseURL + 'tutor/' + id)
+      .catch(error => this.processHTTPMsgService.handleError(error));
+  }
+
   getUserByUsername(username: string): Observable<UserDataModel> {
     return this.http.get(baseURL + 'admin/users/?username=' + username)
+      .catch(error => this.processHTTPMsgService.handleError(error));
+  }
+
+  getTutorByUsername(username: string): Observable<UserDataModel> {
+    return this.http.get(baseURL + 'tutor/?username=' + username)
       .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
@@ -50,13 +61,36 @@ export class UserService {
 
   }
 
+  editTutorUser(id: string, formContent: any): Observable<UserDataModel> {
+    return this.http.put(baseURL + 'tutor/edit/' + id, formContent)
+      .catch(error => this.processHTTPMsgService.handleError(error));
+
+  }
+
   registerUser(formContent: any): Observable<UserDataModel> {
     return this.http.post(baseURL + 'signup', formContent)
       .catch(error => this.processHTTPMsgService.handleError(error));
 
   }
 
-  currentUser(): Observable<UserDataModel> {
+
+  deleteUser(id: string ): Observable<UserDataModel>  {
+    return this.http.delete(baseURL + 'admin/users/edit/' + id )
+      .catch(error => this.processHTTPMsgService.handleError(error));
+
+  }
+
+  currenTutorUser(): Observable<UserDataModel> {
+    this.authService.getUsername()
+      .subscribe(name => {
+        this.name = name;
+      });
+
+    return this.http.get(baseURL + 'tutor/?' + this.name)
+      .catch(error => this.processHTTPMsgService.handleError(error));
+  }
+
+  currenAdminUser(): Observable<UserDataModel> {
     this.authService.getUsername()
       .subscribe(name => {
         this.name = name;

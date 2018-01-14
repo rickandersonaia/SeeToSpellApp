@@ -43,8 +43,14 @@ export class MaincontentComponent implements OnInit, OnDestroy {
         this.username = name;
         this.userService.getUserByUsername(this.username)
           .subscribe(user => {
-            this.currentUser = user[0];
-          });
+              this.currentUser = user[0];
+            },
+            err => {
+              this.userService.getTutorByUsername(this.username)
+                .subscribe(user => {
+                  this.currentUser = user[0];
+                });
+            });
       });
   }
 
