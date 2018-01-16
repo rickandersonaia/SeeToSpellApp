@@ -10,10 +10,8 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/catch';
 
 interface AuthResponse {
-  status: string;
-  success: string;
   token: string;
-  isadmin: boolean;
+  user: object;
 }
 
 interface JWTResponse {
@@ -28,6 +26,7 @@ export class AuthService {
   tokenKey = 'JWT';
   isAuthenticated: Boolean = false;
   username: Subject<string> = new Subject<string>();
+  currentUser: Subject<object> = new Subject<object>();
   authToken: string = undefined;
 
   constructor(private http: HttpClient,
@@ -50,9 +49,14 @@ export class AuthService {
     this.username.next(name);
   }
 
+  getUsername(): Observable<string> {
+    return this.username.asObservable();
+  }
+
   clearUsername() {
     this.username.next(undefined);
   }
+
 
   loadUserCredentials() {
     const credentials = JSON.parse(localStorage.getItem(this.tokenKey));
@@ -88,12 +92,13 @@ export class AuthService {
 
   }
 
-  logIn(user: any): Observable<any> {
+  logIn(loginform: any): Observable<any> {
     return this.http.post<AuthResponse>(baseURL + 'login',
-      {'username': user.username, 'password': user.password})
+      {'username': loginform.username, 'password': loginform.password})
       .map(res => {
-        this.storeUserCredentials({username: user.username, token: res.token});
-        return {'success': true, 'username': user.username, 'isAdmin': res.isadmin };
+        this.storeUserCredentials({username: loginform.username, token: res.token});
+        this.setCurrentUser(res.user);
+        return {'success': true, 'currentUser': res.user};
       })
       .catch(error => {
         return this.processHTTPMsgService.handleError(error);
@@ -108,11 +113,20 @@ export class AuthService {
     return this.isAuthenticated;
   }
 
-  getUsername(): Observable<string> {
-    return this.username.asObservable();
-  }
-
   getToken(): string {
     return this.authToken;
+  }
+
+
+  setCurrentUser(currentUser: object) {
+    this.currentUser.next(currentUser);
+  }
+
+  getCurrentUser(): Observable<object> {
+    return this.currentUser.asObservable();
+  }
+
+  clearCurrentUser() {
+    this.currentUser.next(undefined);
   }
 }

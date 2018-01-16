@@ -80,24 +80,4 @@ export class UserService {
 
   }
 
-  currenTutorUser(): Observable<UserDataModel> {
-    this.authService.getUsername()
-      .subscribe(name => {
-        this.name = name;
-      });
-
-    return this.http.get(baseURL + 'tutor/?' + this.name)
-      .catch(error => this.processHTTPMsgService.handleError(error));
-  }
-
-  currenAdminUser(): Observable<UserDataModel> {
-    this.authService.getUsername()
-      .subscribe(name => {
-        this.name = name;
-      });
-
-    return this.http.get(baseURL + 'admin/users/?' + this.name)
-      .catch(error => this.processHTTPMsgService.handleError(error));
-  }
-
 }

@@ -26,20 +26,17 @@ export class LoginComponent implements OnInit {
     console.log('User: ', this.user);
     this.authService.logIn(this.user)
       .subscribe(res => {
-          // res returns success, username, isAdmin
-          if (res.success) {
-            this.messageService.sendMessage('You are logged in!');
-            this.dialogRef.close(res.success);
-            // console.log(res.isAdmin);
-            if (res.isAdmin === true) { // reroute on admin
-              this.router.navigateByUrl('/admin');
-            } else {
-              this.router.navigateByUrl('/tutor');
-            } // otherwise stay at home
+          // res returns token, currentUser
+          console.log(res.currentUser);
+          this.messageService.sendMessage('You are logged in!');
+          this.dialogRef.close(res.success);
 
+          if (res.currentUser.isAdmin === true) { // reroute on admin
+            this.router.navigateByUrl('/admin');
           } else {
-            this.messageService.sendMessage('There is a problem with your username or password');
-          }
+            this.router.navigateByUrl('/tutor');
+          } // otherwise stay at home
+
         },
         error => {
           this.messageService.sendMessage('There is a problem with your username or password');

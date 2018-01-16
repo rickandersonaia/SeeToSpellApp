@@ -18,7 +18,6 @@ import {Observable} from 'rxjs/Observable';
 export class MaincontentComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
-  username: string = undefined;
   subscription: Subscription;
   currentUser: object;
 
@@ -38,19 +37,9 @@ export class MaincontentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.authService.loadUserCredentials();
-    this.subscription = this.authService.getUsername()
-      .subscribe(name => {
-        this.username = name;
-        this.userService.getUserByUsername(this.username)
-          .subscribe(user => {
-              this.currentUser = user[0];
-            },
-            err => {
-              this.userService.getTutorByUsername(this.username)
-                .subscribe(user => {
-                  this.currentUser = user[0];
-                });
-            });
+    this.subscription = this.authService.getCurrentUser()
+      .subscribe(user => {
+        this.currentUser = user;
       });
   }
 
@@ -63,7 +52,6 @@ export class MaincontentComponent implements OnInit, OnDestroy {
   }
 
   logOut() {
-    this.username = undefined;
     this.currentUser = undefined;
     this.authService.logOut();
     this.router.navigateByUrl('/');

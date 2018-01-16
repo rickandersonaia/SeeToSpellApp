@@ -1,4 +1,4 @@
-<div *ngIf="username">
+<div *ngIf="currentUser">
 <div class="main-container mat-typography"
      [class.is-mobile]="mobileQuery.matches"
      fxFlex fxFill
@@ -25,11 +25,11 @@
     <div class="account-menu"
          fxFlex="40%"
          fxFlex.xs="40">
-      <button *ngIf="!username" mat-raised-button color="accent" (click)="openLoginForm()">
+      <button *ngIf="!currentUser.username" mat-raised-button color="accent" (click)="openLoginForm()">
         Login
       </button>
-      <span *ngIf="username">Welcome {{username}}</span>
-      <button *ngIf="username" mat-raised-button color="accent" (click)="logOut()">
+      <span *ngIf="currentUser.username">Welcome {{currentUser.username}}</span>
+      <button *ngIf="currentUser.username" mat-raised-button color="accent" (click)="logOut()">
         Logout:
         <mat-icon>exit_to_app</mat-icon>
       </button>
@@ -74,7 +74,7 @@
 
 </div>
 </div>
-<div [hidden]="username">
+<div [hidden]="currentUser">
   <app-entrance></app-entrance>
 </div>
 

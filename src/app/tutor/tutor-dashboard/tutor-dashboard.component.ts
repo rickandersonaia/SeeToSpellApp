@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-tutor-dashboard',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutorDashboardComponent implements OnInit {
 
-  constructor() { }
+  subscription: Subscription;
+  currentUser: object;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.subscription = this.authService.getCurrentUser()
+      .subscribe(currentUser => {
+        console.log(currentUser)
+        this.currentUser = currentUser;
+      });
   }
 
 }

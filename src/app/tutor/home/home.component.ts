@@ -18,8 +18,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.wordservice.getFreeWords()
-      .subscribe(freewords => this.freewords = freewords);
   }
 
 }
