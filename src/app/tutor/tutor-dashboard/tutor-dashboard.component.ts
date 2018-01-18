@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {AuthService} from '../../core/services/auth.service';
+import {CurrentUserService} from '../../core/services/current-user.service';
 
 @Component({
   selector: 'app-tutor-dashboard',
@@ -12,14 +13,10 @@ export class TutorDashboardComponent implements OnInit {
   subscription: Subscription;
   currentUser: object;
 
-  constructor(private authService: AuthService) { }
+  constructor(private currentUserService: CurrentUserService) { }
 
   ngOnInit() {
-    this.subscription = this.authService.getCurrentUser()
-      .subscribe(currentUser => {
-        console.log(currentUser)
-        this.currentUser = currentUser;
-      });
+    this.currentUser = this.currentUserService.currentUser;
   }
 
 }

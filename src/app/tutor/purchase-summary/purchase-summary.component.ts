@@ -3,6 +3,7 @@ import {Params, ActivatedRoute} from '@angular/router';
 import {UserDataModel} from '../../core/shared/userdatamodel';
 import {UserService} from '../../core/services/user.service';
 import {AuthService} from '../../core/services/auth.service';
+import {CurrentUserService} from '../../core/services/current-user.service';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({
@@ -13,37 +14,30 @@ import {Subscription} from 'rxjs/Subscription';
 export class PurchaseSummaryComponent implements OnInit {
 
   private user: UserDataModel;
-  private sets: object;
-  private setsToPurchase: number[];
-  private currentUser: object;
+  public sets: object;
+  public setsToPurchase: number[];
+  public currentUser: any;
   subscription: Subscription;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
-              private authService: AuthService ) {
-
-    this.subscription = this.authService.getCurrentUser()
-      .subscribe(currentUser => {
-        console.log(currentUser);
-        this.currentUser = currentUser;
-      });
+              private authService: AuthService,
+              private currentUserService: CurrentUserService) {
   }
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
     this.getUser(id);
+
+    this.currentUser = this.currentUserService.currentUser;
+    console.log(this.currentUser);
+    this.sets = this.currentUser.setsPurchased;
+    this.setsToPurchase = this.getSetsToPurchase(this.sets);
 }
 
   getUser(id) {
-    this.userService.getTutorById(id)
-      .subscribe(user => {
-        console.log(id);
-        this.user = user;
-        this.sets = user.setsPurchased;
-        this.setsToPurchase = this.getSetsToPurchase(this.sets);
-        console.log(this.sets);
-      });
   }
+
 
   getSetsToPurchase(sets) {
     let cntr = 1;

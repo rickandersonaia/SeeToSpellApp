@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {AuthService} from '../../../core/services/auth.service';
 import {MessageService} from '../../../core/services/message.service';
 import {Router} from '@angular/router';
+import {CurrentUserService} from '../../../core/services/current-user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<LoginComponent>,
               private authService: AuthService,
               private router: Router,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private currentUserService: CurrentUserService) {
   }
 
   ngOnInit() {

@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MaterialModule} from './core/shared/material.module';
+import {AsyncLocalStorageModule} from 'angular-async-local-storage';
 
 import 'hammerjs';
 import {AdminModule} from './admin/admin.module';
@@ -33,6 +34,7 @@ import {RegisterComponent} from './shared-views/mainlayout/register/register.com
 import {AdminRoutingModule} from './admin/admin-routing/admin-routing.module';
 import {TutorRoutingModule} from './tutor/tutor-routing/tutor-routing.module';
 import { NotFoundComponent } from './shared-views/not-found/not-found.component';
+import {CurrentUserService} from './core/services/current-user.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { NotFoundComponent } from './shared-views/not-found/not-found.component'
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AsyncLocalStorageModule,
     RouterModule,
     HttpClientModule,
     FlexLayoutModule,
@@ -66,6 +69,7 @@ import { NotFoundComponent } from './shared-views/not-found/not-found.component'
     MatDialogModule,
     AuthService,
     MessageService,
+    CurrentUserService,
     {provide: 'BaseURL', useValue: baseURL},
     {provide: 'ImageURL', useValue: imageURL},
     {provide: 'AudioURL', useValue: audioURL},

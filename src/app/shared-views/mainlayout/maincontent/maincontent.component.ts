@@ -5,6 +5,7 @@ import {LoginComponent} from '../../mainlayout/login/login.component';
 
 import {Subscription} from 'rxjs/Subscription';
 import {AuthService} from '../../../core/services/auth.service';
+import {CurrentUserService} from '../../../core/services/current-user.service';
 import {Router} from '@angular/router';
 
 import {UserService} from '../../../core/services/user.service';
@@ -19,7 +20,7 @@ export class MaincontentComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
   subscription: Subscription;
-  currentUser: object;
+  currentUser: any;
 
   private _mobileQueryListener: () => void;
 
@@ -28,7 +29,8 @@ export class MaincontentComponent implements OnInit, OnDestroy {
               public dialog: MatDialog,
               private authService: AuthService,
               private router: Router,
-              private userService: UserService) {
+              private userService: UserService,
+              private currentUserService: CurrentUserService) {
 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -36,11 +38,13 @@ export class MaincontentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.authService.loadUserCredentials();
-    this.subscription = this.authService.getCurrentUser()
-      .subscribe(user => {
-        this.currentUser = user;
+    this.currentUser = this.currentUserService.getCurrentUser();
+    this.currentUserService.currentUserSrc
+      .subscribe(currentUser => {
+        this.currentUser = currentUser;
+        console.log(this.currentUser);
       });
+
   }
 
   ngOnDestroy(): void {
@@ -53,6 +57,7 @@ export class MaincontentComponent implements OnInit, OnDestroy {
 
   logOut() {
     this.currentUser = undefined;
+    this.currentUserService.clearCurrentUser();
     this.authService.logOut();
     this.router.navigateByUrl('/');
   }

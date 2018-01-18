@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
+import {CurrentUserService} from './current-user.service';
 
 import {baseURL} from '../shared/baseurl';
 import {ProcessHTTPMsgService} from './process-httpmsg.service';
@@ -30,7 +31,8 @@ export class AuthService {
   authToken: string = undefined;
 
   constructor(private http: HttpClient,
-              private processHTTPMsgService: ProcessHTTPMsgService) {
+              private processHTTPMsgService: ProcessHTTPMsgService,
+              private currentUserService: CurrentUserService) {
   }
 
   checkJWTtoken() {
@@ -97,7 +99,7 @@ export class AuthService {
       {'username': loginform.username, 'password': loginform.password})
       .map(res => {
         this.storeUserCredentials({username: loginform.username, token: res.token});
-        this.setCurrentUser(res.user);
+        this.currentUserService.setCurrentUser(res.user);
         return {'success': true, 'currentUser': res.user};
       })
       .catch(error => {
@@ -107,6 +109,7 @@ export class AuthService {
 
   logOut() {
     this.destroyUserCredentials();
+    this.currentUserService.clearCurrentUser();
   }
 
   isLoggedIn(): Boolean {
@@ -115,18 +118,5 @@ export class AuthService {
 
   getToken(): string {
     return this.authToken;
-  }
-
-
-  setCurrentUser(currentUser: object) {
-    this.currentUser.next(currentUser);
-  }
-
-  getCurrentUser(): Observable<object> {
-    return this.currentUser.asObservable();
-  }
-
-  clearCurrentUser() {
-    this.currentUser.next(undefined);
   }
 }

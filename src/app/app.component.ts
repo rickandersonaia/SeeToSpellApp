@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 
 import {Subscription} from 'rxjs/Subscription';
 import {AuthService} from './core/services/auth.service';
+import {CurrentUserService} from './core/services/current-user.service';
 import {MessageService} from './core/services/message.service';
 import {MatSnackBar} from '@angular/material';
 
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService,
               private messageService: MessageService,
-              public snackBar: MatSnackBar) {
+              public snackBar: MatSnackBar,
+              private currentUserService: CurrentUserService) {
 
     this.msgSubscription = this.messageService.getMessage()
       .subscribe(message => {

@@ -1,13 +1,13 @@
-<div class="container" fxLayout="column" fxLayoutGap="10px">
+<div class="container" fxLayout="column" fxLayoutGap="10px" *ngIf="currentUser">
   <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column">
     <div fxFlex="50" fxFlex.xs="100">
       <div class="form-width">
         <h1>Card Sets You've purchased</h1>
-        <ul *ngIf="sets?.length > 0">
-          <li *ngFor="let set of sets">Set {{set}}</li>
+        <ul *ngIf="currentUser.setsPurchased">
+          <li *ngFor="let set of currentUser.setsPurchased">Set {{set}}</li>
         </ul>
-        <p [hidden]="sets?.length !== 0">You haven't purchased any card sets yet.  You currently only have access to the free cards</p>
-        <p [hidden]="sets?.length !== 0"><a href="http://seetospell.com/store/products/">You can purchase sets here</a></p>
+        <p [hidden]="currentUser.setsPurchased.length > 0">You haven't purchased any card sets yet.  You currently only have access to the free cards</p>
+        <p [hidden]="currentUser.setsPurchased.length > 0"><a href="http://seetospell.com/store/products/">You can purchase sets here</a></p>
       </div>
     </div>
     <div fxFlex="50" fxFlex.xs="100">
