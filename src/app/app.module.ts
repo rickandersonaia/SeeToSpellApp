@@ -35,6 +35,10 @@ import {AdminRoutingModule} from './admin/admin-routing/admin-routing.module';
 import {TutorRoutingModule} from './tutor/tutor-routing/tutor-routing.module';
 import { NotFoundComponent } from './shared-views/not-found/not-found.component';
 import {CurrentUserService} from './core/services/current-user.service';
+import {AdminGuard} from './core/route-gaurds/admin.guard';
+import {TutorGuard} from './core/route-gaurds/tutor.guard';
+import {StudentGuard} from './core/route-gaurds/student.guard';
+import {OwnerGuard} from './core/route-gaurds/owner.guard';
 
 @NgModule({
   declarations: [
@@ -70,6 +74,10 @@ import {CurrentUserService} from './core/services/current-user.service';
     AuthService,
     MessageService,
     CurrentUserService,
+    AdminGuard,
+    TutorGuard,
+    StudentGuard,
+    OwnerGuard,
     {provide: 'BaseURL', useValue: baseURL},
     {provide: 'ImageURL', useValue: imageURL},
     {provide: 'AudioURL', useValue: audioURL},

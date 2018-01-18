@@ -9,17 +9,17 @@ import {WordnewComponent} from '../wordnew/wordnew.component';
 import {WordeditComponent} from '../wordedit/wordedit.component';
 import {WordsComponent} from '../words/words.component';
 import {AdminDashboardComponent} from '../admin-dashboard/admin-dashboard.component';
-import {AdminAuthService} from '../../core/services/admin-auth.service';
+import {AdminGuard} from '../../core/route-gaurds/admin.guard';
 
 const adminRoutes: Routes = [
   {
     path: 'admin',
     component: AdminDashboardComponent,
-    canActivate: [AdminAuthService],
+    canActivate: [AdminGuard],
     children: [
       {
         path: '',
-        canActivateChild: [AdminAuthService],
+        canActivateChild: [AdminGuard],
         children: [
           {
             path: 'words',

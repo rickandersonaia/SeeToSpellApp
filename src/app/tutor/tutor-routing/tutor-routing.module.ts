@@ -10,40 +10,49 @@ import {SetsAddComponent} from '../sets-add/sets-add.component';
 import {SetsEditComponent} from '../sets-edit/sets-edit.component';
 import {TutorDashboardComponent} from '../tutor-dashboard/tutor-dashboard.component';
 import {TutorAccountComponent} from '../tutor-account/tutor-account.component';
+import {TutorGuard} from '../../core/route-gaurds/tutor.guard';
+import {OwnerGuard} from '../../core/route-gaurds/owner.guard';
 
 const tutorRoutes: Routes = [
   {
     path: 'tutor',
     component: TutorDashboardComponent,
+    canActivate: [TutorGuard],
     children: [
       {
-        path: 'edit/:id',
-        component: TutorAccountComponent,
-      },
-      {
-        path: 'students',
-        component: StudentsListModule,
-      },
-      {
-        path: 'students/new',
-        component: StudentAddComponent,
-      },
-      {
-        path: 'students/edit/:id',
-        component: StudentEditComponent,
-      },
-      {
-        path: 'sets',
-        component: SetsComponent,
-      },
-      {
-        path: 'sets/new',
-        component: SetsAddComponent,
-      },
-      {
-        path: 'sets/edit/:id',
-        component: SetsEditComponent,
-      },
+        path: '',
+        canActivateChild: [TutorGuard, OwnerGuard],
+        children: [
+          {
+            path: 'edit/:id',
+            component: TutorAccountComponent,
+          },
+          {
+            path: ':id/students',
+            component: StudentsListModule,
+          },
+          {
+            path: ':id/students/new',
+            component: StudentAddComponent,
+          },
+          {
+            path: ':id/students/edit/:studentid',
+            component: StudentEditComponent,
+          },
+          {
+            path: ':id/sets',
+            component: SetsComponent,
+          },
+          {
+            path: ':id/sets/new',
+            component: SetsAddComponent,
+          },
+          {
+            path: ':id/sets/edit',
+            component: SetsEditComponent,
+          },
+        ]
+      }
     ],
   }
   ]
