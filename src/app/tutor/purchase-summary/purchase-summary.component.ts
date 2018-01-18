@@ -30,7 +30,6 @@ export class PurchaseSummaryComponent implements OnInit {
     this.getUser(id);
 
     this.currentUser = this.currentUserService.currentUser;
-    console.log(this.currentUser);
     this.sets = this.currentUser.setsPurchased;
     this.setsToPurchase = this.getSetsToPurchase(this.sets);
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class TutorAuthService {
+export class OwnerRouteGaurdService {
 
   constructor() { }
 
