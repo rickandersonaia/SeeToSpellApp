@@ -10,6 +10,7 @@ export class UsercardComponent {
 
   @Input() user: UserDataModel;
   @Input() edit: boolean;
+  @Input() link: string;
 
   constructor(@Inject('BaseURL') private BaseURL,
               @Inject('AvatarURL') private AvatarURL,) {

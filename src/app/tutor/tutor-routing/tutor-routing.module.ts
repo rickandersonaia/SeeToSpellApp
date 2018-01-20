@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from '../home/home.component';
-import {StudentsListModule} from '../../student/students-list/students-list.module';
+
+import {TutorGuard} from '../../core/route-gaurds/tutor.guard';
+import {OwnerGuard} from '../../core/route-gaurds/owner.guard';
+
 import {StudentAddComponent} from '../student-add/student-add.component';
 import {StudentEditComponent} from '../student-edit/student-edit.component';
 import {SetsComponent} from '../sets/sets.component';
@@ -10,8 +12,9 @@ import {SetsAddComponent} from '../sets-add/sets-add.component';
 import {SetsEditComponent} from '../sets-edit/sets-edit.component';
 import {TutorDashboardComponent} from '../tutor-dashboard/tutor-dashboard.component';
 import {TutorAccountComponent} from '../tutor-account/tutor-account.component';
-import {TutorGuard} from '../../core/route-gaurds/tutor.guard';
-import {OwnerGuard} from '../../core/route-gaurds/owner.guard';
+import {StudentDetailComponent} from '../student-detail/student-detail.component';
+import {SetDetailComponent} from '../set-detail/set-detail.component';
+import {StudentsListComponent} from '../students-list/students-list.component';
 
 const tutorRoutes: Routes = [
   {
@@ -29,14 +32,18 @@ const tutorRoutes: Routes = [
           },
           {
             path: ':id/students',
-            component: StudentsListModule,
+            component: StudentsListComponent,
           },
           {
-            path: ':id/students/new',
+            path: 'students/new',
             component: StudentAddComponent,
           },
           {
-            path: ':id/students/edit/:studentid',
+            path: 'students/:studentId',
+            component: StudentDetailComponent,
+          },
+          {
+            path: 'students/edit/:studentId',
             component: StudentEditComponent,
           },
           {
@@ -44,8 +51,12 @@ const tutorRoutes: Routes = [
             component: SetsComponent,
           },
           {
-            path: ':id/sets/new',
+            path: 'sets/new',
             component: SetsAddComponent,
+          },
+          {
+            path: 'sets/:id',
+            component: SetDetailComponent,
           },
           {
             path: ':id/sets/edit',
@@ -55,7 +66,7 @@ const tutorRoutes: Routes = [
       }
     ],
   }
-  ]
+];
 
 @NgModule({
   imports: [
@@ -67,4 +78,5 @@ const tutorRoutes: Routes = [
   ],
   declarations: []
 })
-export class TutorRoutingModule { }
+export class TutorRoutingModule {
+}

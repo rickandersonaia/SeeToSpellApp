@@ -1,10 +1,12 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import {StudentDataModel, studentAvatars} from '../../core/shared/studentdatamodel';
-import { UserService} from '../../core/services/user.service';
 import {StudentService} from '../../core/services/student.service';
+import {CurrentUserService} from '../../core/services/current-user.service';
 import {Location} from '@angular/common';
-import { Router} from '@angular/router';
+import { Router, Params, ActivatedRoute} from '@angular/router';
+import {MessageService} from '../../core/services/message.service';
+
 
 @Component({
   selector: 'app-student-add',
@@ -13,9 +15,11 @@ import { Router} from '@angular/router';
 })
 export class StudentAddComponent implements OnInit {
 
-  newUserForm: FormGroup;
-  user: StudentDataModel;
+  newStudentForm: FormGroup;
+  student: StudentDataModel;
   avatars = studentAvatars;
+  parentId: string;
+  currentUser: any;
   formErrors = {
     displayName: ''
   };
@@ -29,9 +33,12 @@ export class StudentAddComponent implements OnInit {
   };
 
   constructor(private fb: FormBuilder,
-              private userService: UserService,
+              private studentService: StudentService,
               private location: Location,
               private router: Router,
+              private route: ActivatedRoute,
+              private cus: CurrentUserService,
+              private messageService: MessageService,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
@@ -40,24 +47,25 @@ export class StudentAddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentUser = this.cus.currentUser;
     this.createForm();
   }
 
   createForm() {
-    this.newUserForm = this.fb.group({
+    this.newStudentForm = this.fb.group({
       displayName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       avatar: 'generic.jpeg',
-      parentId: [{value: '', disabled: true}]
+      parentId: this.currentUser._id
     });
 
-    this.newUserForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.newStudentForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
     this.onValueChanged(); // reset form validation messages
   }
 
   onValueChanged(data?: any) {
-    if (!this.newUserForm) { return; }
-    const form = this.newUserForm;
+    if (!this.newStudentForm) { return; }
+    const form = this.newStudentForm;
 
     for (const field in this.formErrors) {
       // clear previous error message (if any)
@@ -74,13 +82,15 @@ export class StudentAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.addUser(this.newUserForm.value)
-      .subscribe(user => {
-        console.log(user);
-        this.user = user;
-        this.router.navigateByUrl('/users');
-      });
-    this.newUserForm.reset();
+    this.studentService.addStudent(this.newStudentForm.value)
+      .subscribe(student => {
+        console.log(student);
+        this.messageService.sendMessage('You successfully created a new student');
+        this.student = student;
+        this.router.navigateByUrl('/tutor/' + this.currentUser._id + '/students');
+      },
+        error => this.messageService.sendMessage('There was an error creating the student, please try again'));
+    this.newStudentForm.reset();
   }
 
   goBack(): void {

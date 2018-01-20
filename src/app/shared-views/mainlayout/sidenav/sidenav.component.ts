@@ -16,7 +16,7 @@ export class SidenavComponent implements OnInit {
     this.adminLinks = [
       {label: 'Account', link: '/tutor/edit/' + this.currentUser._id},
       {label: 'Dashboard', link: '/tutor'},
-      {label: 'All of your students', link: '/tutor/students/'},
+      {label: 'All of your students', link: '/tutor/' + this.currentUser._id + '/students/'},
       {label: 'Add a new student', link: '/tutor/students/new/'},
     ];
   }

@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {UserDataModel} from '../shared/userdatamodel';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -10,7 +9,6 @@ import 'rxjs/add/operator/map';
 import {baseURL} from '../shared/baseurl';
 import {ProcessHTTPMsgService} from './process-httpmsg.service';
 import {AuthService} from './auth.service';
-import {WordDataModel} from '../shared/worddatamodel';
 
 @Injectable()
 export class UserService {

@@ -5,7 +5,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class CurrentUserService {
 
-  public currentUser: object;
+  public currentUser: any;
   public currentUserSrc = new BehaviorSubject(null);
 
   constructor(private router: Router) {

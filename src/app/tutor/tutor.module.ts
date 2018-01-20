@@ -16,6 +16,9 @@ import { TutorDashboardComponent } from './tutor-dashboard/tutor-dashboard.compo
 import { TutorAccountComponent } from './tutor-account/tutor-account.component';
 import { PurchaseSummaryComponent } from './purchase-summary/purchase-summary.component';
 import {TutorUsereditComponent} from './tutor-useredit/tutor-useredit.component';
+import { StudentDetailComponent } from './student-detail/student-detail.component';
+import { SetDetailComponent } from './set-detail/set-detail.component';
+import { StudentsListComponent } from './students-list/students-list.component';
 
 @NgModule({
   imports: [
@@ -38,7 +41,10 @@ import {TutorUsereditComponent} from './tutor-useredit/tutor-useredit.component'
     TutorDashboardComponent,
     TutorAccountComponent,
     TutorUsereditComponent,
-    PurchaseSummaryComponent]
+    PurchaseSummaryComponent,
+    StudentDetailComponent,
+    SetDetailComponent,
+    StudentsListComponent]
 })
 export class TutorModule {
 }

@@ -39,6 +39,7 @@ import {AdminGuard} from './core/route-gaurds/admin.guard';
 import {TutorGuard} from './core/route-gaurds/tutor.guard';
 import {StudentGuard} from './core/route-gaurds/student.guard';
 import {OwnerGuard} from './core/route-gaurds/owner.guard';
+import {StudentService} from './core/services/student.service';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import {OwnerGuard} from './core/route-gaurds/owner.guard';
   providers: [
     WordService,
     UserService,
+    StudentService,
     MatDialogModule,
     AuthService,
     MessageService,

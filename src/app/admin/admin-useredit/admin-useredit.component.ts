@@ -4,6 +4,7 @@ import {Router, Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared/userdatamodel';
 import {UserService} from '../../core/services/user.service';
+import {CurrentUserService} from '../../core/services/current-user.service';
 
 @Component({
   selector: 'app-admin-useredit',
@@ -32,6 +33,7 @@ export class AdminUserEditComponent implements OnInit {
               private location: Location,
               private route: ActivatedRoute,
               private deleteroute: Router,
+              private cus: CurrentUserService,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
@@ -90,7 +92,7 @@ export class AdminUserEditComponent implements OnInit {
 
 
   onDelete() {
-    console.log('Deleting Word ' + this.user._id);
+    console.log('Deleting User ' + this.user._id);
     this.userService.deleteUser(this.user._id)
       .subscribe(word => {
         this.deleteroute.navigateByUrl('/admin/users');

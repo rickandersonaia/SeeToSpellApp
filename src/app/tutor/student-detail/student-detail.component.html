@@ -1,0 +1,19 @@
+<div class="container detail-page" fxLayout="column" fxLayoutGap="10px" *ngIf="student">
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column">
+    <div fxFlex="50" fxFlex.xs="100" class="user-card-wrapper" ngClass.xs="">
+      <app-usercard  [user]="student" [edit]="true" [link]="link"></app-usercard>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" ngClass.xs="">
+      <h1>{{student.displayName}}'s Detail Page</h1>
+      <mat-list>
+        <mat-list-item>{{student.displayName}}'s Collection </mat-list-item>
+        <mat-list-item>Sets {{student.displayName}} has fully mastered</mat-list-item>
+        <mat-list-item>Sets {{student.displayName}} has partially mastered</mat-list-item>
+        <mat-list-item>Words {{student.displayName}} has fully mastered</mat-list-item>
+        <mat-list-item>Words {{student.displayName}} has partially mastered</mat-list-item>
+      </mat-list>
+
+      <p>{{link}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="page-width" fxLayout="column" fxLayoutGap="10px">
+  <mat-list fxLayoutWrap fxLayout="column"  *ngIf="students">
+    <button class="newcard" mat-raised-button
+            [routerLink]="['/tutor/students/new']">Add New Student</button>
+    <mat-list-item *ngFor="let student of students" [routerLink]="['/tutor/students', student._id]"
+                   fxFlex.lg="25" fxFlex.md="33"
+                   fxFlex.sm="50" fxFlex.xs="100">
+      <img matListAvatar *ngIf="student.avatar" src="{{AvatarURL + student.avatar}}" alt="{{student.displayName}}">
+      <img matListAvatar *ngIf="!student.avatar" src="{{AvatarURL + 'generic.jpg'}}" alt="{{student.displayName}}">
+      <p matLine>{{student.displayName}}</p>
+    </mat-list-item>
+  </mat-list>
+
+  <div [hidden]="students">
+    <mat-progress-spinner></mat-progress-spinner>
+    <h4>Loading - Please wait...</h4>
+  </div>
+
+</div>

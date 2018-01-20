@@ -61,3 +61,10 @@ button.newcard{width:250px;};
   left:15%;
 }
 
+//Detail page styles
+.detail-page,
+.student-edit{
+  .user-card-wrapper{margin-top:170px;}
+  .mat-card>.mat-card-actions:last-child{padding: 0 0 12px 0;}
+}
+
