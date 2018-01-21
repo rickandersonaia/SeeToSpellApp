@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AdminSidenavComponent } from './admin-sidenav.component';
+import {AdminSidenavComponent} from './admin-sidenav.component';
 
 describe('AdminSidenavComponent', () => {
-  let component: AdminSidenavComponent;
-  let fixture: ComponentFixture<AdminSidenavComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AdminSidenavComponent ]
-    })
-    .compileComponents();
-  }));
+  let sut: any;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminSidenavComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    sut = new AdminSidenavComponent();
+    sut.currentUser = {_id: 'testid'};
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('ngOnInit', () => {
+
+    it('shoud assign this.adminLinks with array value', () => {
+      sut.ngOnInit();
+      expect(sut.adminLinks.length).toEqual(3);
+    });
+
+    it('should assign this.adminLinks array item with acount link with correct user id', () => {
+      sut.ngOnInit();
+      expect(sut.adminLinks[0].link.includes(sut.currentUser._id)).toBeTruthy();
+    });
+
   });
 });

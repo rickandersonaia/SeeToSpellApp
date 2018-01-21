@@ -33,7 +33,6 @@ export class AdminUserEditComponent implements OnInit {
               private location: Location,
               private route: ActivatedRoute,
               private deleteroute: Router,
-              private cus: CurrentUserService,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,

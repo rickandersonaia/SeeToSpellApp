@@ -12,7 +12,7 @@ export class AdminSidenavComponent implements OnInit {
   adminLinks: object;
   @Input() currentUser: any;
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit() {
     this.adminLinks = [

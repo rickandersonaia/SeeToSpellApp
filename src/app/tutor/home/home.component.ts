@@ -1,7 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
-
-import {WordDataModel} from '../../core/shared/worddatamodel';
-import {WordService} from '../../core/services/word.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +6,8 @@ import {WordService} from '../../core/services/word.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  freewords: WordDataModel[];
 
-  constructor(private wordservice: WordService,
-              @Inject('BaseURL') private BaseURL,
-              @Inject('ImageURL') private ImageURL,
-              @Inject('AudioURL') private AudioURL) {
+  constructor() {
   }
 
   ngOnInit() {

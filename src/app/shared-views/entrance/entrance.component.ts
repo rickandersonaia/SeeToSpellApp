@@ -26,7 +26,7 @@ export class EntranceComponent implements OnInit, OnDestroy {
               media: MediaMatcher,
               public dialog: MatDialog,
               public registerdialog: MatDialog,
-              @Inject('ImageURL') private ImageURL) {
+              @Inject('ImageURL') public ImageURL) {
 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
