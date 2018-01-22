@@ -1,17 +1,53 @@
-<div class="page-width" fxLayout="column" fxLayoutGap="10px">
-  <mat-list fxLayoutWrap fxLayout="row"  *ngIf="words">
-    <mat-list-item *ngFor="let word of words" [routerLink]="['/admin/words', word._id]"
-                   fxFlex.lg="25" fxFlex.md="33"
-                   fxFlex.sm="50" fxFlex.xs="100">
-      <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
-      <p matLine><b>{{word.name}}</b> - cardset {{word.cardset}}</p>
-      <p matLine>is free? {{word.isfree}}</p>
-    </mat-list-item>
-  </mat-list>
-  <div fxLayout="row" fxLayoutAlign="center center">
+<div class="page-width word-list-page" fxLayout="column" fxLayoutGap="10px">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <h1>All of our Cards</h1>
     <button class="newcard" mat-raised-button
-            [routerLink]="['/admin/words/new']">Add New Card</button>
+            [routerLink]="['/admin/words/new']">Add New Card
+    </button>
   </div>
+
+  <div class="column_wrapper" fxLayoutWrap fxLayout="row">
+    <div class="column" fxLayout="column" fxFlex.lg="33" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100">
+      <h2>Set 1</h2>
+      <mat-list fxLayout="column" *ngIf="words">
+        <ng-container *ngFor="let word of words">
+          <mat-list-item *ngIf="word.cardset == 1" [routerLink]="['/admin/words', word._id]">
+            <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
+            <p matLine><b>{{word.name}}</b> - cardset {{word.cardset}}</p>
+            <p matLine *ngIf="word.isfree">free</p>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+    <div class="column" fxLayout="column" fxFlex.lg="33" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100">
+      <h2>Set 2</h2>
+      <mat-list fxLayout="column" *ngIf="words">
+        <ng-container *ngFor="let word of words">
+          <mat-list-item *ngIf="word.cardset == 2" [routerLink]="['/admin/words', word._id]">
+            <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
+            <p matLine><b>{{word.name}}</b> - cardset {{word.cardset}}</p>
+            <p matLine *ngIf="word.isfree">free</p>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+    <div class="column" fxLayout="column" fxFlex.lg="33" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100">
+      <h2>Set 3</h2>
+      <mat-list fxLayout="column" *ngIf="words">
+        <ng-container *ngFor="let word of words">
+          <mat-list-item *ngIf="word.cardset == 3" [routerLink]="['/admin/words', word._id]">
+            <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
+            <p matLine><b>{{word.name}}</b> - cardset {{word.cardset}}</p>
+            <p matLine *ngIf="word.isfree">free</p>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+  </div>
+
   <div [hidden]="words">
     <mat-progress-spinner></mat-progress-spinner>
     <h4>Loading - Please wait...</h4>

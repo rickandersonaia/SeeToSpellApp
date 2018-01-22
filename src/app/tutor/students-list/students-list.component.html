@@ -1,7 +1,7 @@
-<div class="page-width" fxLayout="column" fxLayoutGap="10px">
+<div class="page-width student-list-page" fxLayout="column" fxLayoutGap="10px">
+  <h1 *ngIf="currentUser">{{currentUser.displayName}}'s students</h1>
+
   <mat-list fxLayoutWrap fxLayout="column"  *ngIf="students">
-    <button class="newcard" mat-raised-button
-            [routerLink]="['/tutor/students/new']">Add New Student</button>
     <mat-list-item *ngFor="let student of students" [routerLink]="['/tutor/students', student._id]"
                    fxFlex.lg="25" fxFlex.md="33"
                    fxFlex.sm="50" fxFlex.xs="100">
@@ -10,7 +10,8 @@
       <p matLine>{{student.displayName}}</p>
     </mat-list-item>
   </mat-list>
-
+  <button class="newcard" mat-raised-button
+          [routerLink]="['/tutor/students/new']">Add New Student</button>
   <div [hidden]="students">
     <mat-progress-spinner></mat-progress-spinner>
     <h4>Loading - Please wait...</h4>
