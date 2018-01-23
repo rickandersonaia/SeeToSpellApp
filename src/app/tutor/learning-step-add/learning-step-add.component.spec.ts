@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SetsComponent } from './sets.component';
+import { LearningStepAddComponent } from './learning-step-add.component';
 
-describe('SetsComponent', () => {
-  let component: SetsComponent;
-  let fixture: ComponentFixture<SetsComponent>;
+describe('LearningStepAddComponent', () => {
+  let component: LearningStepAddComponent;
+  let fixture: ComponentFixture<LearningStepAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SetsComponent ]
+      declarations: [ LearningStepAddComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SetsComponent);
+    fixture = TestBed.createComponent(LearningStepAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -18,6 +18,8 @@ export class SidenavComponent implements OnInit {
       {label: 'Dashboard', link: '/tutor'},
       {label: 'All of your students', link: '/tutor/' + this.currentUser._id + '/students/'},
       {label: 'Add a new student', link: '/tutor/students/new/'},
+      {label: 'Add a new Learnin Path', link: '/tutor/learning-paths/new/'},
+      {label: 'All of your Learning Paths', link: '/tutor/' + this.currentUser._id + '/learning-paths/'},
     ];
   }
 

@@ -7,14 +7,19 @@ import {OwnerGuard} from '../../core/route-gaurds/owner.guard';
 
 import {StudentAddComponent} from '../student-add/student-add.component';
 import {StudentEditComponent} from '../student-edit/student-edit.component';
-import {SetsComponent} from '../sets/sets.component';
-import {SetsAddComponent} from '../sets-add/sets-add.component';
-import {SetsEditComponent} from '../sets-edit/sets-edit.component';
 import {TutorDashboardComponent} from '../tutor-dashboard/tutor-dashboard.component';
 import {TutorAccountComponent} from '../tutor-account/tutor-account.component';
 import {StudentDetailComponent} from '../student-detail/student-detail.component';
-import {SetDetailComponent} from '../set-detail/set-detail.component';
 import {StudentsListComponent} from '../students-list/students-list.component';
+import {LearningPathListComponent} from '../learning-path-list/learning-path-list.component';
+import {LearningPathEditComponent} from '../learning-path-edit/learning-path-edit.component';
+import {LearningPathAddComponent} from '../learning-path-add/learning-path-add.component';
+import {LearningStepListComponent} from '../learning-step-list/learning-step-list.component';
+import {LearningStepAddComponent} from '../learning-step-add/learning-step-add.component';
+import {LearningStepEditComponent} from '../learning-step-edit/learning-step-edit.component';
+import {WordsPurchasedListComponent} from '../words-purchased-list/words-purchased-list.component';
+import {WordsListComponent} from '../words-list/words-list.component';
+import {WordDetailComponent} from '../word-detail/word-detail.component';
 
 const tutorRoutes: Routes = [
   {
@@ -29,6 +34,18 @@ const tutorRoutes: Routes = [
           {
             path: 'edit/:id',
             component: TutorAccountComponent,
+          },
+          {
+            path: 'words',
+            component: WordsListComponent,
+          },
+          {
+            path: 'words/:wordId',
+            component: WordDetailComponent,
+          },
+          {
+            path: ':id/words',
+            component: WordsPurchasedListComponent,
           },
           {
             path: ':id/students',
@@ -47,20 +64,28 @@ const tutorRoutes: Routes = [
             component: StudentEditComponent,
           },
           {
-            path: ':id/sets',
-            component: SetsComponent,
+            path: 'learning-paths/new',
+            component: LearningPathAddComponent,
           },
           {
-            path: 'sets/new',
-            component: SetsAddComponent,
+            path: ':id/learning-paths',
+            component: LearningPathListComponent,
           },
           {
-            path: 'sets/:id',
-            component: SetDetailComponent,
+            path: 'learning-paths/edit/:learningPathId',
+            component: LearningPathEditComponent,
           },
           {
-            path: ':id/sets/edit',
-            component: SetsEditComponent,
+            path: ':id/learning-steps',
+            component: LearningStepListComponent,
+          },
+          {
+            path: 'learning-steps/new',
+            component: LearningStepAddComponent,
+          },
+          {
+            path: 'learning-steps/edit/:learningStepId',
+            component: LearningStepEditComponent,
           },
         ]
       }

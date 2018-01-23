@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SetsEditComponent } from './sets-edit.component';
+import { LearningPathAddComponent } from './learning-path-add.component';
 
-describe('SetsEditComponent', () => {
-  let component: SetsEditComponent;
-  let fixture: ComponentFixture<SetsEditComponent>;
+describe('LearningPathAddComponent', () => {
+  let component: LearningPathAddComponent;
+  let fixture: ComponentFixture<LearningPathAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SetsEditComponent ]
+      declarations: [ LearningPathAddComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SetsEditComponent);
+    fixture = TestBed.createComponent(LearningPathAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

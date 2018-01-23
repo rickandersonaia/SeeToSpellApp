@@ -1,0 +1,50 @@
+<div class="page-width word-list-page" fxLayout="column" fxLayoutGap="10px">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <h1>All of your Cards</h1>
+  </div>
+
+  <div class="column_wrapper" fxLayoutWrap fxLayout="row">
+    <div class="column" fxLayout="column" fxFlex.lg="33" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100">
+      <h2>Set 1</h2>
+      <mat-list fxLayout="column" *ngIf="words">
+        <ng-container *ngFor="let word of words">
+          <mat-list-item *ngIf="word.cardset == 1">
+            <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
+            <p matLine><b>{{word.name}}</b> - cardset {{word.cardset}}</p>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+    <div class="column" fxLayout="column" fxFlex.lg="33" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100">
+      <h2>Set 2</h2>
+      <mat-list fxLayout="column" *ngIf="words">
+        <ng-container *ngFor="let word of words">
+          <mat-list-item *ngIf="word.cardset == 2">
+            <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
+            <p matLine><b>{{word.name}}</b> - cardset {{word.cardset}}</p>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+    <div class="column" fxLayout="column" fxFlex.lg="33" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100">
+      <h2>Set 3</h2>
+      <mat-list fxLayout="column" *ngIf="words">
+        <ng-container *ngFor="let word of words">
+          <mat-list-item *ngIf="word.cardset == 3">
+            <img matListAvatar src="{{ImageURL + word.image}}" alt="{{word.name}}">
+            <p matLine><b>{{word.name}}</b> - cardset {{word.cardset}}</p>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+  </div>
+
+  <div [hidden]="words">
+    <mat-progress-spinner></mat-progress-spinner>
+    <h4>Loading - Please wait...</h4>
+  </div>
+
+</div>
