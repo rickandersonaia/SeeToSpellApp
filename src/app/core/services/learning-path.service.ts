@@ -15,7 +15,7 @@ import {WordService} from './word.service';
 @Injectable()
 export class LearningPathService {
   currentUser: any;
-  wordList: object[];
+  learnPathArray: any[];
   wordObjectList: WordDataModel[];
 
   constructor(private http: HttpClient,
@@ -27,14 +27,47 @@ export class LearningPathService {
   }
 
 
-  // createDefaultLearningPath(): Observable<any> {
-  //
-  //   return this.http.post(baseURL + 'tutor/learning-paths/new', learningPath)
-  //     .catch(error => {
-  //       return this.processHTTPMsgService.handleError(error);
-  //     });
-  //
-  // }
+  createDefaultLearningPath(words: object[]) {
+    this.learnPathArray = [];
+    // let setcntr = 1;
+    // this.learnPathArray = words.map((word, index) => {
+    //   if (index % 3 === 0) {
+    //     const stepwords = words.slice(index, index + 3).map(w => w['_id']);
+    //     const data = {'name': 'Step ' + setcntr, 'words': stepwords};
+    //     setcntr++;
+    //     return data;
+    //   }
+    //   return '';
+    //
+    // }).filter(item => item);
+    // return this.learnPathArray;
+
+    let stepCntr = 1;
+    for (let index = 0; index < words.length; index++) {
+      const word = words[index];
+      if (index % 3 === 0) {
+        const wordObjectsInSet = words.slice(index, index + 3);
+        const finalWordsInSet = [];
+        for (let item = 0; item < wordObjectsInSet.length; item++) {
+          const wordInSet = wordObjectsInSet[item];
+          finalWordsInSet.push(wordInSet['_id']);
+        }
+        this.learnPathArray.push({'name': 'Step ' + stepCntr, 'words': finalWordsInSet});
+        stepCntr++;
+      }
+    }
+    console.log(this.learnPathArray);
+    return this.learnPathArray;
+  }
+
+
+  getLearningPaths(id: string): Observable<any> {
+    return this.http.post(baseURL + 'tutor/' + id + '/learning-paths', id)
+      .catch(error => {
+        return this.processHTTPMsgService.handleError(error);
+      });
+
+  }
 
   addLearningPath(formContent: any): Observable<any> {
     return this.http.post(baseURL + 'tutor/learning-paths/new', formContent)
@@ -44,11 +77,11 @@ export class LearningPathService {
 
   }
 
-  getWordObjectList(){
+  getWordObjectList() {
     const setsPurchased = Object.values(this.currentUser.setsPurchased);
   }
 
-  getFreeWordObjectList(){
+  getFreeWordObjectList() {
     return this.wordService.getFreeWords()
       .subscribe(list => {
         this.wordObjectList = list;
