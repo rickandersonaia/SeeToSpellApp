@@ -3,32 +3,40 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 
 import {ProcessHTTPMsgService} from './process-httpmsg.service';
 import {WordDataModel} from '../shared/worddatamodel';
-import {StudentDataModel} from '../shared/studentdatamodel';
 import {baseURL} from '../shared/baseurl';
 import {CurrentUserService} from './current-user.service';
 import {WordService} from './word.service';
+import {LearningStepService} from './learning-step.service';
 
 @Injectable()
 export class LearningPathService {
   currentUser: any;
   learnPathArray: any[];
+  defaultLearningPath: any[];
   wordObjectList: WordDataModel[];
 
   constructor(private http: HttpClient,
               private processHTTPMsgService: ProcessHTTPMsgService,
               private cus: CurrentUserService,
-              private wordService: WordService) {
+              private wordService: WordService,
+              private learningStepService: LearningStepService) {
 
     this.currentUser = this.cus.currentUser;
   }
 
+  createDefaultLearningPath(learningPathArray: any[]){
+    for (let index = 0; index < learningPathArray.length; index++) {
+      const step = learningPathArray[index];
+    }
+  }
 
-  createDefaultLearningPath(words: object[]) {
+
+  createDefaultLearningPathArray(words: object[]) {
     this.learnPathArray = [];
+    this.defaultLearningPath = [];
     // let setcntr = 1;
     // this.learnPathArray = words.map((word, index) => {
     //   if (index % 3 === 0) {
@@ -69,8 +77,8 @@ export class LearningPathService {
 
   }
 
-  addLearningPath(formContent: any): Observable<any> {
-    return this.http.post(baseURL + 'tutor/learning-paths/new', formContent)
+  addLearningPath(data: any): Observable<any> {
+    return this.http.post(baseURL + 'tutor/learning-paths/new', data)
       .catch(error => {
         return this.processHTTPMsgService.handleError(error);
       });

@@ -32,6 +32,8 @@ import {AuthInterceptor, UnauthorizedInterceptor} from './core/services/auth.int
 import {MessageService} from './core/services/message.service';
 import {CurrentUserService} from './core/services/current-user.service';
 import {StudentService} from './core/services/student.service';
+import {LearningPathService} from './core/services/learning-path.service';
+import {LearningStepService} from './core/services/learning-step.service';
 
 import {AppComponent} from './app.component';
 import {HomeComponent} from './tutor/home/home.component';
@@ -43,7 +45,6 @@ import {AdminGuard} from './core/route-gaurds/admin.guard';
 import {TutorGuard} from './core/route-gaurds/tutor.guard';
 import {StudentGuard} from './core/route-gaurds/student.guard';
 import {OwnerGuard} from './core/route-gaurds/owner.guard';
-import {LearningPathService} from './core/services/learning-path.service';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import {LearningPathService} from './core/services/learning-path.service';
     MessageService,
     CurrentUserService,
     LearningPathService,
+    LearningStepService,
     AdminGuard,
     TutorGuard,
     StudentGuard,
