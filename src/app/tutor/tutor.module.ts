@@ -24,6 +24,7 @@ import { LearningStepListComponent } from './learning-step-list/learning-step-li
 import { WordsListComponent } from './words-list/words-list.component';
 import { WordsPurchasedListComponent } from './words-purchased-list/words-purchased-list.component';
 import { WordDetailComponent } from './word-detail/word-detail.component';
+import { TutorDashboardStatsComponent } from './tutor-dashboard-stats/tutor-dashboard-stats.component';
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import { WordDetailComponent } from './word-detail/word-detail.component';
     LearningStepListComponent,
     WordsListComponent,
     WordsPurchasedListComponent,
-    WordDetailComponent]
+    WordDetailComponent,
+    TutorDashboardStatsComponent]
 })
 export class TutorModule {
 }

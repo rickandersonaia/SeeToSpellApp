@@ -1,5 +1,5 @@
-<div class="page-width student-list-page container" fxLayout="column" fxLayoutGap="10px">
-  <h1 *ngIf="currentUser">{{currentUser.displayName}}'s students</h1>
+<div class="container page-width student-list-page" fxLayout="column" fxLayoutGap="10px">
+  <h1 *ngIf="currentUser">Quick Stats</h1>
 
   <mat-list fxLayoutWrap fxLayout="column"  *ngIf="students">
     <mat-list-item *ngFor="let student of students" [routerLink]="['/tutor/students', student._id]"
@@ -8,13 +8,16 @@
       <img matListAvatar *ngIf="student.avatar" src="{{AvatarURL + student.avatar}}" alt="{{student.displayName}}">
       <img matListAvatar *ngIf="!student.avatar" src="{{AvatarURL + 'generic.jpg'}}" alt="{{student.displayName}}">
       <p matLine>{{student.displayName}}</p>
+      <p matLine>Words mastered this week - none</p>
+      <p matLine>Words worked on this week - none</p>
+      <p matLine>Learning Steps mastered this week - none</p>
+      <p matLine>Learning Steps worked on this week - none</p>
     </mat-list-item>
   </mat-list>
-  <button class="newcard" mat-raised-button
-          [routerLink]="['/tutor/students/new']">Add New Student</button>
   <div [hidden]="students">
     <mat-progress-spinner></mat-progress-spinner>
     <h4>Loading - Please wait...</h4>
   </div>
 
 </div>
+

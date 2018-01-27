@@ -1,15 +1,15 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {StudentDataModel} from '../../core/shared/studentdatamodel';
-import {StudentService} from '../../core/services/student.service';
 import {CurrentUserService} from '../../core/services/current-user.service';
 import {ActivatedRoute} from '@angular/router';
+import {StudentService} from '../../core/services/student.service';
 
 @Component({
-  selector: 'app-students-list',
-  templateUrl: './students-list.component.html',
-  styleUrls: ['./students-list.component.scss']
+  selector: 'app-tutor-dashboard-stats',
+  templateUrl: './tutor-dashboard-stats.component.html',
+  styleUrls: ['./tutor-dashboard-stats.component.scss']
 })
-export class StudentsListComponent implements OnInit {
+export class TutorDashboardStatsComponent implements OnInit {
 
   students: StudentDataModel[];
   currentUser: any;
@@ -19,8 +19,6 @@ export class StudentsListComponent implements OnInit {
               private cus: CurrentUserService,
               private route: ActivatedRoute,
               @Inject('BaseURL') private BaseURL,
-              @Inject('ImageURL') private ImageURL,
-              @Inject('AudioURL') private AudioURL,
               @Inject('AvatarURL') private AvatarURL) { }
 
   ngOnInit() {

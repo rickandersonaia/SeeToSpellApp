@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {Component, OnInit} from '@angular/core';
 import {CurrentUserService} from '../../core/services/current-user.service';
-import {LearningPathService} from '../../core/services/learning-path.service';
-import {WordService} from '../../core/services/word.service';
-import {WordDataModel} from '../../core/shared/worddatamodel';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-tutor-dashboard',
@@ -12,22 +9,30 @@ import {WordDataModel} from '../../core/shared/worddatamodel';
 })
 export class TutorDashboardComponent implements OnInit {
 
-  subscription: Subscription;
   currentUser: any;
-  words: any;
+  isDashboard = true;
 
   constructor(private currentUserService: CurrentUserService,
-              private learningPath: LearningPathService,
-              private wordService: WordService) { }
+              private router: Router) {
+    this.conditionalDisplayofDashboardContent();
+  }
+
 
   ngOnInit() {
-    // this.currentUser = this.currentUserService.currentUser;
-    // this.wordService.getPurchasedWordsIds(this.currentUser._id)
-    //   .subscribe(words => {
-    //     this.words = words;
-    //     console.log(this.words);
-    //   });
+    this.currentUser = this.currentUserService.currentUser;
+  }
 
+  conditionalDisplayofDashboardContent() {
+    this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          if (event.url === '/tutor') {
+            this.isDashboard = true;
+          } else {
+            this.isDashboard = false;
+          }
+        }
+      }
+    );
   }
 
 }
