@@ -3,9 +3,6 @@ import {WordService} from '../../core/services/word.service';
 import {CurrentUserService} from '../../core/services/current-user.service';
 import {LearningPathService} from '../../core/services/learning-path.service';
 import {LearningStepService} from '../../core/services/learning-step.service';
-import {Observable} from 'rxjs/Observable';
-import {forkJoin} from 'rxjs/observable/forkJoin';
-import {concat} from 'rxjs/observable/concat';
 import {combineLatest} from 'rxjs/observable/combineLatest';
 
 @Component({
@@ -34,40 +31,49 @@ export class LearningPathAddComponent implements OnInit {
       });
   }
 
-  createDefaultLearningStepsAndLearningPath() {
-    let stepIds: string[];
-    this.saveDefaultStepsAndReturnStepIds()
-      .subscribe(steps => {
-        console.log(steps);
-        stepIds = steps.map(step => {
-          return step['_id'];
-        });
-        console.log(stepIds);
-        const defaultLearningPath = this.defineNamedLearningPath('Default', stepIds);
-        this.addLearningPath(defaultLearningPath)
-          .subscribe(path => this.learningPath = path );
-      });
+  createDefaultLearningPath() {
+    const defaultLearningPath = this.defineNamedLearningPath('Default', this.learningPathArray);
+    return this.addLearningPath(defaultLearningPath)
+      .subscribe(path => this.learningPath = path );
 
   }
 
-  saveDefaultStepsAndReturnStepIds() {
-    const observables = [];
-    for (let index = 0; index < this.learningPathArray.length; index++) {
-      const step = this.learningPathArray[index];
-      observables.push(this.lss.addDefaultSteps(step));
-    }
-    return combineLatest(observables);
-  }
+  // saveDefaultStepsAndReturnStepIds() {
+  //   const observables = [];
+  //   for (let index = 0; index < this.learningPathArray.length; index++) {
+  //     const step = this.learningPathArray[index];
+  //     observables.push(this.lss.addDefaultSteps(step));
+  //   }
+  //   return combineLatest(observables);
+  // }
 
-  defineNamedLearningPath(name: string, stepIds: string[]) {
+  defineNamedLearningPath(name: string, learningPathArray: any[]) {
     const learningPath: object = {};
+    learningPath['pathName'] = name;
     learningPath['parentId'] = this.currentUser['_id'];
-    learningPath['name'] = name;
-    learningPath['learningSteps'] = stepIds;
+    learningPath['learningSteps'] = learningPathArray;
     return learningPath;
   }
 
   addLearningPath(namedLearningPath) {
     return this.lps.addLearningPath(namedLearningPath);
   }
+
+
+
+  // createDefaultLearningStepsAndLearningPath() {
+  //   let stepIds: string[];
+  //   this.saveDefaultStepsAndReturnStepIds()
+  //     .subscribe(steps => {
+  //       console.log(steps);
+  //       stepIds = steps.map(step => {
+  //         return step['_id'];
+  //       });
+  //       console.log(stepIds);
+  //       const defaultLearningPath = this.defineNamedLearningPath('Default', stepIds);
+  //       this.addLearningPath(defaultLearningPath)
+  //         .subscribe(path => this.learningPath = path );
+  //     });
+  //
+  // }
 }

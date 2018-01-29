@@ -27,28 +27,16 @@ export class LearningPathService {
     this.currentUser = this.cus.currentUser;
   }
 
-  createDefaultLearningPath(learningPathArray: any[]){
-    for (let index = 0; index < learningPathArray.length; index++) {
-      const step = learningPathArray[index];
-    }
-  }
+  // createDefaultLearningPath(learningPathArray: any[]) {
+  //   for (let index = 0; index < learningPathArray.length; index++) {
+  //     const step = learningPathArray[index];
+  //   }
+  // }
 
 
   createDefaultLearningPathArray(words: object[]) {
     this.learnPathArray = [];
     this.defaultLearningPath = [];
-    // let setcntr = 1;
-    // this.learnPathArray = words.map((word, index) => {
-    //   if (index % 3 === 0) {
-    //     const stepwords = words.slice(index, index + 3).map(w => w['_id']);
-    //     const data = {'name': 'Step ' + setcntr, 'words': stepwords};
-    //     setcntr++;
-    //     return data;
-    //   }
-    //   return '';
-    //
-    // }).filter(item => item);
-    // return this.learnPathArray;
 
     let stepCntr = 1;
     for (let index = 0; index < words.length; index++) {
@@ -58,9 +46,9 @@ export class LearningPathService {
         const finalWordsInSet = [];
         for (let item = 0; item < wordObjectsInSet.length; item++) {
           const wordInSet = wordObjectsInSet[item];
-          finalWordsInSet.push(wordInSet['_id']);
+          finalWordsInSet.push({wordId: wordInSet['_id'], wordName: wordInSet['name']});
         }
-        this.learnPathArray.push({'name': 'Step ' + stepCntr, 'words': finalWordsInSet});
+        this.learnPathArray.push({'stepName': 'Step ' + stepCntr, 'words': finalWordsInSet});
         stepCntr++;
       }
     }
@@ -70,7 +58,7 @@ export class LearningPathService {
 
 
   getLearningPaths(id: string): Observable<any> {
-    return this.http.post(baseURL + 'tutor/' + id + '/learning-paths', id)
+    return this.http.get(baseURL + 'tutor/' + id + '/learning-paths')
       .catch(error => {
         return this.processHTTPMsgService.handleError(error);
       });
@@ -85,15 +73,27 @@ export class LearningPathService {
 
   }
 
-  getWordObjectList() {
-    const setsPurchased = Object.values(this.currentUser.setsPurchased);
-  }
 
-  getFreeWordObjectList() {
-    return this.wordService.getFreeWords()
-      .subscribe(list => {
-        this.wordObjectList = list;
-      });
-  }
+  // createDefaultLearningPathArray(words: object[]) {
+  //   this.learnPathArray = [];
+  //   this.defaultLearningPath = [];
+  //
+  //   let stepCntr = 1;
+  //   for (let index = 0; index < words.length; index++) {
+  //     const word = words[index];
+  //     if (index % 3 === 0) {
+  //       const wordObjectsInSet = words.slice(index, index + 3);
+  //       const finalWordsInSet = [];
+  //       for (let item = 0; item < wordObjectsInSet.length; item++) {
+  //         const wordInSet = wordObjectsInSet[item];
+  //         finalWordsInSet.push(wordInSet['_id']);
+  //       }
+  //       this.learnPathArray.push({'name': 'Step ' + stepCntr, 'words': finalWordsInSet});
+  //       stepCntr++;
+  //     }
+  //   }
+  //   // console.log(this.learnPathArray);
+  //   return this.learnPathArray;
+  // }
 
 }

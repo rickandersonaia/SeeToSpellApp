@@ -1,4 +1,4 @@
-<p>
-  admin-dashboard works!
-</p>
+<ng-container *ngIf="isDashboard">
+  <app-admin-dashboard-stats></app-admin-dashboard-stats>
+</ng-container>
 <router-outlet></router-outlet>

@@ -1,7 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-img{max-width:100%; height:auto;}
+img{
+  max-width:100%;
+  height:auto;
+}
+
+.page-width{
+  width:1140px;
+  max-width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
 
 .flex-spacer {
   flex: 1 1 auto;

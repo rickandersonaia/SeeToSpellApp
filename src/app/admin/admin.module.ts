@@ -28,6 +28,7 @@ import {AuthInterceptor, UnauthorizedInterceptor} from '../core/services/auth.in
 import {AuthService} from '../core/services/auth.service';
 import {TutorRoutingModule} from '../tutor/tutor-routing/tutor-routing.module';
 import {AccountsComponent} from './accounts/accounts.component';
+import { AdminDashboardStatsComponent } from './admin-dashboard-stats/admin-dashboard-stats.component';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import {AccountsComponent} from './accounts/accounts.component';
     WordnewComponent,
     AdminDashboardComponent,
     AccountsComponent,
+    AdminDashboardStatsComponent,
   ],
   exports: [],
   providers: [

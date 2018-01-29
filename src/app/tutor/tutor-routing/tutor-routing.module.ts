@@ -76,7 +76,7 @@ const tutorRoutes: Routes = [
             component: LearningPathEditComponent,
           },
           {
-            path: ':id/learning-steps',
+            path: 'learning-steps/:stepId',
             component: LearningStepListComponent,
           },
           {

@@ -1,3 +1,30 @@
-<p>
-  learning-path-list works!
-</p>
+<div class="page-width" fxLayout="column" fxLayoutGap="10px">
+  <h1 *ngIf="currentUser">{{currentUser.displayName}}'s Learning Paths</h1>
+  <ng-container *ngIf="learningPaths" >
+    <div fxFlex.lg="25" fxFlex.md="33"
+              fxFlex.sm="50" fxFlex.xs="100">
+      <div *ngFor="let path of learningPaths">
+      <mat-list class="learning-steps">
+        <h2>{{path.pathName}}</h2>
+          <mat-list-item *ngFor="let step of path.learningSteps">
+            <p mat-line>{{step.stepName}}</p>
+            <p mat-line>
+              <span class="step-words" *ngFor="let word of step.words">{{word.wordName}}</span>
+            </p>
+          </mat-list-item>
+      </mat-list>
+        <button mat-raised-button color="primary" routerLink="/tutor/learning-paths/edit/{{path._id}}">Edit</button>
+      </div>
+    </div>
+    <div fxFlex.lg="25" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100"></div>
+    <div fxFlex.lg="25" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100"></div>
+    <div fxFlex.lg="25" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100"></div>
+  </ng-container>
+    <div [hidden]="learningPaths">
+      <mat-progress-spinner></mat-progress-spinner>
+      <h4>Loading - Please wait...</h4>
+    </div>
+</div>

@@ -31,4 +31,10 @@ export class LearningStepService {
 
   }
 
+  getLeaningStepById(id: any): Observable<any[]> {
+    return this.http.get(baseURL + 'tutor/learning-steps/:learningStepId', id)
+      .catch(error => this.processHTTPMsgService.handleError(error));
+
+  }
+
 }
