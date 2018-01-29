@@ -1,6 +1,9 @@
 <mat-sidenav-content class="sidenav-wrapper">
   <app-usercard [user]="currentUser" [edit]="false"></app-usercard>
   <mat-list>
-    <mat-list-item *ngFor="let link of adminLinks"> <a routerLink="{{link.link}}">{{link.label}}</a></mat-list-item>
+    <mat-list-item *ngFor="let link of adminLinks">
+      <mat-icon matListIcon>{{link.icon}}</mat-icon>
+      <p mat-line> <a routerLink="{{link.link}}">{{link.label}}</a></p>
+    </mat-list-item>
   </mat-list>
 </mat-sidenav-content>

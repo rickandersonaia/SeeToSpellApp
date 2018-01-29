@@ -36,7 +36,21 @@ mat-toolbar h1{margin-top:4px;}
 
 .sidenav{
   width:300px;
+  background-repeat:no-repeat;
+  background-image:
+    /* 1) White gradient              */ linear-gradient(to right, RGB(255, 255, 255), RGB(255, 255, 255)),
+    /* 2) Turquoise gradient */ linear-gradient(to right, RGB(0, 151, 167), RGB(0, 151, 167));
+
+  background-position:
+    /* 1) White position     */ 0 0,
+    /* 2) Turquoise position        */ 0 200px;
+
+  background-size:
+    /* 1) White size         */ 100% 200px,
+    /* 2) Turquoise size            */ 100% 1200px;
+
 }
+
 .account-menu{
   text-align:right;
 }

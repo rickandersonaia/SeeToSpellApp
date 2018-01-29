@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,16 +10,41 @@ export class SidenavComponent implements OnInit {
   adminLinks: object;
   @Input() currentUser: any;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.adminLinks = [
-      {label: 'Account', link: '/tutor/edit/' + this.currentUser._id},
-      {label: 'Dashboard', link: '/tutor'},
-      {label: 'All of your students', link: '/tutor/' + this.currentUser._id + '/students/'},
-      {label: 'Add a new student', link: '/tutor/students/new/'},
-      {label: 'Add a new Learnin Path', link: '/tutor/learning-paths/new/'},
-      {label: 'All of your Learning Paths', link: '/tutor/' + this.currentUser._id + '/learning-paths/'},
+      {
+        label: 'Account',
+        link: '/tutor/edit/' + this.currentUser._id,
+        icon: 'account_circle'
+      },
+      {
+        label: 'Dashboard',
+        link: '/tutor',
+        icon: 'dashboard'
+      },
+      {
+        label: 'All of your students',
+        link: '/tutor/' + this.currentUser._id + '/students/',
+        icon: 'people'
+      },
+      {
+        label: 'Add a new student',
+        link: '/tutor/students/new/',
+        icon: 'person_add'
+      },
+      {
+        label: 'Add a new Learnin Path',
+        link: '/tutor/learning-paths/new/',
+        icon: 'library_add'
+      },
+      {
+        label: 'All of your Learning Paths',
+        link: '/tutor/' + this.currentUser._id + '/learning-paths/',
+        icon: 'library_books'
+      },
     ];
   }
 
