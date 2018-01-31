@@ -25,6 +25,7 @@ export class FirstStepsComponent implements OnInit {
   purchasedWords: any[];
   learningPathArray: any[];
   learningPath: any;
+  finishedActions: object;
   formErrors = {
     displayName: ''
   };
@@ -87,12 +88,12 @@ export class FirstStepsComponent implements OnInit {
     const LearningPath = this.defineNamedLearningPath(pathName, this.learningPathArray);
     return this.addLearningPath(LearningPath)
       .subscribe(path => {
-        this.learningPath = path;
-        this.messageService.sendMessage('You created the ' + pathName + ' Learning Path');
-      },
+          this.learningPath = path;
+          this.messageService.sendMessage('You created the ' + pathName + ' Learning Path');
+        },
         error => {
-        this.messageService.sendMessage('There was a problem creating Learning Path');
-      });
+          this.messageService.sendMessage('There was a problem creating Learning Path');
+        });
   }
 
   newStudentSubmit() {
@@ -109,6 +110,7 @@ export class FirstStepsComponent implements OnInit {
           this.student = student;
           console.log(student);
           this.messageService.sendMessage('You created a new student!');
+          this.finishedActions = this.createfinishedActions();
         },
         error => this.messageService.sendMessage('There was an error creating the student, please try again'));
   }
@@ -144,6 +146,18 @@ export class FirstStepsComponent implements OnInit {
 
   addLearningPath(namedLearningPath) {
     return this.lps.addLearningPath(namedLearningPath);
+  }
+
+  createfinishedActions() {
+    const actions = [
+      {'label': 'Learn how to use the game to help your student', 'url': '/tutor/documentation'},
+      {'label': 'Add more students', 'url': '/tutor/students/new'},
+      {'label': 'Edit this student', 'url': '/tutor/students/edit/' + this.student._id},
+      {'label': 'Edit this learning path', 'url': '/tutor/learning-paths/edit/' + this.learningPath._id},
+      {'label': 'Edit your profile', 'url': '/tutor/edit/' + this.currentUser._id},
+      {'label': 'Let your student start learing!', 'url': ''}
+    ];
+    return actions;
   }
 
 }

@@ -17,6 +17,7 @@ import {LearningPathAddComponent} from '../learning-path-add/learning-path-add.c
 import {WordsPurchasedListComponent} from '../words-purchased-list/words-purchased-list.component';
 import {WordsListComponent} from '../words-list/words-list.component';
 import {WordDetailComponent} from '../word-detail/word-detail.component';
+import {DocumentationComponent} from '../documentation/documentation.component';
 
 const tutorRoutes: Routes = [
   {
@@ -71,6 +72,10 @@ const tutorRoutes: Routes = [
           {
             path: 'learning-paths/edit/:learningPathId',
             component: LearningPathEditComponent,
+          },
+          {
+            path: 'documentation',
+            component: DocumentationComponent,
           },
         ]
       }

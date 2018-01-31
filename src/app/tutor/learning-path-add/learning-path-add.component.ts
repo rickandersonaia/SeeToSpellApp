@@ -4,6 +4,7 @@ import {CurrentUserService} from '../../core/services/current-user.service';
 import {LearningPathService} from '../../core/services/learning-path.service';
 import {FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from '../../core/services/message.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-learning-path-add',
@@ -21,7 +22,8 @@ export class LearningPathAddComponent implements OnInit {
               private wordService: WordService,
               private cus: CurrentUserService,
               private lps: LearningPathService,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -47,6 +49,7 @@ export class LearningPathAddComponent implements OnInit {
       .subscribe(path => {
           this.learningPath = path;
           this.messageService.sendMessage('You created the ' + pathName + ' Learning Path');
+          this.router.navigateByUrl('/tutor/' + this.currentUser['_id'] + '/learning-paths');
         },
         error => {
           this.messageService.sendMessage('There was a problem creating Learning Path');

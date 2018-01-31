@@ -8,7 +8,7 @@
     <li>Create your first student</li>
   </ul>
 
-    <mat-vertical-stepper>
+    <mat-vertical-stepper linear>
 
       <mat-step [stepControl]="learningPathForm">
         <form [formGroup]="learningPathForm" (ngSubmit)="newLearningPathSubmit()">
@@ -17,7 +17,7 @@
             <input matInput placeholder="Learning Path Name" formControlName="pathName" required>
           </mat-form-field>
           <div>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button mat-raised-button matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -38,15 +38,18 @@
               </mat-radio-button>
             </mat-radio-group>
           </p>
-          <button mat-raised-button color="primary">Create New Student</button>
+          <button mat-raised-button matStepperNext color="primary">Create New Student</button>
         </form>
 
       </mat-step>
       <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done.
+        <ng-template matStepLabel>Next Steps</ng-template>
+        <p>Now that you've created your first learning path and student you can:</p>
+        <ul>
+          <li *ngFor="let action of finishedActions"><a routerLink="{{action.url}}">{{action.label}}</a></li>
+        </ul>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button mat-raised-button>Close</button>
         </div>
       </mat-step>
     </mat-vertical-stepper>
