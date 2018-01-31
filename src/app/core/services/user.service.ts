@@ -65,6 +65,18 @@ export class UserService {
 
   }
 
+  deleteTutorStudents(parentId: string): Observable<UserDataModel> {
+    return this.http.delete(baseURL + 'tutor/' + parentId + '/students')
+      .catch(error => this.processHTTPMsgService.handleError(error));
+
+  }
+
+  deleteTutorLearningPaths(parentId: string): Observable<UserDataModel> {
+    return this.http.delete(baseURL + 'tutor/' + parentId + '/learning-paths')
+      .catch(error => this.processHTTPMsgService.handleError(error));
+
+  }
+
   registerUser(formContent: any): Observable<UserDataModel> {
     return this.http.post(baseURL + 'signup', formContent)
       .catch(error => this.processHTTPMsgService.handleError(error));

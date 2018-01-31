@@ -5,6 +5,9 @@ import {Location} from '@angular/common';
 import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared/userdatamodel';
 import {UserService} from '../../core/services/user.service';
 import {CurrentUserService} from '../../core/services/current-user.service';
+import {MessageService} from '../../core/services/message.service';
+import {StudentService} from '../../core/services/student.service';
+import {LearningPathService} from '../../core/services/learning-path.service';
 
 @Component({
   selector: 'app-admin-useredit',
@@ -30,9 +33,12 @@ export class AdminUserEditComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
+              private studentService: StudentService,
+              private lps: LearningPathService,
               private location: Location,
               private route: ActivatedRoute,
               private deleteroute: Router,
+              private messageService: MessageService,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
@@ -91,10 +97,29 @@ export class AdminUserEditComponent implements OnInit {
 
 
   onDelete() {
-    console.log('Deleting User ' + this.user._id);
     this.userService.deleteUser(this.user._id)
-      .subscribe(word => {
-        this.deleteroute.navigateByUrl('/admin/users');
-      });
+      .subscribe(deletedUser => {
+          this.deleteroute.navigateByUrl('/admin/users');
+          this.messageService.sendMessage('The user is deleted.');
+          this.deleteStudents(this.user._id);
+          this.deleteLearningPaths(this.user._id);
+        },
+        error => this.messageService.sendMessage('There was a problem deleting this user'));
+  }
+
+  deleteStudents(userId) {
+    this.userService.deleteTutorStudents(userId)
+      .subscribe(resp => {
+        this.messageService.sendMessage('The user\'s students are deleted.');
+      },
+        error => this.messageService.sendMessage('There was a problem deleting this user\'s students'));
+  }
+
+  deleteLearningPaths(userId) {
+    this.userService.deleteTutorLearningPaths(userId)
+      .subscribe(resp => {
+          this.messageService.sendMessage('The user\'s learning paths are deleted.');
+        },
+        error => this.messageService.sendMessage('There was a problem deleting this user\'s learning paths'));
   }
 }
