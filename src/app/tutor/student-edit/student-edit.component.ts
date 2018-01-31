@@ -6,6 +6,7 @@ import {CurrentUserService} from '../../core/services/current-user.service';
 import {Location} from '@angular/common';
 import {Router, Params, ActivatedRoute} from '@angular/router';
 import {MessageService} from '../../core/services/message.service';
+import {LearningPathService} from '../../core/services/learning-path.service';
 
 @Component({
   selector: 'app-student-edit',
@@ -19,8 +20,10 @@ export class StudentEditComponent implements OnInit {
   avatars = studentAvatars;
   parentId: string;
   currentUser: any;
+  pathOptions: object;
   exdisplayname: string;
   exavatar: string;
+  exlearningpathid: string
 
   formErrors = {
     displayName: ''
@@ -41,6 +44,7 @@ export class StudentEditComponent implements OnInit {
               private deleteRoute: Router,
               private route: ActivatedRoute,
               private cus: CurrentUserService,
+              private lps: LearningPathService,
               private messageService: MessageService,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
@@ -51,6 +55,7 @@ export class StudentEditComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.cus.currentUser;
+    this.createSelectOptionsList();
     const id = this.route.snapshot.params['studentId'];
     this.getFormData(id);
     this.createForm();
@@ -61,6 +66,7 @@ export class StudentEditComponent implements OnInit {
       .subscribe(student => {
         this.exdisplayname = student.displayName ? student.displayName : null;
         this.exavatar = student.avatar ? student.avatar : null;
+        this.exlearningpathid = student.learningPathId ? student.learningPathId : null;
         this.student = student;
         this.createForm();
       });
@@ -70,6 +76,7 @@ export class StudentEditComponent implements OnInit {
     this.editStudentForm = this.fb.group({
       displayName: [this.exdisplayname, [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       avatar: this.exavatar,
+      learningPathId: this.exlearningpathid
     });
 
     this.editStudentForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -115,6 +122,24 @@ export class StudentEditComponent implements OnInit {
         this.router.navigateByUrl('/tutor/' + this.currentUser._id + '/students');
       },
         error => this.messageService.sendMessage('There was an error deleting ' + this.student.displayName + ', please try again'));
+  }
+
+  createSelectOptionsList() {
+    return this.lps.getLearningPaths(this.currentUser._id)
+      .subscribe(paths => {
+          const pathOptions = [];
+          console.log(paths);
+          if (paths.length > 0) {
+            for (let index = 0; index < paths.length; index++) {
+              const path = paths[index];
+              pathOptions.push({'id': path['_id'], 'label': path['pathName']});
+            }
+            this.pathOptions = pathOptions;
+          } else {
+            this.pathOptions = [{'id': 'none',  'label': 'You don\'t have any learning paths created'}];
+          }
+        },
+        error => (console.log('createSelectOptionsList() FAILED!')));
   }
 
   goBack(): void {

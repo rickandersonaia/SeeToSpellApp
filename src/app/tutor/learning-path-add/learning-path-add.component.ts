@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {WordService} from '../../core/services/word.service';
 import {CurrentUserService} from '../../core/services/current-user.service';
 import {LearningPathService} from '../../core/services/learning-path.service';
-import {LearningStepService} from '../../core/services/learning-step.service';
-import {combineLatest} from 'rxjs/observable/combineLatest';
 
 @Component({
   selector: 'app-learning-path-add',
@@ -18,8 +16,7 @@ export class LearningPathAddComponent implements OnInit {
 
   constructor(private wordService: WordService,
               private cus: CurrentUserService,
-              private lps: LearningPathService,
-              private lss: LearningStepService) {
+              private lps: LearningPathService) {
   }
 
   ngOnInit() {
@@ -38,15 +35,6 @@ export class LearningPathAddComponent implements OnInit {
 
   }
 
-  // saveDefaultStepsAndReturnStepIds() {
-  //   const observables = [];
-  //   for (let index = 0; index < this.learningPathArray.length; index++) {
-  //     const step = this.learningPathArray[index];
-  //     observables.push(this.lss.addDefaultSteps(step));
-  //   }
-  //   return combineLatest(observables);
-  // }
-
   defineNamedLearningPath(name: string, learningPathArray: any[]) {
     const learningPath: object = {};
     learningPath['pathName'] = name;
@@ -58,22 +46,4 @@ export class LearningPathAddComponent implements OnInit {
   addLearningPath(namedLearningPath) {
     return this.lps.addLearningPath(namedLearningPath);
   }
-
-
-
-  // createDefaultLearningStepsAndLearningPath() {
-  //   let stepIds: string[];
-  //   this.saveDefaultStepsAndReturnStepIds()
-  //     .subscribe(steps => {
-  //       console.log(steps);
-  //       stepIds = steps.map(step => {
-  //         return step['_id'];
-  //       });
-  //       console.log(stepIds);
-  //       const defaultLearningPath = this.defineNamedLearningPath('Default', stepIds);
-  //       this.addLearningPath(defaultLearningPath)
-  //         .subscribe(path => this.learningPath = path );
-  //     });
-  //
-  // }
 }

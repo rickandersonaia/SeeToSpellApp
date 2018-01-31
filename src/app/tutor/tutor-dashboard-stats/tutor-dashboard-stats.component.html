@@ -1,23 +1,22 @@
 <div class="container page-width student-list-page" fxLayout="column" fxLayoutGap="10px">
-  <h1 *ngIf="currentUser">Quick Stats</h1>
-
-  <mat-list fxLayoutWrap fxLayout="column"  *ngIf="students">
-    <mat-list-item *ngFor="let student of students" [routerLink]="['/tutor/students', student._id]"
-                   fxFlex.lg="25" fxFlex.md="33"
-                   fxFlex.sm="50" fxFlex.xs="100">
-      <img matListAvatar *ngIf="student.avatar" src="{{AvatarURL + student.avatar}}" alt="{{student.displayName}}">
-      <img matListAvatar *ngIf="!student.avatar" src="{{AvatarURL + 'generic.jpg'}}" alt="{{student.displayName}}">
-      <p matLine>{{student.displayName}}</p>
-      <p matLine>Words mastered this week - none</p>
-      <p matLine>Words worked on this week - none</p>
-      <p matLine>Learning Steps mastered this week - none</p>
-      <p matLine>Learning Steps worked on this week - none</p>
-    </mat-list-item>
-  </mat-list>
-  <div [hidden]="students">
-    <mat-progress-spinner></mat-progress-spinner>
-    <h4>Loading - Please wait...</h4>
-  </div>
-
+  <ng-container *ngIf="students">
+    <h1>Quick Stats</h1>
+    <mat-list fxLayoutWrap fxLayout="column">
+      <mat-list-item *ngFor="let student of students" [routerLink]="['/tutor/students', student._id]"
+                     fxFlex.lg="25" fxFlex.md="33"
+                     fxFlex.sm="50" fxFlex.xs="100">
+        <img matListAvatar *ngIf="student.avatar" src="{{AvatarURL + student.avatar}}" alt="{{student.displayName}}">
+        <img matListAvatar *ngIf="!student.avatar" src="{{AvatarURL + 'generic.jpg'}}" alt="{{student.displayName}}">
+        <p matLine>{{student.displayName}}</p>
+        <p matLine>Words mastered this week - none</p>
+        <p matLine>Words worked on this week - none</p>
+        <p matLine>Learning Steps mastered this week - none</p>
+        <p matLine>Learning Steps worked on this week - none</p>
+      </mat-list-item>
+    </mat-list>
+  </ng-container>
+  <ng-container *ngIf="!students">
+    <app-first-steps></app-first-steps>
+  </ng-container>
 </div>
 

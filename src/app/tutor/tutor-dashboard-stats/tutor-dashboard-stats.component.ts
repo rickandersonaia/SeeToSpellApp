@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {StudentDataModel} from '../../core/shared/studentdatamodel';
 import {CurrentUserService} from '../../core/services/current-user.service';
 import {ActivatedRoute} from '@angular/router';
@@ -19,14 +19,19 @@ export class TutorDashboardStatsComponent implements OnInit {
               private cus: CurrentUserService,
               private route: ActivatedRoute,
               @Inject('BaseURL') private BaseURL,
-              @Inject('AvatarURL') private AvatarURL) { }
+              @Inject('AvatarURL') private AvatarURL) {
+  }
 
   ngOnInit() {
     this.currentUser = this.cus.currentUser;
     this.parentId = this.currentUser._id;
     this.studentService.getStudentsByParentId(this.parentId)
       .subscribe(students => {
-        this.students = students;
+        if (students.length > 0) {
+          this.students = students;
+        } else {
+          this.students = null;
+        }
       });
   }
 

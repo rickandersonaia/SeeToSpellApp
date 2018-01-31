@@ -10,6 +10,7 @@ import {baseURL} from '../shared/baseurl';
 import {CurrentUserService} from './current-user.service';
 import {WordService} from './word.service';
 import {LearningStepService} from './learning-step.service';
+import {MessageService} from './message.service';
 
 @Injectable()
 export class LearningPathService {
@@ -22,16 +23,11 @@ export class LearningPathService {
               private processHTTPMsgService: ProcessHTTPMsgService,
               private cus: CurrentUserService,
               private wordService: WordService,
-              private learningStepService: LearningStepService) {
+              private learningStepService: LearningStepService,
+              private messageService: MessageService) {
 
     this.currentUser = this.cus.currentUser;
   }
-
-  // createDefaultLearningPath(learningPathArray: any[]) {
-  //   for (let index = 0; index < learningPathArray.length; index++) {
-  //     const step = learningPathArray[index];
-  //   }
-  // }
 
 
   createDefaultLearningPathArray(words: object[]) {

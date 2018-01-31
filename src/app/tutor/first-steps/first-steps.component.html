@@ -1,0 +1,55 @@
+<div class="container page-width" fxLayout="column" fxLayoutGap="10px">
+  <div class="form-width">
+  <h1>Let's get started!</h1>
+  <p>Welcome to the See to Spell app! There are a couple of things to setup before your student can start learnin</p>
+  <p>Before you can proceed you need to:</p>
+  <ul>
+    <li>Create your first "learning path"</li>
+    <li>Create your first student</li>
+  </ul>
+
+    <mat-vertical-stepper>
+
+      <mat-step [stepControl]="learningPathForm">
+        <form [formGroup]="learningPathForm" (ngSubmit)="newLearningPathSubmit()">
+          <ng-template matStepLabel>Give your first learning path a name</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="Learning Path Name" formControlName="pathName" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="newStudentForm">
+        <form novalidate [formGroup]="newStudentForm" (ngSubmit)="newStudentSubmit()">
+          <ng-template matStepLabel>Create Your First Student</ng-template>
+          <p fxLayout="column">
+            <mat-form-field>
+              <input matInput formControlName="displayName" placeholder="Display Name" type="text">
+              <mat-error [hidden]="!(formErrors.displayName)">{{formErrors.displayName}}</mat-error>
+            </mat-form-field>
+
+            <label>Choose an Avatar: </label>
+            <mat-radio-group class="radio-group" formControlName="avatar">
+              <mat-radio-button *ngFor="let avatar of avatars" value="{{avatar.value}}">
+                <img src="{{ AvatarURL + avatar.image}}" height="64px" width="64px">
+              </mat-radio-button>
+            </mat-radio-group>
+          </p>
+          <button mat-raised-button color="primary">Create New Student</button>
+        </form>
+
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
+
+</div>

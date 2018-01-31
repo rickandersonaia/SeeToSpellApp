@@ -17,6 +17,15 @@
                 </mat-radio-button>
               </mat-radio-group>
 
+              <label>Choose an Learning Path</label>
+              <mat-form-field *ngIf="pathOptions">
+                <mat-select placeholder="Choose One" formControlName="learningPathId" name="learningPathId">
+                  <mat-option *ngFor="let option of pathOptions" [value]="option.id">
+                    {{option.label}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
             </p>
             <button mat-raised-button color="primary">Update {{student.displayName}}'s Profile</button>
             <button mat-raised-button color="warn" (click)="deleteStudent()">Delete {{student.displayName}}</button>

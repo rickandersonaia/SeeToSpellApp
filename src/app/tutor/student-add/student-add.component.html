@@ -15,6 +15,15 @@
             <img src="{{ AvatarURL + avatar.image}}" height="64px" width="64px">
           </mat-radio-button>
         </mat-radio-group>
+
+        <label>Choose an Learning Path</label>
+        <mat-form-field *ngIf="pathOptions">
+          <mat-select placeholder="Choose One" formControlName="learningPathId" name="learningPathId">
+            <mat-option *ngFor="let option of pathOptions" [value]="option.id">
+              {{option.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </p>
       <button mat-raised-button color="primary">Create New Student</button>
     </form>

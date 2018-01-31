@@ -24,6 +24,15 @@ export class StudentService {
 
   }
 
+  addFirstStudent(formContent: any, learningPath: any): Observable<StudentDataModel> {
+    formContent.push({learningPathId: learningPath});
+    return this.http.post(baseURL + 'tutor/students/new', formContent)
+      .catch(error => {
+        return this.processHTTPMsgService.handleError(error);
+      });
+
+  }
+
   getStudentsByParentId(parentId: string): Observable<StudentDataModel[]> {
     return this.http.get(baseURL + 'tutor/' + parentId + '/students')
       .catch(error => this.processHTTPMsgService.handleError(error));

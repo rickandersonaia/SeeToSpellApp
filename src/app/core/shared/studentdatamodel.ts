@@ -3,6 +3,14 @@ export class StudentDataModel {
   displayName: string;
   avatar: string;
   parentId: string;
+  learningPathId: string;
+  progress: [{words: [{
+      wordId: String,
+      preMastery: Object, // dates of success
+      mastery: Object, // dates of mastery
+      hasMastered: Boolean  // based on rules of mastery
+    }]
+  }];
 }
 
 export const studentAvatars = [
