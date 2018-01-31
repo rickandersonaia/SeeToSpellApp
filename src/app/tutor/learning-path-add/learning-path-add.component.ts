@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {WordService} from '../../core/services/word.service';
 import {CurrentUserService} from '../../core/services/current-user.service';
 import {LearningPathService} from '../../core/services/learning-path.service';
+import {FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
+import {MessageService} from '../../core/services/message.service';
 
 @Component({
   selector: 'app-learning-path-add',
@@ -13,10 +15,13 @@ export class LearningPathAddComponent implements OnInit {
   purchasedWords: any[];
   learningPathArray: any[];
   learningPath: any;
+  learningPathForm: FormGroup;
 
-  constructor(private wordService: WordService,
+  constructor(private fb: FormBuilder,
+              private wordService: WordService,
               private cus: CurrentUserService,
-              private lps: LearningPathService) {
+              private lps: LearningPathService,
+              private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -24,15 +29,28 @@ export class LearningPathAddComponent implements OnInit {
     this.wordService.getPurchasedWords(this.currentUser['_id'])
       .subscribe(words => {
         this.purchasedWords = words;
-        this.learningPathArray = this.lps.createDefaultLearningPathArray(words);
+        this.learningPathArray = this.lps.createLearningPathArray(words);
       });
+    this.createNewLearningPathForm();
   }
 
-  createDefaultLearningPath() {
-    const defaultLearningPath = this.defineNamedLearningPath('Default', this.learningPathArray);
-    return this.addLearningPath(defaultLearningPath)
-      .subscribe(path => this.learningPath = path );
+  createNewLearningPathForm() {
+    this.learningPathForm = this.fb.group({
+      pathName: ['', Validators.required]
+    });
+  }
 
+  onSubmit() {
+    const pathName = this.learningPathForm.value.pathName;
+    const LearningPath = this.defineNamedLearningPath(pathName, this.learningPathArray);
+    return this.addLearningPath(LearningPath)
+      .subscribe(path => {
+          this.learningPath = path;
+          this.messageService.sendMessage('You created the ' + pathName + ' Learning Path');
+        },
+        error => {
+          this.messageService.sendMessage('There was a problem creating Learning Path');
+        });
   }
 
   defineNamedLearningPath(name: string, learningPathArray: any[]) {

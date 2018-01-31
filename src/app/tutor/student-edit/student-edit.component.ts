@@ -128,7 +128,6 @@ export class StudentEditComponent implements OnInit {
     return this.lps.getLearningPaths(this.currentUser._id)
       .subscribe(paths => {
           const pathOptions = [];
-          console.log(paths);
           if (paths.length > 0) {
             for (let index = 0; index < paths.length; index++) {
               const path = paths[index];

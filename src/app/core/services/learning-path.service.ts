@@ -30,7 +30,7 @@ export class LearningPathService {
   }
 
 
-  createDefaultLearningPathArray(words: object[]) {
+  createLearningPathArray(words: object[]) {
     this.learnPathArray = [];
     this.defaultLearningPath = [];
 
@@ -70,7 +70,7 @@ export class LearningPathService {
   }
 
 
-  // createDefaultLearningPathArray(words: object[]) {
+  // createLearningPathArray(words: object[]) {
   //   this.learnPathArray = [];
   //   this.defaultLearningPath = [];
   //

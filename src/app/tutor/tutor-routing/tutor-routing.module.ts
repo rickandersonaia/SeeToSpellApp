@@ -14,9 +14,6 @@ import {StudentsListComponent} from '../students-list/students-list.component';
 import {LearningPathListComponent} from '../learning-path-list/learning-path-list.component';
 import {LearningPathEditComponent} from '../learning-path-edit/learning-path-edit.component';
 import {LearningPathAddComponent} from '../learning-path-add/learning-path-add.component';
-import {LearningStepListComponent} from '../learning-step-list/learning-step-list.component';
-import {LearningStepAddComponent} from '../learning-step-add/learning-step-add.component';
-import {LearningStepEditComponent} from '../learning-step-edit/learning-step-edit.component';
 import {WordsPurchasedListComponent} from '../words-purchased-list/words-purchased-list.component';
 import {WordsListComponent} from '../words-list/words-list.component';
 import {WordDetailComponent} from '../word-detail/word-detail.component';
@@ -74,18 +71,6 @@ const tutorRoutes: Routes = [
           {
             path: 'learning-paths/edit/:learningPathId',
             component: LearningPathEditComponent,
-          },
-          {
-            path: 'learning-steps/:stepId',
-            component: LearningStepListComponent,
-          },
-          {
-            path: 'learning-steps/new',
-            component: LearningStepAddComponent,
-          },
-          {
-            path: 'learning-steps/edit/:learningStepId',
-            component: LearningStepEditComponent,
           },
         ]
       }

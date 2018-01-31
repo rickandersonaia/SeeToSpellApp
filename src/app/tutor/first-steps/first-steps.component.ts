@@ -58,7 +58,7 @@ export class FirstStepsComponent implements OnInit {
     this.wordService.getPurchasedWords(this.currentUser['_id'])
       .subscribe(words => {
         this.purchasedWords = words;
-        this.learningPathArray = this.lps.createDefaultLearningPathArray(words);
+        this.learningPathArray = this.lps.createLearningPathArray(words);
       });
     this.createNewLearningPathForm();
     this.createNewStudentForm();

@@ -103,19 +103,18 @@ export class StudentAddComponent implements OnInit {
   createSelectOptionsList() {
     return this.lps.getLearningPaths(this.currentUser._id)
       .subscribe(paths => {
-        const pathOptions = [];
-        console.log(paths);
-        if (paths.length > 0) {
-          for (let index = 0; index < paths.length; index++) {
-            const path = paths[index];
-            pathOptions.push({'id': path['_id'], 'label': path['pathName']});
+          const pathOptions = [];
+          if (paths.length > 0) {
+            for (let index = 0; index < paths.length; index++) {
+              const path = paths[index];
+              pathOptions.push({'id': path['_id'], 'label': path['pathName']});
+            }
+            this.pathOptions = pathOptions;
+          } else {
+            this.pathOptions = [{'id': 'none',  'label': 'You don\'t have any learning paths created'}];
           }
-          this.pathOptions = pathOptions;
-        } else {
-          this.pathOptions = {'': 'You don\'t have any learning paths created'};
-        }
-      },
-        error => (console.log('Whoops')));
+        },
+        error => (console.log('createSelectOptionsList() FAILED!')));
   }
 
   goBack(): void {

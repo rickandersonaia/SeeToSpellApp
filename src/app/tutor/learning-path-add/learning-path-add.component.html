@@ -1,4 +1,16 @@
-<p>
-  learning-path-add works!
-  <button mat-raised-button color="primary" (click)="createDefaultLearningPath()">Create Default Learning Path</button>
-</p>
+<div class="container page-width" fxLayout="column" fxLayoutGap="10px">
+  <div class="form-width">
+    <h1>Create a new Learning Path</h1>
+    <p>To create a learning path all you need to do is give it a name.  Once created you can edit it, delete it and
+    assign it to one of your students</p>
+    <form [formGroup]="learningPathForm" (ngSubmit)="onSubmit()">
+      <label><b>Give your learning path a name</b></label>
+      <mat-form-field>
+        <input matInput placeholder="Learning Path Name" formControlName="pathName" required>
+      </mat-form-field>
+      <div>
+        <button mat-button mat-raised-button>Create the Learning Path</button>
+      </div>
+    </form>
+  </div>
+</div>

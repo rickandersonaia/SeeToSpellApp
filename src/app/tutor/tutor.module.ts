@@ -18,9 +18,6 @@ import { StudentsListComponent } from './students-list/students-list.component';
 import { LearningPathAddComponent } from './learning-path-add/learning-path-add.component';
 import { LearningPathEditComponent } from './learning-path-edit/learning-path-edit.component';
 import { LearningPathListComponent } from './learning-path-list/learning-path-list.component';
-import { LearningStepAddComponent } from './learning-step-add/learning-step-add.component';
-import { LearningStepEditComponent } from './learning-step-edit/learning-step-edit.component';
-import { LearningStepListComponent } from './learning-step-list/learning-step-list.component';
 import { WordsListComponent } from './words-list/words-list.component';
 import { WordsPurchasedListComponent } from './words-purchased-list/words-purchased-list.component';
 import { WordDetailComponent } from './word-detail/word-detail.component';
@@ -51,9 +48,6 @@ import { FirstStepsComponent } from './first-steps/first-steps.component';
     LearningPathAddComponent,
     LearningPathEditComponent,
     LearningPathListComponent,
-    LearningStepAddComponent,
-    LearningStepEditComponent,
-    LearningStepListComponent,
     WordsListComponent,
     WordsPurchasedListComponent,
     WordDetailComponent,
