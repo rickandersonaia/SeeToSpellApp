@@ -53,6 +53,23 @@ export class LearningPathService {
   }
 
 
+  getLearningPath(learningPathId: string): Observable<any> {
+    return this.http.get(baseURL + 'tutor/learning-paths/edit/' + learningPathId)
+      .catch(error => {
+        return this.processHTTPMsgService.handleError(error);
+      });
+
+  }
+
+  updateLearningPath(data: any, learningPathId: string): Observable<any> {
+    return this.http.put(baseURL + 'tutor/learning-paths/edit/' + learningPathId, data)
+      .catch(error => {
+        return this.processHTTPMsgService.handleError(error);
+      });
+
+  }
+
+
   getLearningPaths(id: string): Observable<any> {
     return this.http.get(baseURL + 'tutor/' + id + '/learning-paths')
       .catch(error => {

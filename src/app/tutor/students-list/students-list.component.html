@@ -1,8 +1,9 @@
 <div class="page-width student-list-page container" fxLayout="column" fxLayoutGap="10px">
   <h1 *ngIf="currentUser">{{currentUser.displayName}}'s students</h1>
-
+  <p>Click avatar to edit</p>
   <mat-list fxLayoutWrap fxLayout="column"  *ngIf="students">
-    <mat-list-item *ngFor="let student of students" [routerLink]="['/tutor/students', student._id]"
+    <mat-list-item class="edit-link" *ngFor="let student of students"
+                   [routerLink]="['/tutor/students', student._id]"
                    fxFlex.lg="25" fxFlex.md="33"
                    fxFlex.sm="50" fxFlex.xs="100">
       <img matListAvatar *ngIf="student.avatar" src="{{AvatarURL + student.avatar}}" alt="{{student.displayName}}">

@@ -1,3 +1,30 @@
-<p>
-  learning-path-edit works!
-</p>
+<div class="page-width" fxLayout="column" fxLayoutGap="10px">
+  <h1 *ngIf="learningPath">Edit the {{learningPath.pathName}} Learning Path</h1>
+  <ng-container *ngIf="learningPath" >
+    <div fxFlex.lg="25" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100">
+
+        <mat-list class="learning-steps">
+          <h2>{{learningPath.pathName}}</h2>
+          <mat-list-item *ngFor="let step of learningPath.learningSteps">
+            <p mat-line>{{step.stepName}}</p>
+            <p mat-line>
+              <span class="step-words" *ngFor="let word of step.words">{{word.wordName}}</span>
+            </p>
+          </mat-list-item>
+        </mat-list>
+        <button mat-raised-button color="primary">Save Changes</button>
+
+    </div>
+    <div fxFlex.lg="25" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100"></div>
+    <div fxFlex.lg="25" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100"></div>
+    <div fxFlex.lg="25" fxFlex.md="33"
+         fxFlex.sm="50" fxFlex.xs="100"></div>
+  </ng-container>
+  <div [hidden]="learningPath">
+    <mat-progress-spinner></mat-progress-spinner>
+    <h4>Loading - Please wait...</h4>
+  </div>
+</div>

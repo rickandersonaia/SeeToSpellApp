@@ -45,12 +45,12 @@
       <mat-step>
         <ng-template matStepLabel>Next Steps</ng-template>
         <p>Now that you've created your first learning path and student you can:</p>
-        <ul>
-          <li *ngFor="let action of finishedActions"><a routerLink="{{action.url}}">{{action.label}}</a></li>
-        </ul>
-        <div>
-          <button mat-button mat-raised-button>Close</button>
-        </div>
+        <mat-list>
+          <mat-list-item *ngFor="let action of finishedActions">
+            <mat-icon mat-list-icon>{{action.icon}}</mat-icon>
+            <a routerLink="{{action.url}}" mat-line>{{action.label}}</a>
+          </mat-list-item>
+        </mat-list>
       </mat-step>
     </mat-vertical-stepper>
   </div>

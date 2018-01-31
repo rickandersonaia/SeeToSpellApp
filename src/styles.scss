@@ -23,7 +23,9 @@ img{
   display: block;
 }
 
-button.newcard{width:250px;};
+button.newcard{
+  width:250px;
+};
 
 .form-width{
   width:300px;
@@ -32,7 +34,13 @@ button.newcard{width:250px;};
   margin:0 auto;
 }
 
-.mat-list .mat-list-item .mat-list-avatar{border:solid 1px #bbb}
+.mat-list .mat-list-item .mat-list-avatar{
+  border:solid 1px #bbb
+}
+
+.edit-link:hover{
+  cursor: pointer;
+}
 
 .phone .user-form-wrapper{padding-bottom:200px;}
 

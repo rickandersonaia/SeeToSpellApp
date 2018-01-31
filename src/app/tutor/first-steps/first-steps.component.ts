@@ -150,12 +150,12 @@ export class FirstStepsComponent implements OnInit {
 
   createfinishedActions() {
     const actions = [
-      {'label': 'Learn how to use the game to help your student', 'url': '/tutor/documentation'},
-      {'label': 'Add more students', 'url': '/tutor/students/new'},
-      {'label': 'Edit this student', 'url': '/tutor/students/edit/' + this.student._id},
-      {'label': 'Edit this learning path', 'url': '/tutor/learning-paths/edit/' + this.learningPath._id},
-      {'label': 'Edit your profile', 'url': '/tutor/edit/' + this.currentUser._id},
-      {'label': 'Let your student start learing!', 'url': ''}
+      {'label': 'Learn how to use the game to help your student', 'url': '/tutor/documentation', 'icon': 'supervisor_account'},
+      {'label': 'Add more students', 'url': '/tutor/students/new', 'icon': 'person_add'},
+      {'label': 'Edit this student', 'url': '/tutor/students/edit/' + this.student._id, 'icon': 'person'},
+      {'label': 'Edit this learning path', 'url': '/tutor/learning-paths/edit/' + this.learningPath._id, 'icon': 'library_books'},
+      {'label': 'Edit your profile', 'url': '/tutor/edit/' + this.currentUser._id, 'icon': 'account_circle'},
+      {'label': 'Let your student start learing!', 'url': '', 'icon': 'school'}
     ];
     return actions;
   }
