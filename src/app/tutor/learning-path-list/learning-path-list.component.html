@@ -14,6 +14,7 @@
           </mat-list-item>
       </mat-list>
         <button mat-raised-button color="primary" routerLink="/tutor/learning-paths/edit/{{path._id}}">Edit</button>
+        <button mat-raised-button color="warn" (click)="deleteLearningPath(path._id)">Delete</button>
       </div>
     </div>
     <div fxFlex.lg="25" fxFlex.md="33"

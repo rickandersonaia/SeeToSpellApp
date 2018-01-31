@@ -70,6 +70,14 @@ export class LearningPathService {
   }
 
 
+  deleteLearningPath(learningPathId: string): Observable<any> {
+    return this.http.delete(baseURL + 'tutor/learning-paths/edit/' + learningPathId)
+      .catch(error => {
+        return this.processHTTPMsgService.handleError(error);
+      });
+  }
+
+
   // createLearningPathArray(words: object[]) {
   //   this.learnPathArray = [];
   //   this.defaultLearningPath = [];
