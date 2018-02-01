@@ -1,9 +1,12 @@
-.mat-list.learning-steps{
+.drag{
+  background-color:#efefef;
+  padding:10px;
+
   span.step-words{
     padding-left:10px;
   }
 
-  .mat-list-item.mat-2-line {
+  .learning-step {
     height: auto;
     margin-bottom: 12px;
     border:1px solid gray;
@@ -12,6 +15,9 @@
     border-radius: 5px;
     padding:10px;
     max-width: 300px;
+    background-color:rgba(000, 000, 000, 0.25);
   }
+
+  .wordlist{margin:0;}
 
 }

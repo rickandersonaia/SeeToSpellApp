@@ -24,6 +24,7 @@ import { WordDetailComponent } from './word-detail/word-detail.component';
 import { TutorDashboardStatsComponent } from './tutor-dashboard-stats/tutor-dashboard-stats.component';
 import { FirstStepsComponent } from './first-steps/first-steps.component';
 import { DocumentationComponent } from './documentation/documentation.component';
+import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { DocumentationComponent } from './documentation/documentation.component'
     MaterialModule,
     FlexLayoutModule,
     LayoutModule,
+    DragulaModule,
   ],
   declarations: [
     StudentAddComponent,

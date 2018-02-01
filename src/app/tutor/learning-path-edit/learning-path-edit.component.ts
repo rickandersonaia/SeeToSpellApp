@@ -3,6 +3,7 @@ import {MessageService} from '../../core/services/message.service';
 import {CurrentUserService} from '../../core/services/current-user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LearningPathService} from '../../core/services/learning-path.service';
+import {DragulaService} from 'ng2-dragula';
 
 @Component({
   selector: 'app-learning-path-edit',
@@ -19,7 +20,15 @@ export class LearningPathEditComponent implements OnInit {
               private lps: LearningPathService,
               private messageService: MessageService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private dragulaService: DragulaService) {
+
+    this.dragulaService.dropModel
+      .subscribe((value) => {
+        // console.log(`drag: ${value[0]}`);
+        this.onDrop(value.slice(1));
+        console.log(value);
+      });
   }
 
   ngOnInit() {
@@ -34,6 +43,18 @@ export class LearningPathEditComponent implements OnInit {
       .subscribe(path => {
         this.learningPath = path;
       });
+  }
+
+  private onDrop(args) {
+    let [el, target, source] = args;
+
+    for (let index = 0; index < this.learningPath.learningSteps.length; index++) {
+      // console.log(this.learningPath.learningSteps[index]);
+      const step = this.learningPath.learningSteps[index];
+      console.log(step.stepName);
+    }
+
+    // do something
   }
 
 }

@@ -45,6 +45,7 @@ import {AdminGuard} from './core/route-gaurds/admin.guard';
 import {TutorGuard} from './core/route-gaurds/tutor.guard';
 import {StudentGuard} from './core/route-gaurds/student.guard';
 import {OwnerGuard} from './core/route-gaurds/owner.guard';
+import {DragulaModule} from 'ng2-dragula';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import {OwnerGuard} from './core/route-gaurds/owner.guard';
     TutorRoutingModule,
     AdminRoutingModule,
     AppRoutingModule,
+    DragulaModule,
   ],
   providers: [
     WordService,
