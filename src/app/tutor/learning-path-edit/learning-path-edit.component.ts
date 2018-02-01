@@ -45,13 +45,25 @@ export class LearningPathEditComponent implements OnInit {
       });
   }
 
+  onSave(){
+    const learningPathId = this.route.snapshot.params['learningPathId'];
+    return this.lps.updateLearningPath(this.learningPath, learningPathId)
+      .subscribe(path => {
+        this.learningPath = path;
+        this.messageService.sendMessage('Your edits have been saved');
+      },
+        error => {
+          this.messageService.sendMessage('There was a problem saving your changes');
+        });
+  }
+
   private onDrop(args) {
     let [el, target, source] = args;
 
     for (let index = 0; index < this.learningPath.learningSteps.length; index++) {
       // console.log(this.learningPath.learningSteps[index]);
-      const step = this.learningPath.learningSteps[index];
-      console.log(step.stepName);
+      const step = index + 1;
+      this.learningPath.learningSteps[index].stepName = 'Step ' + step;
     }
 
     // do something
