@@ -8,9 +8,6 @@ import {ProcessHTTPMsgService} from './process-httpmsg.service';
 import {WordDataModel} from '../shared/worddatamodel';
 import {baseURL} from '../shared/baseurl';
 import {CurrentUserService} from './current-user.service';
-import {WordService} from './word.service';
-import {LearningStepService} from './learning-step.service';
-import {MessageService} from './message.service';
 
 @Injectable()
 export class LearningPathService {
@@ -21,10 +18,7 @@ export class LearningPathService {
 
   constructor(private http: HttpClient,
               private processHTTPMsgService: ProcessHTTPMsgService,
-              private cus: CurrentUserService,
-              private wordService: WordService,
-              private learningStepService: LearningStepService,
-              private messageService: MessageService) {
+              private cus: CurrentUserService) {
 
     this.currentUser = this.cus.currentUser;
   }
@@ -33,7 +27,7 @@ export class LearningPathService {
   createLearningPathArray(words: object[]) {
     this.learnPathArray = [];
     this.defaultLearningPath = [];
-
+    console.log(words);
     let stepCntr = 1;
     for (let index = 0; index < words.length; index++) {
       const word = words[index];
@@ -93,28 +87,5 @@ export class LearningPathService {
         return this.processHTTPMsgService.handleError(error);
       });
   }
-
-
-  // createLearningPathArray(words: object[]) {
-  //   this.learnPathArray = [];
-  //   this.defaultLearningPath = [];
-  //
-  //   let stepCntr = 1;
-  //   for (let index = 0; index < words.length; index++) {
-  //     const word = words[index];
-  //     if (index % 3 === 0) {
-  //       const wordObjectsInSet = words.slice(index, index + 3);
-  //       const finalWordsInSet = [];
-  //       for (let item = 0; item < wordObjectsInSet.length; item++) {
-  //         const wordInSet = wordObjectsInSet[item];
-  //         finalWordsInSet.push(wordInSet['_id']);
-  //       }
-  //       this.learnPathArray.push({'name': 'Step ' + stepCntr, 'words': finalWordsInSet});
-  //       stepCntr++;
-  //     }
-  //   }
-  //   // console.log(this.learnPathArray);
-  //   return this.learnPathArray;
-  // }
 
 }

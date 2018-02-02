@@ -7,10 +7,14 @@
 
       <h2>{{learningPath.pathName}}</h2>
       <div class="drag wrapper">
-        <div class="learning-steps container" [dragula]='"first-bag"'[dragulaModel]='learningPath.learningSteps'>
-          <div class="learning-step" *ngFor="let step of learningPath.learningSteps" attr.data-original-order="{{step.stepName}}">
-            <p>{{step.stepName}}</p>
-            <p class="wordlist"><span class="step-words" *ngFor="let word of step.words">{{word.wordName}}</span></p>
+        <div class="learning-steps container" [dragula]='"step-bag"' [dragulaModel]='learningPath.learningSteps'>
+          <div class="learning-step" *ngFor="let step of learningPath.learningSteps">
+            <p><span class="handle">+</span> {{step.stepName}}</p>
+            <div class="wrapper">
+              <p class="wordlist container"[dragula]='"word-bag"' attr.data-stepId="{{step._id}}">
+                <span class="step-words" *ngFor="let word of step.words" attr.data-wordId="{{word._id}}" attr.data-origStepId="{{step._id}}">{{word.wordName}}</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
