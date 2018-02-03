@@ -12,25 +12,16 @@
             <p><span class="handle">+</span> {{step.stepName}}</p>
             <div class="wrapper">
               <p class="wordlist container"[dragula]='"word-bag"' attr.data-stepId="{{step._id}}">
-                <span class="step-words" *ngFor="let word of step.words" attr.data-wordId="{{word._id}}" attr.data-origStepId="{{step._id}}">{{word.wordName}}</span>
+                <span class="step-words" *ngFor="let word of step.words"
+                      attr.data-wordId="{{word.wordId}}"
+                      attr.data-stepWordId="{{word._id}}"
+                      attr.data-origStepId="{{step._id}}">{{word.wordName}}</span>
               </p>
             </div>
           </div>
         </div>
       </div>
       <button mat-raised-button color="primary" (click)="onSave()">Save Changes</button>
-    </div>
-
-    <div class="column" fxFlex.lg="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100">
-      <div class="flex-spacer"></div>
-    </div>
-
-    <div class="column" fxFlex.lg="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100">
-      <div class="flex-spacer"></div>
-    </div>
-
-    <div class="column" fxFlex.lg="25" fxFlex.md="33" fxFlex.sm="50" fxFlex.xs="100">
-      <div class="flex-spacer"></div>
     </div>
   </ng-container>
   <div [hidden]="learningPath">

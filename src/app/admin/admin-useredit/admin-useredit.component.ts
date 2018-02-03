@@ -43,13 +43,13 @@ export class AdminUserEditComponent implements OnInit {
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
               @Inject('AvatarURL') private AvatarURL) {
-    this.createForm();
   }
 
   ngOnInit() {
 
     const id = this.route.snapshot.params['id'];
     this.getFormData(id);
+    this.createForm();
   }
 
   getFormData(id) {
@@ -74,6 +74,7 @@ export class AdminUserEditComponent implements OnInit {
   }
 
   createForm() {
+    console.log(this.exusername);
     this.editUserForm = this.fb.group({
       username: this.exusername,
       email: this.exemail,

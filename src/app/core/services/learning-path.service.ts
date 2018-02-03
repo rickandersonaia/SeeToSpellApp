@@ -12,8 +12,8 @@ import {CurrentUserService} from './current-user.service';
 @Injectable()
 export class LearningPathService {
   currentUser: any;
-  learnPathArray: any[];
-  defaultLearningPath: any[];
+  learnPathArray: any;
+  defaultLearningPath: any;
   wordObjectList: WordDataModel[];
 
   constructor(private http: HttpClient,
@@ -27,7 +27,7 @@ export class LearningPathService {
   createLearningPathArray(words: object[]) {
     this.learnPathArray = [];
     this.defaultLearningPath = [];
-    console.log(words);
+
     let stepCntr = 1;
     for (let index = 0; index < words.length; index++) {
       const word = words[index];

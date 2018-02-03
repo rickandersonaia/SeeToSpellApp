@@ -42,7 +42,6 @@ export class MaincontentComponent implements OnInit, OnDestroy {
     this.currentUserService.currentUserSrc
       .subscribe(currentUser => {
         this.currentUser = currentUser;
-        console.log(this.currentUser);
       });
 
   }

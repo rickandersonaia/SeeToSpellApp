@@ -48,7 +48,6 @@ export class LearningPathAddComponent implements OnInit {
     return this.addLearningPath(LearningPath)
       .subscribe(path => {
           this.learningPath = path;
-          console.log(this.learningPath);
           this.messageService.sendMessage('You created the ' + pathName + ' Learning Path');
           this.router.navigateByUrl('/tutor/' + this.currentUser['_id'] + '/learning-paths');
         },

@@ -14,6 +14,7 @@ export class LearningPathEditComponent implements OnInit, OnDestroy {
 
   currentUser: any;
   learningPath: any;
+  wordArrangementModifications = [];
   parentId: string;
 
   constructor(private cus: CurrentUserService,
@@ -55,42 +56,32 @@ export class LearningPathEditComponent implements OnInit, OnDestroy {
 
   private onDrop(args) {
     let [e, el] = args;
+
+    const stepWordId = e.getAttribute('data-stepWordid');
     const wordId = e.getAttribute('data-wordid');
+    const wordName = e.textContent;
     const sourceStepId = e.getAttribute('data-origstepid');
     const targetStepId = el.getAttribute('data-stepid');
 
-    // // Step 1, find the word in the original learning step and delete it.
-    // for (let index = 0; index < this.learningPath.learningSteps.length; index++) {
-    //   const learningStep = this.learningPath.learningSteps[index];
-    //   if (learningStep._id === sourceStepId) {
-    //     for (let windex = 0; windex < learningStep.words.length; windex++) {
-    //       if (learningStep.words[windex]._id = wordId) {
-    //         const word = learningStep.words[windex];
-    //         const deleteIndex = windex;
-    //         break;
-    //       }
-    //     }
-    //     this.learningPath.learningSteps[index].words.splice(deleteIndex, 1);
-    //     // console.log('source', this.learningPath.learningSteps[index]);
-    //   }
-    // }
-    //
-    // // Step 2, find the target learning step & add the word to it
-    // for (let index = 0; index < this.learningPath.learningSteps.length; index++) {
-    //   const learningStep = this.learningPath.learningSteps[index];
-    //   if (learningStep._id === targetStepId) {
-    //     this.learningPath.learningSteps[index].words.push(word);
-    //     // console.log('target', this.learningPath.learningSteps[index]);
-    //   }
-    // }
-
-    console.log(this.learningPath);
-    // console.log(wordId, sourceStepId, targetStepId);
+    for (let index = 0; index < this.learningPath.learningSteps.length; index++) {
+      const learningStep = this.learningPath.learningSteps[index];
+      // if it is the source step - delete the word
+      if (sourceStepId === learningStep._id) {
+        for (let windex = 0; windex < learningStep.words.length; windex++) {
+          if (wordId === learningStep.words[windex].wordId) {
+            this.learningPath.learningSteps[index].words.splice(windex, 1);
+          }
+        }
+      }
+      // if it is the target step - add the word
+      if (targetStepId === learningStep._id) {
+        this.learningPath.learningSteps[index].words.push({_id: stepWordId, wordId: wordId, wordName: wordName});
+      }
+    }
   }
 
   private onDropModel(args) {
     let [el, target, source] = args;
-    // console.log(el, target, source);
     for (let index = 0; index < this.learningPath.learningSteps.length; index++) {
       const step = index + 1;
       this.learningPath.learningSteps[index].stepName = 'Step ' + step;

@@ -19,7 +19,6 @@ export class OwnerGuard implements CanActivate, CanActivateChild {
 
   canActivateChild(next: ActivatedRouteSnapshot,
                    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    console.log(state);
     return true;
   }
 }
