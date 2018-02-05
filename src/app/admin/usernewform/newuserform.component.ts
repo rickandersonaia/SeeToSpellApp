@@ -1,9 +1,9 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared/userdatamodel';
-import { UserService} from '../../core/services/user.service';
+import {UserService} from '../../core/services/user.service';
 import {Location} from '@angular/common';
-import { Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-newuserform',
@@ -20,6 +20,7 @@ export class NewUserFormComponent implements OnInit {
     username: '',
     email: '',
     password: '',
+    confirmPassword: '',
     displayName: ''
   };
 
@@ -38,6 +39,10 @@ export class NewUserFormComponent implements OnInit {
       'minlength': 'Password must be at least 8 characters long',
       'maxlength': 'Password must be less than 26 characters long'
     },
+    'confirmPassword': {
+      'required': 'Please confirm your password',
+      'mismatch': 'Confirm password must match password entered above'
+    },
     'displayName': {
       'required': 'Display Name is required',
       'minlength': 'Display name must be at least 2 characters long',
@@ -54,10 +59,10 @@ export class NewUserFormComponent implements OnInit {
               @Inject('AudioURL') private AudioURL,
               @Inject('AvatarURL') private AvatarURL) {
 
+    this.createForm();
   }
 
   ngOnInit() {
-    this.createForm();
   }
 
   createForm() {
@@ -65,31 +70,45 @@ export class NewUserFormComponent implements OnInit {
       username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(25)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
+      confirmPassword: ['', [Validators.required, this.passwordMatchValidator.bind(this)]],
       displayName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       avatar: '',
       isTutor: false,
       isAdmin: false,
-      parentId: [{value: '', disabled: true}],
       setsPurchased: [],
-    });
+    })
+    ;
 
     this.newUserForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
     this.onValueChanged(); // reset form validation messages
   }
 
+  passwordMatchValidator(control: FormControl): { [s: string]: boolean } {
+    if (this.newUserForm) {
+      const password = this.newUserForm.get('password').value;
+      const confirm = control.value;
+      if (password !== confirm) {
+        return {'mismatch': true};
+      }
+    }
+    return null;
+  }
+
   onValueChanged(data?: any) {
-    if (!this.newUserForm) { return; }
+    if (!this.newUserForm) {
+      return;
+    }
     const form = this.newUserForm;
 
-    for (const field in this.formErrors) {
+    for (let field in this.formErrors) {
       // clear previous error message (if any)
       this.formErrors[field] = '';
       const control = form.get(field);
 
       if (control && control.dirty && !control.valid) {
         const messages = this.validationMessages[field];
-        for (const key in control.errors) {
+        for (let key in control.errors) {
           this.formErrors[field] += messages[key] + ' ';
         }
       }
@@ -97,11 +116,12 @@ export class NewUserFormComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.newUserForm.value);
     this.userService.addUser(this.newUserForm.value)
       .subscribe(user => {
+        this.router.navigateByUrl('/admin/users');
         console.log(user);
         this.user = user;
-        this.router.navigateByUrl('/users');
       });
     this.newUserForm.reset();
   }
