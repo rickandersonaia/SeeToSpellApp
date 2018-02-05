@@ -8,15 +8,23 @@
             <p fxLayout="column">
               <mat-form-field>
                 <input matInput formControlName="username" placeholder="Username" type="text">
+                <mat-error [hidden]="!(formErrors.username)">{{formErrors.username}}</mat-error>
               </mat-form-field>
               <mat-form-field>
                 <input matInput formControlName="email" placeholder="Email" type="email" email>
+                <mat-error [hidden]="!(formErrors.email)">{{formErrors.email}}</mat-error>
               </mat-form-field>
               <mat-form-field>
                 <input matInput formControlName="password" placeholder="Password" type="password">
+                <mat-error [hidden]="!(formErrors.password)">{{formErrors.password}}</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput formControlName="confirmPassword" placeholder="Confirm Password" type="password">
+                <mat-error [hidden]="!(formErrors.confirmPassword)">{{formErrors.confirmPassword}}</mat-error>
               </mat-form-field>
               <mat-form-field>
                 <input matInput formControlName="displayName" placeholder="Display Name" type="text">
+                <mat-error [hidden]="!(formErrors.displayName)">{{formErrors.displayName}}</mat-error>
               </mat-form-field>
 
               <label>Choose an Avatar: </label>

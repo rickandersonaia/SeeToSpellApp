@@ -1,5 +1,5 @@
 import {Component, OnInit, Inject, Input} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router, Params, ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared/userdatamodel';
@@ -21,19 +21,42 @@ export class AdminUserEditComponent implements OnInit {
   user: UserDataModel;
   options = setsPurchasedOptions;
   avatars = allAvatars;
-  public exusername: string;
-  public exemail: string;
-  public expassword: string;
-  public exdisplayname: string;
-  public exavatar: string;
-  public existutor: boolean;
-  public exisadmin: boolean;
-  public exparentid: string;
-  public exsetspurchased: object;
+  formErrors = {
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    displayName: ''
+  };
+
+  validationMessages = {
+    'username': {
+      'required': 'Username is required',
+      'minlength': 'Username must be at least 6 characters long',
+      'maxlength': 'Username must be less than 26 characters long'
+    },
+    'email': {
+      'required': 'Email is required',
+      'email': 'Email must be valid email address'
+    },
+    'password': {
+      'required': 'Password is required',
+      'minlength': 'Password must be at least 8 characters long',
+      'maxlength': 'Password must be less than 26 characters long'
+    },
+    'confirmPassword': {
+      'required': 'Please confirm your password',
+      'mismatch': 'Confirm password must match password entered above'
+    },
+    'displayName': {
+      'required': 'Display Name is required',
+      'minlength': 'Display name must be at least 2 characters long',
+      'maxlength': 'Display name must be less than 26 characters long'
+    }
+  };
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
-              private studentService: StudentService,
               private lps: LearningPathService,
               private location: Location,
               private route: ActivatedRoute,
@@ -55,17 +78,8 @@ export class AdminUserEditComponent implements OnInit {
   getFormData(id) {
     this.userService.getUserById(id)
       .subscribe(user => {
-        this.exusername = user.username ? user.username : null;
-        this.exemail = user.email ? user.email : null;
-        this.expassword = user.password ? user.password : null;
-        this.exdisplayname = user.displayName ? user.displayName : null;
-        this.exavatar = user.avatar ? user.avatar : null;
-        this.existutor = user.isTutor ? user.isTutor : null;
-        this.exisadmin = user.isAdmin ? user.isAdmin : null;
-        this.exparentid = user.parentId ? user.parentId : null;
-        this.exsetspurchased = user.setsPurchased ? user.setsPurchased : null;
         this.user = user;
-        this.createForm();
+        this.editUserForm.patchValue(user);
       });
   }
 
@@ -75,16 +89,51 @@ export class AdminUserEditComponent implements OnInit {
 
   createForm() {
     this.editUserForm = this.fb.group({
-      username: this.exusername,
-      email: this.exemail,
-      password: this.expassword,
-      displayName: this.exdisplayname,
-      avatar: this.exavatar,
-      isTutor: this.existutor,
-      isAdmin: this.exisadmin,
-      parentId: this.exparentid,
-      setsPurchased: this.exsetspurchased
+      username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(25)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: '',
+      confirmPassword: ['', [this.passwordMatchValidator.bind(this)]],
+      displayName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      avatar: '',
+      isTutor: false,
+      isAdmin: false,
+      setsPurchased: [],
     });
+
+    this.editUserForm.valueChanges.subscribe(data => this.onValueChanged(data));
+
+    this.onValueChanged(); // reset form validation messages
+  }
+
+  passwordMatchValidator(control: FormControl): { [s: string]: boolean } {
+    if (this.editUserForm) {
+      const password = this.editUserForm.get('password').value;
+      const confirm = control.value;
+      if (password !== confirm) {
+        return {'mismatch': true};
+      }
+    }
+    return null;
+  }
+
+  onValueChanged(data?: any) {
+    if (!this.editUserForm) {
+      return;
+    }
+    const form = this.editUserForm;
+
+    for (let field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (let key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
   }
 
   onSubmit() {

@@ -4,6 +4,7 @@ import {UserDataModel, setsPurchasedOptions, allAvatars} from '../../core/shared
 import {UserService} from '../../core/services/user.service';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
+import {MessageService} from '../../core/services/message.service';
 
 @Component({
   selector: 'app-newuserform',
@@ -54,6 +55,7 @@ export class NewUserFormComponent implements OnInit {
               private userService: UserService,
               private location: Location,
               private router: Router,
+              private messageService: MessageService,
               @Inject('BaseURL') private BaseURL,
               @Inject('ImageURL') private ImageURL,
               @Inject('AudioURL') private AudioURL,
@@ -120,7 +122,7 @@ export class NewUserFormComponent implements OnInit {
     this.userService.addUser(this.newUserForm.value)
       .subscribe(user => {
         this.router.navigateByUrl('/admin/users');
-        console.log(user);
+        this.messageService.sendMessage('A new user was successfully created');
         this.user = user;
       });
     this.newUserForm.reset();
