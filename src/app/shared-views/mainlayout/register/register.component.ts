@@ -23,7 +23,9 @@ export class RegisterComponent implements OnInit {
   formErrors = {
     username: '',
     email: '',
+    confirmEmail: '',
     password: '',
+    confirmPassword: '',
     displayName: ''
   };
 
@@ -37,10 +39,18 @@ export class RegisterComponent implements OnInit {
       'required': 'Email is required',
       'email': 'Email must be valid email address'
     },
+    'confirmEmail': {
+      'required': 'Please confirm your email address',
+      'mismatch': 'Confirm email must match the email address entered above'
+    },
     'password': {
       'required': 'Password is required',
       'minlength': 'Password must be at least 8 characters long',
       'maxlength': 'Password must be less than 26 characters long'
+    },
+    'confirmPassword': {
+      'required': 'Please confirm your password',
+      'mismatch': 'Confirm password must match password entered above'
     },
     'displayName': {
       'required': 'Display Name is required',
@@ -76,7 +86,9 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(25)]],
       email: ['', [Validators.required, Validators.email]],
+      confirmEmail: ['', [Validators.required, this.emailMatchValidator.bind(this)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
+      confirmPassword: ['', [Validators.required, this.passwordMatchValidator.bind(this)]],
       displayName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       avatar: 'generic.jpeg',
       isTutor: true
@@ -85,6 +97,28 @@ export class RegisterComponent implements OnInit {
     this.registerForm.valueChanges.subscribe(data => this.onValueChanged(data));
 
     this.onValueChanged(); // reset form validation messages
+  }
+
+  passwordMatchValidator(control: FormControl): { [s: string]: boolean } {
+    if (this.registerForm) {
+      const password = this.registerForm.get('password').value;
+      const confirm = control.value;
+      if (password !== confirm) {
+        return {'mismatch': true};
+      }
+    }
+    return null;
+  }
+
+  emailMatchValidator(control: FormControl): { [s: string]: boolean } {
+    if (this.registerForm) {
+      const email = this.registerForm.get('email').value;
+      const confirm = control.value;
+      if (email !== confirm) {
+        return {'mismatch': true};
+      }
+    }
+    return null;
   }
 
   onValueChanged(data?: any) {

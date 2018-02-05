@@ -48,7 +48,7 @@
                 This user is an admin
               </mat-slide-toggle>
             </p>
-            <button mat-raised-button color="primary">Save Changes</button>
+            <button mat-raised-button color="primary"[disabled]="!editUserForm.valid">Save Changes</button>
             <button mat-raised-button color="warn" (click)="onDelete()">Delete this user</button>
           </form>
         </div>

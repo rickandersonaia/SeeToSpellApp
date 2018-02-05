@@ -21,8 +21,16 @@
       <mat-error [hidden]="!(formErrors.email)">{{formErrors.email}}</mat-error>
     </mat-form-field>
     <mat-form-field>
+      <input matInput formControlName="confirmEmail" placeholder="Confirm Email" type="email" email>
+      <mat-error [hidden]="!(formErrors.confirmEmail)">{{formErrors.confirmEmail}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
       <input matInput formControlName="password" placeholder="Password" type="password">
       <mat-error [hidden]="!(formErrors.password)">{{formErrors.password}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="confirmPassword" placeholder="Confirm Password" type="password">
+      <mat-error [hidden]="!(formErrors.confirmPassword)">{{formErrors.confirmPassword}}</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput formControlName="displayName" placeholder="Display Name" type="text">
@@ -33,6 +41,6 @@
 
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-raised-button color="primary">Register</button>
+    <button mat-raised-button color="primary" [disabled]="!registerForm.valid">Register</button>
   </mat-dialog-actions>
 </form>

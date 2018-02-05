@@ -45,7 +45,7 @@ export class EntranceComponent implements OnInit, OnDestroy {
   }
 
   openRegisterForm() {
-    this.registerdialog.open(RegisterComponent, {width: '400px', height: '500px'});
+    this.registerdialog.open(RegisterComponent, {width: '400px', height: '580px'});
   }
 
 

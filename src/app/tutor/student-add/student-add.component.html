@@ -25,7 +25,7 @@
           </mat-select>
         </mat-form-field>
       </p>
-      <button mat-raised-button color="primary">Create New Student</button>
+      <button mat-raised-button color="primary"[disabled]="!newStudentForm.valid">Create New Student</button>
     </form>
   </div>
 </div>

@@ -46,7 +46,7 @@
           This user is an admin
         </mat-slide-toggle>
       </p>
-      <button mat-raised-button color="primary">Submit</button>
+      <button mat-raised-button color="primary"[disabled]="!newUserForm.valid">Submit</button>
     </form>
   </div>
 </div>
