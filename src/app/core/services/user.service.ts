@@ -90,4 +90,9 @@ export class UserService {
 
   }
 
+  duplicateUserCheck(checkValue: string): Observable<any> {
+    return this.http.get(baseURL + 'duplicate-check/' + checkValue)
+      .catch(error => this.processHTTPMsgService.handleError(error));
+  }
+
 }

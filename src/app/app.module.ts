@@ -15,6 +15,7 @@ import {AsyncLocalStorageModule} from 'angular-async-local-storage';
 import 'hammerjs';
 
 import {baseURL, imageURL, audioURL, avatarURL} from './core/shared/baseurl';
+import {validationMessages} from './core/shared/validation-messages';
 
 import {AdminModule} from './admin/admin.module';
 import {TutorModule} from './tutor/tutor.module';
@@ -46,6 +47,7 @@ import {TutorGuard} from './core/route-gaurds/tutor.guard';
 import {StudentGuard} from './core/route-gaurds/student.guard';
 import {OwnerGuard} from './core/route-gaurds/owner.guard';
 import {DragulaModule} from 'ng2-dragula';
+import {InputValidationService} from './core/services/input-validation.service';
 
 
 @NgModule({
@@ -90,6 +92,8 @@ import {DragulaModule} from 'ng2-dragula';
     TutorGuard,
     StudentGuard,
     OwnerGuard,
+    InputValidationService,
+    {provide: 'ValidationMessages', useValue: validationMessages},
     {provide: 'BaseURL', useValue: baseURL},
     {provide: 'ImageURL', useValue: imageURL},
     {provide: 'AudioURL', useValue: audioURL},
